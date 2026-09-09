@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Michel Maths Academy</title>
+</head>
+<body>
+
+    <h1>Michel Maths Academy</h1>
+
+    <h2>Login</h2>
+
+    <label>Username:</label>
+    <input type="text" id="username">
+
+    <br><br>
+
+    <label>Password:</label>
+    <input type="password" id="password">
+
+    <br><br>
+
+    <button onclick="login()">Login</button>
+
+    <script>
+        function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            if (username === "Michel" && password === "12345") {
+                alert("Login successful!");
+            } else {
+                alert("Incorrect username or password.");
+            }
+        }
+    </script>
+
+</body>
+</html>
