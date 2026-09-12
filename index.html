@@ -8,7 +8,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #007bff; display: flex; justify-content: center; align-items: center; min-height: 100vh; color: #333; }
         
-        /* Login Container */
+        /* Login Box Styling */
         .login-container { background: #ffffff; padding: 2.5rem; border-radius: 12px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); width: 100%; max-width: 400px; text-align: center; }
         .academy-logo { font-size: 2rem; color: #007bff; margin-bottom: 0.5rem; font-weight: 700; }
         .subtitle { color: #666; font-size: 0.95rem; margin-bottom: 1.5rem; }
@@ -23,7 +23,7 @@
         .login-btn { width: 100%; padding: 0.75rem; background: #007bff; border: none; border-radius: 6px; color: white; font-size: 1rem; font-weight: 600; cursor: pointer; }
         .login-btn:hover { background: #0056b3; }
 
-        /* Dashboard Container (Hidden by default) */
+        /* Folders Screen (Hidden by default) */
         .dashboard-container { display: none; background: #ffffff; padding: 2.5rem; border-radius: 12px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); width: 90%; max-width: 500px; text-align: center; }
         .grade-title { font-size: 1.75rem; color: #007bff; margin-bottom: 1.5rem; font-weight: 700; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; }
         .folder-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
@@ -34,7 +34,7 @@
 </head>
 <body>
 
-    <!-- LOGIN SCREEN -->
+    <!-- 1. LOGIN BOX -->
     <div class="login-container" id="loginScreen">
         <div class="academy-logo">Michel Maths</div>
         <p class="subtitle">Academy Portal Login</p>
@@ -57,7 +57,7 @@
         </form>
     </div>
 
-    <!-- STUDENT DASHBOARD -->
+    <!-- 2. TERM FOLDERS CONTAINER -->
     <div class="dashboard-container" id="dashboardScreen">
         <div class="grade-title">Grade 8</div>
         <div class="folder-grid">
@@ -84,13 +84,11 @@
             
             errorAlert.style.display = 'none';
 
-            // Check details
+            // Checks username and password exactly
             if (usernameInput === 'Michel' && passwordInput === 'Michel123') {
-                // Hide login, show dashboard
                 document.getElementById('loginScreen').style.display = 'none';
                 document.getElementById('dashboardScreen').style.display = 'block';
             } else {
-                // Show error message
                 errorAlert.textContent = 'Invalid username or password.';
                 errorAlert.style.display = 'block';
             }
