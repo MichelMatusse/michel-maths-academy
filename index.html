@@ -8,7 +8,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #007bff; display: flex; justify-content: center; align-items: center; min-height: 100vh; color: #333; padding: 20px; }
         
-        /* LOGIN SCREEN DESIGN */
+        /* LOGIN PANEL GRAPHICS */
         .login-container { background: #ffffff; padding: 2.5rem; border-radius: 12px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); width: 100%; max-width: 400px; text-align: center; }
         .academy-logo { font-size: 2rem; color: #007bff; margin-bottom: 0.5rem; font-weight: 700; }
         .subtitle { color: #666; font-size: 0.95rem; margin-bottom: 1.5rem; }
@@ -19,36 +19,35 @@
         input:focus { border-color: #007bff; }
         .toggle-password { position: absolute; right: 12px; top: 38px; background: none; border: none; color: #777; cursor: pointer; font-size: 0.85rem; }
         .utilities { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; font-size: 0.85rem; }
-        .utilities a { color: #007bff; text-decoration: none; font-weight: 600; }
         .login-btn { width: 100%; padding: 0.75rem; background: #007bff; border: none; border-radius: 6px; color: white; font-size: 1rem; font-weight: 600; cursor: pointer; }
         .login-btn:hover { background: #0056b3; }
 
-        /* PORTAL DASHBOARD SCREEN */
+        /* PORTAL ACADEMY GRAPHICS */
         .dashboard-container { display: none; background: #ffffff; padding: 2.5rem; border-radius: 12px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); width: 100%; max-width: 550px; text-align: center; }
         .grade-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 0.75rem; margin-bottom: 1.5rem; }
         .grade-title { font-size: 1.75rem; color: #007bff; font-weight: 700; }
-        .logout-btn { background: #f8f9fa; border: 1px solid #ddd; padding: 0.4rem 0.8rem; border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: 600; color: #666; transition: all 0.2s; }
-        .logout-btn:hover { background: #fce4e4; border-color: #fcc2c2; color: #cc0000; }
+        .logout-btn { background: #f8f9fa; border: 1px solid #ddd; padding: 0.4rem 0.8rem; border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: 600; color: #666; }
+        .logout-btn:hover { background: #fce4e4; color: #cc0000; border-color: #fcc2c2; }
         
         .folder-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .folder-card { background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 10px; padding: 1.5rem; text-align: center; cursor: pointer; font-weight: 700; color: #333; transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .folder-card { background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 10px; padding: 1.5rem; text-align: center; cursor: pointer; font-weight: 700; color: #333; transition: all 0.2s ease; }
         .folder-card:hover { background: #e9ecef; border-color: #007bff; color: #007bff; transform: translateY(-2px); }
         .folder-icon { font-size: 2.2rem; margin-bottom: 0.5rem; display: block; }
 
-        /* CURRICULUM TOPICS CONTAINER */
+        /* LIST VISUAL RENDERING */
         .topics-container { display: none; text-align: left; }
-        .back-btn { display: inline-flex; align-items: center; gap: 5px; background: none; border: none; color: #007bff; font-weight: 700; cursor: pointer; font-size: 0.95rem; margin-bottom: 1.25rem; transition: color 0.2s; }
+        .back-btn { display: inline-flex; align-items: center; gap: 5px; background: none; border: none; color: #007bff; font-weight: 700; cursor: pointer; font-size: 0.95rem; margin-bottom: 1.25rem; }
         .back-btn:hover { color: #0056b3; text-decoration: underline; }
         .term-heading { font-size: 1.4rem; color: #333; font-weight: 700; margin-bottom: 1rem; border-left: 4px solid #007bff; padding-left: 10px; }
         
         .topic-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-        .topic-item { display: flex; align-items: center; background: #f8f9fa; border: 1px solid #e9ecef; padding: 1rem; border-radius: 8px; font-weight: 800; font-size: 0.95rem; letter-spacing: 0.5px; color: #222; }
+        .topic-item { display: flex; align-items: center; background: #f8f9fa; border: 1px solid #e9ecef; padding: 1rem; border-radius: 8px; font-weight: 800; font-size: 0.95rem; color: #222; text-transform: uppercase; }
         .topic-math-icon { margin-right: 12px; font-size: 1.2rem; color: #007bff; width: 24px; text-align: center; }
     </style>
 </head>
 <body>
 
-    <!-- 1. THE GATEWAY LOGIN SCREEN -->
+    <!-- CONTAINER 1: AUTHENTICATION CONTAINER -->
     <div class="login-container" id="loginScreen">
         <div class="academy-logo">Michel Maths</div>
         <p class="subtitle">Academy Portal Login</p>
@@ -56,7 +55,7 @@
         <form id="loginForm" onsubmit="handleLogin(event)">
             <div class="input-group">
                 <label for="username">Username or Email</label>
-                <input type="text" id="username" placeholder="e.g., michel123" required>
+                <input type="text" id="username" placeholder="Enter username..." required>
             </div>
             <div class="input-group">
                 <label for="password">Password</label>
@@ -65,20 +64,20 @@
             </div>
             <div class="utilities">
                 <label><input type="checkbox"> Remember me</label>
-                <a href="#">Forgot password?</a>
+                <a href="#" style="color: #007bff; text-decoration: none; font-weight: 600;">Forgot password?</a>
             </div>
             <button type="submit" class="login-btn">Log In</button>
         </form>
     </div>
 
-    <!-- 2. THE INSIDE MAIN DASHBOARD -->
+    <!-- CONTAINER 2: RESOURCE ROOT VIEW -->
     <div class="dashboard-container" id="dashboardScreen">
         <div class="grade-header">
             <div class="grade-title">Grade 8</div>
             <button class="logout-btn" onclick="logout()">Log Out</button>
         </div>
         
-        <!-- Main Folders View -->
+        <!-- Grid Links -->
         <div id="termsView" class="folder-grid">
             <div class="folder-card" onclick="openTerm('term1')"><span class="folder-icon">📁</span>Term 1</div>
             <div class="folder-card" onclick="openTerm('term2')"><span class="folder-icon">📁</span>Term 2</div>
@@ -86,17 +85,15 @@
             <div class="folder-card" onclick="openTerm('term4')"><span class="folder-icon">📁</span>Term 4</div>
         </div>
 
-        <!-- Inner Topics View -->
+        <!-- Hidden Curriculum Lists -->
         <div id="topicsView" class="topics-container">
             <button class="back-btn" onclick="showTerms()">&larr; BACK TO TERMS</button>
-            <h3 class="term-heading" id="dynamicTermTitle">Term Content</h3>
-            <ul class="topic-list" id="dynamicTopicList">
-                <!-- Data populated dynamically via Javascript -->
-            </ul>
+            <h3 class="term-heading" id="dynamicTermTitle">Term</h3>
+            <ul class="topic-list" id="dynamicTopicList"></ul>
         </div>
     </div>
 
-    <!-- 3. FUNCTIONAL APP JAVASCRIPT -->
+    <!-- ENGINE CONTROL DATA SHEET -->
     <script>
         const curriculum = {
             term1: {
@@ -107,8 +104,7 @@
                     "COMMON FRACTIONS",
                     "DECIMAL FRACTIONS",
                     "NUMERIC AND GEOMETRIC PATTERNS"
-                ],
-                icons: ["🔢", "➕", "🥞", "🪙", "📐"]
+                ]
             },
             term2: {
                 title: "TERM 2",
@@ -118,8 +114,7 @@
                     "ALGEBRAIC EQUATIONS",
                     "FUNCTIONS AND RELATIONSHIPS",
                     "GRAPHS"
-                ],
-                icons: ["⚡", "🧬", "⚖️", "🔄", "📊"]
+                ]
             },
             term3: {
                 title: "TERM 3",
@@ -128,8 +123,7 @@
                     "PROBABILITY",
                     "GEOMETRY OF STRAIGHT LINES",
                     "GEOMETRY OF 2D SHAPES"
-                ],
-                icons: ["📉", "🎲", "📏", "📐"]
+                ]
             },
             term4: {
                 title: "TERM 4",
@@ -138,20 +132,19 @@
                     "TRANSFORMATION GEOMETRY",
                     "AREA AND PERIMETER OF 2-D SHAPES",
                     "SURFACE AREA AND VOLUME OF 3-D OBJECTS"
-                ],
-                icons: ["📐", "🪞", "🟢", "📦"]
+                ]
             }
         };
 
         function togglePass() {
             const passInput = document.getElementById('password');
             const toggleBtn = document.querySelector('.toggle-password');
-            if (passInput.type === 'password') { 
-                passInput.type = 'text'; 
-                toggleBtn.textContent = 'Hide'; 
-            } else { 
-                passInput.type = 'password'; 
-                toggleBtn.textContent = 'Show'; 
+            if (passInput.type === 'password') {
+                passInput.type = 'text';
+                toggleBtn.textContent = 'Hide';
+            } else {
+                passInput.type = 'password';
+                toggleBtn.textContent = 'Show';
             }
         }
 
@@ -163,7 +156,7 @@
             
             errorAlert.style.display = 'none';
 
-            // Matches case-sensitive login strings perfectly
+            // Matches requested values exactly
             if (usernameInput === 'Michel' && passwordInput === 'Michel123') {
                 document.getElementById('loginScreen').style.display = 'none';
                 document.getElementById('dashboardScreen').style.display = 'block';
@@ -181,3 +174,11 @@
             const listContainer = document.getElementById('dynamicTopicList');
             listContainer.innerHTML = ''; 
             
+            data.topics.forEach((topic) => {
+                const li = document.createElement('li');
+                li.className = 'topic-item';
+                li.innerHTML = `<span class="topic-math-icon">📐</span> <strong>${topic}</strong>`;
+                listContainer.appendChild(li);
+            });
+
+            document.getElementById('termsView').style.display = 'none';
