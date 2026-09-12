@@ -8,7 +8,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #007bff; display: flex; justify-content: center; align-items: center; min-height: 100vh; color: #333; padding: 20px; }
         
-        /* 1. LOGIN SCREEN */
+        /* LOGIN SCREEN DESIGN */
         .login-container { background: #ffffff; padding: 2.5rem; border-radius: 12px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); width: 100%; max-width: 400px; text-align: center; }
         .academy-logo { font-size: 2rem; color: #007bff; margin-bottom: 0.5rem; font-weight: 700; }
         .subtitle { color: #666; font-size: 0.95rem; margin-bottom: 1.5rem; }
@@ -23,7 +23,7 @@
         .login-btn { width: 100%; padding: 0.75rem; background: #007bff; border: none; border-radius: 6px; color: white; font-size: 1rem; font-weight: 600; cursor: pointer; }
         .login-btn:hover { background: #0056b3; }
 
-        /* 2. MAIN DASHBOARD SCREEN */
+        /* PORTAL DASHBOARD SCREEN */
         .dashboard-container { display: none; background: #ffffff; padding: 2.5rem; border-radius: 12px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); width: 100%; max-width: 550px; text-align: center; }
         .grade-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 0.75rem; margin-bottom: 1.5rem; }
         .grade-title { font-size: 1.75rem; color: #007bff; font-weight: 700; }
@@ -35,7 +35,7 @@
         .folder-card:hover { background: #e9ecef; border-color: #007bff; color: #007bff; transform: translateY(-2px); }
         .folder-icon { font-size: 2.2rem; margin-bottom: 0.5rem; display: block; }
 
-        /* 3. SUB-TOPIC VISUALS */
+        /* CURRICULUM TOPICS CONTAINER */
         .topics-container { display: none; text-align: left; }
         .back-btn { display: inline-flex; align-items: center; gap: 5px; background: none; border: none; color: #007bff; font-weight: 700; cursor: pointer; font-size: 0.95rem; margin-bottom: 1.25rem; transition: color 0.2s; }
         .back-btn:hover { color: #0056b3; text-decoration: underline; }
@@ -48,7 +48,7 @@
 </head>
 <body>
 
-    <!-- LOGIN SCREEN -->
+    <!-- 1. THE GATEWAY LOGIN SCREEN -->
     <div class="login-container" id="loginScreen">
         <div class="academy-logo">Michel Maths</div>
         <p class="subtitle">Academy Portal Login</p>
@@ -56,11 +56,11 @@
         <form id="loginForm" onsubmit="handleLogin(event)">
             <div class="input-group">
                 <label for="username">Username or Email</label>
-                <input type="text" id="username" placeholder="e.g., michel123">
+                <input type="text" id="username" placeholder="e.g., michel123" required>
             </div>
             <div class="input-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" placeholder="••••••••">
+                <input type="password" id="password" placeholder="••••••••" required>
                 <button type="button" class="toggle-password" onclick="togglePass()">Show</button>
             </div>
             <div class="utilities">
@@ -71,14 +71,14 @@
         </form>
     </div>
 
-    <!-- STUDENT DASHBOARD -->
+    <!-- 2. THE INSIDE MAIN DASHBOARD -->
     <div class="dashboard-container" id="dashboardScreen">
         <div class="grade-header">
             <div class="grade-title">Grade 8</div>
             <button class="logout-btn" onclick="logout()">Log Out</button>
         </div>
         
-        <!-- Main Terms View -->
+        <!-- Main Folders View -->
         <div id="termsView" class="folder-grid">
             <div class="folder-card" onclick="openTerm('term1')"><span class="folder-icon">📁</span>Term 1</div>
             <div class="folder-card" onclick="openTerm('term2')"><span class="folder-icon">📁</span>Term 2</div>
@@ -86,18 +86,18 @@
             <div class="folder-card" onclick="openTerm('term4')"><span class="folder-icon">📁</span>Term 4</div>
         </div>
 
-        <!-- Dynamic Topics Content Inside Terms -->
+        <!-- Inner Topics View -->
         <div id="topicsView" class="topics-container">
             <button class="back-btn" onclick="showTerms()">&larr; BACK TO TERMS</button>
             <h3 class="term-heading" id="dynamicTermTitle">Term Content</h3>
             <ul class="topic-list" id="dynamicTopicList">
-                <!-- Topics will load dynamically here via JS -->
+                <!-- Data populated dynamically via Javascript -->
             </ul>
         </div>
     </div>
 
+    <!-- 3. FUNCTIONAL APP JAVASCRIPT -->
     <script>
-        // Comprehensive Curriculum Database Matrix
         const curriculum = {
             term1: {
                 title: "TERM 1",
@@ -146,8 +146,13 @@
         function togglePass() {
             const passInput = document.getElementById('password');
             const toggleBtn = document.querySelector('.toggle-password');
-            if (passInput.type === 'password') { passInput.type = 'text'; toggleBtn.textContent = 'Hide'; }
-            else { passInput.type = 'password'; toggleBtn.textContent = 'Show'; }
+            if (passInput.type === 'password') { 
+                passInput.type = 'text'; 
+                toggleBtn.textContent = 'Hide'; 
+            } else { 
+                passInput.type = 'password'; 
+                toggleBtn.textContent = 'Show'; 
+            }
         }
 
         function handleLogin(e) {
@@ -158,10 +163,11 @@
             
             errorAlert.style.display = 'none';
 
+            // Matches case-sensitive login strings perfectly
             if (usernameInput === 'Michel' && passwordInput === 'Michel123') {
                 document.getElementById('loginScreen').style.display = 'none';
                 document.getElementById('dashboardScreen').style.display = 'block';
-                showTerms(); // Make sure it defaults to the main folders screen
+                showTerms();
             } else {
                 errorAlert.textContent = 'Invalid username or password.';
                 errorAlert.style.display = 'block';
@@ -173,7 +179,5 @@
             document.getElementById('dynamicTermTitle').textContent = data.title;
             
             const listContainer = document.getElementById('dynamicTopicList');
-            listContainer.innerHTML = ''; // Wipe old elements
+            listContainer.innerHTML = ''; 
             
-            // Build the clean list architecture
-            data.topics.forEach((topic, index) => {
