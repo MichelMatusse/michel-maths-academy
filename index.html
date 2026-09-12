@@ -3,85 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Michel Maths Academy</title>
+    <title>Dashboard | Michel Maths Academy</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #007bff; display: flex; justify-content: center; align-items: center; height: 100vh; color: #333; overflow: hidden; }
-        .login-container { background: #ffffff; padding: 2.5rem; border-radius: 12px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); width: 100%; max-width: 400px; z-index: 10; text-align: center; }
-        .academy-logo { font-size: 2rem; color: #0056b3; margin-bottom: 0.5rem; font-weight: 700; }
+        
+        /* Container Setup */
+        .app-container { background: #ffffff; padding: 2.5rem; border-radius: 12px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); width: 100%; max-width: 450px; z-index: 10; text-align: center; }
+        
+        /* Updated Logo Brand Color */
+        .academy-logo { font-size: 2rem; color: #007bff; margin-bottom: 0.5rem; font-weight: 700; }
         .academy-logo span { color: #007bff; }
+        
         .subtitle { color: #666; font-size: 0.95rem; margin-bottom: 1.5rem; }
         
+        /* Screen Toggling */
+        .hidden { display: none !important; }
+        
+        /* Login Screen Elements */
+        .error-alert { display: none; background-color: #fce4e4; border: 1px solid #fcc2c2; color: #cc0000; padding: 0.75rem; border-radius: 6px; margin-bottom: 1.5rem; font-size: 0.85rem; text-align: left; }
         .input-group { margin-bottom: 1.5rem; text-align: left; position: relative; }
         label { display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem; color: #444; }
-        input[type="text"], input[type="password"] { width: 100%; padding: 0.75rem 1rem; border: 2px solid #ddd; border-radius: 6px; font-size: 1rem; outline: none; }
+        input[type="text"], input[type="password"] { width: 100%; padding: 0.75rem 1rem; border: 2px solid #ddd; border-radius: 6px; font-size: 1rem; transition: border-color 0.3s ease; outline: none; }
         input:focus { border-color: #007bff; }
-        
+        input.input-error { border-color: #cc0000; background-color: #fff9f9; }
+        .toggle-password { position: absolute; right: 12px; top: 38px; background: none; border: none; color: #777; cursor: pointer; font-size: 0.85rem; }
         .utilities { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; font-size: 0.85rem; }
         .utilities a { color: #007bff; text-decoration: none; font-weight: 600; }
         .utilities a:hover { text-decoration: underline; }
-        
         .login-btn { width: 100%; padding: 0.75rem; background: #007bff; border: none; border-radius: 6px; color: white; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.3s ease; }
         .login-btn:hover { background: #0056b3; }
         
-        /* Modal Styles */
+        /* Folder Dashboard Elements */
+        .grade-heading { font-size: 1.3rem; color: #333; font-weight: 600; margin-bottom: 1rem; text-align: left; border-left: 4px solid #007bff; padding-left: 8px; }
+        .folder-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: left; margin-bottom: 1.5rem; }
+        .folder-card { background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 8px; padding: 1rem; cursor: pointer; transition: transform 0.2s, border-color 0.2s; display: flex; flex-direction: column; gap: 0.5rem; }
+        .folder-card:hover { transform: translateY(-2px); border-color: #007bff; background: #f0f7ff; }
+        .folder-icon { font-size: 1.8rem; }
+        .folder-title { font-weight: 600; color: #212529; font-size: 1rem; }
+        .logout-btn { padding: 0.5rem 1rem; background: #6c757d; border: none; border-radius: 6px; color: white; font-weight: 600; cursor: pointer; font-size: 0.85rem; }
+        .logout-btn:hover { background: #5a6268; }
+
+        /* Modal Box */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); z-index: 100; justify-content: center; align-items: center; }
         .modal-box { background: #fff; padding: 2rem; border-radius: 12px; width: 90%; max-width: 380px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-        .modal-box h3 { color: #0056b3; margin-bottom: 0.5rem; font-size: 1.3rem; }
-        .modal-box p { color: #666; font-size: 0.95rem; margin-bottom: 1.5rem; }
-        .modal-close { padding: 0.6rem 2rem; background: #007bff; border: none; border-radius: 6px; color: white; cursor: pointer; font-weight: 600; width: 100%; }
-        .modal-close:hover { background: #0056b3; }
+        .modal-box h3 { color: #0056b3; margin-bottom: 0.5rem; font-size: 1.25rem; }
+        .modal-box p { color: #666; font-size: 0.9rem; margin-bottom: 1.5rem; }
+        .modal-btn { padding: 0.5rem 1.5rem; background: #007bff; border: none; border-radius: 6px; color: white; font-weight: 600; cursor: pointer; }
+        .modal-btn:hover { background: #0056b3; }
     </style>
 </head>
 <body>
 
-    <div class="login-container">
+    <div class="app-container">
+        <!-- Both Michel and Maths are now blue -->
         <div class="academy-logo">Michel <span>Maths</span></div>
-        <p class="subtitle">Academy Portal Login</p>
+        <p class="subtitle" id="appSubtitle">Please sign in to continue</p>
         
-        <form id="loginForm">
-            <div class="input-group">
-                <label>Username / Email</label>
-                <input type="text" required>
+        <!-- SCREEN 1: LOGIN FORM -->
+        <div id="loginScreen">
+            <div class="error-alert" id="errorAlert">Please fill out all required fields.</div>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="username">Username or Email</label>
+                    <input type="text" id="username" placeholder="Enter your username">
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password">
+                    <button type="button" class="toggle-password" id="togglePassword">Show</button>
+                </div>
+                
+                <div class="utilities">
+                    <label><input type="checkbox"> Remember me</label>
+                    <a href="#" id="forgotLink">Forgot password?</a>
+                </div>
+                
+                <button type="submit" class="login-btn">Sign In</button>
+            </form>
+        </div>
+
+        <!-- SCREEN 2: FOLDERS DASHBOARD -->
+        <div id="dashboardScreen" class="hidden">
+            <div class="grade-heading">Grade 8 Resources</div>
+            
+            <div class="folder-grid">
+                <div class="folder-card" onclick="alert('Opening Term 1 Files...')">
+                    <span class="folder-icon">📁</span>
+                    <span class="folder-title">Term 1</span>
+                </div>
+                <div class="folder-card" onclick="alert('Opening Term 2 Files...')">
+                    <span class="folder-icon">📁</span>
+                    <span class="folder-title">Term 2</span>
+                </div>
+                <div class="folder-card" onclick="alert('Opening Term 3 Files...')">
+                    <span class="folder-icon">📁</span>
+                    <span class="folder-title">Term 3</span>
+                </div>
+                <div class="folder-card" onclick="alert('Opening Term 4 Files...')">
+                    <span class="folder-icon">📁</span>
+                    <span class="folder-title">Term 4</span>
+                </div>
             </div>
-            <div class="input-group">
-                <label>Password</label>
-                <input type="password" required>
-            </div>
-            <div class="utilities">
-                <label><input type="checkbox"> Remember me</label>
-                <a href="#">Forgot password?</a>
-            </div>
-            <button type="submit" class="login-btn">Log In</button>
-        </form>
+
+            <button type="button" class="logout-btn" id="logoutBtn">Sign Out</button>
+        </div>
     </div>
 
-    <!-- Custom Modal Overlay replacing native Alert -->
-    <div class="modal-overlay" id="successModal">
+    <!-- Help Modal Box -->
+    <div class="modal-overlay" id="modalOverlay">
         <div class="modal-box">
-            <h3>Success!</h3>
-            <p>Logging you into Michel Maths Academy.</p>
-            <button class="modal-close" id="modalBtn">OK</button>
+            <h3>Reset Password</h3>
+            <p>Please contact your administrator at Michel Maths Academy to request a temporary login token.</p>
+            <button class="modal-btn" id="closeModal">Close</button>
         </div>
     </div>
 
     <script>
+        const loginScreen = document.getElementById('loginScreen');
+        const dashboardScreen = document.getElementById('dashboardScreen');
+        const appSubtitle = document.getElementById('appSubtitle');
         const loginForm = document.getElementById('loginForm');
-        const successModal = document.getElementById('successModal');
-        const modalBtn = document.getElementById('modalBtn');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const errorAlert = document.getElementById('errorAlert');
+        const togglePassword = document.getElementById('togglePassword');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const forgotLink = document.getElementById('forgotLink');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const closeModal = document.getElementById('closeModal');
 
-        loginForm.addEventListener('submit', function(e) {
-            e.preventDefault(); // Stop page reload
-            
-            // Display the custom overlay modal flexbox style
-            successModal.style.display = 'flex';
+        togglePassword.addEventListener('click', () => {
+            const isPass = passwordInput.getAttribute('type') === 'password';
+            passwordInput.setAttribute('type', isPass ? 'text' : 'password');
+            togglePassword.textContent = isPass ? 'Hide' : 'Show';
         });
 
-        modalBtn.addEventListener('click', function() {
-            successModal.style.display = 'none';
-            
-            // Redirect smoothly to your actual dashboard or next page here
-            window.location.href = "dashboard.html"; 
+        forgotLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            modalOverlay.style.display = 'flex';
+        });
+        closeModal.addEventListener('click', () => modalOverlay.style.display = 'none');
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            usernameInput.classList.remove('input-error');
+            passwordInput.classList.remove('input-error');
+            errorAlert.style.display = 'none';
+
+            const userVal = usernameInput.value.trim();
+            const passVal = passwordInput.value.trim();
+
+            if (!userVal || !passVal) {
+                if (!userVal) usernameInput.classList.add('input-error');
+                if (!passVal) passwordInput.classList.add('input-error');
+                errorAlert.textContent = 'Please fill out all fields.';
+                errorAlert.style.display = 'block';
+                return;
+            }
+
+            loginScreen.classList.add('hidden');
+            dashboardScreen.classList.remove('hidden');
+            appSubtitle.textContent = "Welcome back, Student!";
+        });
+
+        logoutBtn.addEventListener('click', () => {
+            usernameInput.value = '';
+            passwordInput.value = '';
+            dashboardScreen.classList.add('hidden');
+            loginScreen.classList.remove('hidden');
+            appSubtitle.textContent = "Please sign in to continue";
         });
     </script>
 </body>
