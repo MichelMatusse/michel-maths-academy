@@ -83,21 +83,14 @@
                 <button type="submit" class="login-btn">Sign In</button>
             </form>
         </div>
-        
+                <!-- SCREEN 2: FOLDERS DASHBOARD -->
         <div id="dashboardScreen" class="hidden">
             <div class="grade-heading">Grade 8</div>
             
             <div class="folder-grid">
-                <div class="folder-card" onclick="alert('Inside Term 1:\n• WHOLE NUMBERS\n• INTEGERS\n• COMMON FRACTIONS\n• DECIMAL FRACTIONS\n• NUMERIC AND GEOMETRIC PATTERNS')">
+                <div class="folder-card" onclick="document.getElementById('dashboardScreen').classList.add('hidden'); document.getElementById('term1Screen').classList.remove('hidden');">
                     <span class="folder-icon">📁</span>
                     <span class="folder-title">Term 1</span>
-                    <div style="font-size: 0.75rem; color: #666; margin-top: 0.5rem; text-align: left; line-height: 1.3;">
-                        • WHOLE NUMBERS<br>
-                        • INTEGERS<br>
-                        • COMMON FRACTIONS<br>
-                        • DECIMAL FRACTIONS<br>
-                        • NUMERIC & GEOMETRIC PATTERNS
-                    </div>
                 </div>
                 <div class="folder-card" onclick="alert('Opening Term 2 Files...')">
                     <span class="folder-icon">📁</span>
@@ -114,6 +107,21 @@
             </div>
 
             <button type="button" class="logout-btn" id="logoutBtn">Sign Out</button>
+        </div>
+
+        <!-- SCREEN 3: TERM 1 DETAILS INSIDE -->
+        <div id="term1Screen" class="hidden">
+            <div class="grade-heading" style="border-left-color: #007bff;">Grade 8 &gt; Term 1</div>
+            
+            <div style="text-align: left; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 0.8rem 1rem; font-weight: 600; color: #212529; font-size: 0.95rem;">1. WHOLE NUMBERS</div>
+                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 0.8rem 1rem; font-weight: 600; color: #212529; font-size: 0.95rem;">2. INTEGERS</div>
+                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 0.8rem 1rem; font-weight: 600; color: #212529; font-size: 0.95rem;">3. COMMON FRACTIONS</div>
+                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 0.8rem 1rem; font-weight: 600; color: #212529; font-size: 0.95rem;">4. DECIMAL FRACTIONS</div>
+                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 0.8rem 1rem; font-weight: 600; color: #212529; font-size: 0.95rem;">5. NUMERIC AND GEOMETRIC PATTERNS</div>
+            </div>
+
+            <button type="button" class="login-btn" style="padding: 0.6rem; font-size: 0.9rem;" onclick="document.getElementById('term1Screen').classList.add('hidden'); document.getElementById('dashboardScreen').classList.remove('hidden');">Back to Dashboard</button>
         </div>
     </div>
 
@@ -178,6 +186,7 @@
             usernameInput.value = '';
             passwordInput.value = '';
             dashboardScreen.classList.add('hidden');
+            document.getElementById('term1Screen').classList.add('hidden');
             loginScreen.classList.remove('hidden');
             appSubtitle.textContent = "Please sign in to continue";
         });
