@@ -1,195 +1,1725 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | Michel Maths Academy</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #ffffff; display: flex; justify-content: center; align-items: center; height: 100vh; color: #333; overflow: hidden; }
-        
-        /* Container Setup */
-        .app-container { background: #ffffff; padding: 2.5rem; border-radius: 12px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); width: 100%; max-width: 450px; z-index: 10; text-align: center; }
-        
-        /* Updated Logo Brand Color */
-        .academy-logo { font-size: 2rem; color: #007bff; margin-bottom: 0.5rem; font-weight: 700; }
-        .academy-logo span { color: #007bff; }
-        
-        .subtitle { color: #666; font-size: 0.95rem; margin-bottom: 1.5rem; }
-        
-        /* Screen Toggling */
-        .hidden { display: none !important; }
-        
-        /* Login Screen Elements */
-        .error-alert { display: none; background-color: #fce4e4; border: 1px solid #fcc2c2; color: #cc0000; padding: 0.75rem; border-radius: 6px; margin-bottom: 1.5rem; font-size: 0.85rem; text-align: left; }
-        .input-group { margin-bottom: 1.5rem; text-align: left; position: relative; }
-        label { display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem; color: #444; }
-        input[type="text"], input[type="password"] { width: 100%; padding: 0.75rem 1rem; border: 2px solid #ddd; border-radius: 6px; font-size: 1rem; transition: border-color 0.3s ease; outline: none; }
-        input:focus { border-color: #007bff; }
-        input.input-error { border-color: #cc0000; background-color: #fff9f9; }
-        .toggle-password { position: absolute; right: 12px; top: 38px; background: none; border: none; color: #777; cursor: pointer; font-size: 0.85rem; }
-        .utilities { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; font-size: 0.85rem; }
-        .utilities a { color: #007bff; text-decoration: none; font-weight: 600; }
-        .utilities a:hover { text-decoration: underline; }
-        .login-btn { width: 100%; padding: 0.75rem; background: #007bff; border: none; border-radius: 6px; color: white; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.3s ease; }
-        .login-btn:hover { background: #0056b3; }
-        
-        /* Folder Dashboard Elements */
-        .grade-heading { font-size: 1.3rem; color: #333; font-weight: 600; margin-bottom: 1rem; text-align: left; border-left: 4px solid #007bff; padding-left: 8px; }
-        .folder-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: left; margin-bottom: 1.5rem; }
-        .folder-card { background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 8px; padding: 1rem; cursor: pointer; transition: transform 0.2s, border-color 0.2s; display: flex; flex-direction: column; gap: 0.5rem; }
-        .folder-card:hover { transform: translateY(-2px); border-color: #007bff; background: #f0f7ff; }
-        .folder-icon { font-size: 1.8rem; }
-        .folder-title { font-weight: 600; color: #212529; font-size: 1rem; }
-        .logout-btn { padding: 0.5rem 1rem; background: #6c757d; border: none; border-radius: 6px; color: white; font-weight: 600; cursor: pointer; font-size: 0.85rem; }
-        .logout-btn:hover { background: #5a6268; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        /* Modal Box */
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); z-index: 100; justify-content: center; align-items: center; }
-        .modal-box { background: #fff; padding: 2rem; border-radius: 12px; width: 90%; max-width: 380px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-        .modal-box h3 { color: #0056b3; margin-bottom: 0.5rem; font-size: 1.25rem; }
-        .modal-box p { color: #666; font-size: 0.9rem; margin-bottom: 1.5rem; }
-        .modal-btn { padding: 0.5rem 1.5rem; background: #007bff; border: none; border-radius: 6px; color: white; font-weight: 600; cursor: pointer; }
-        .modal-btn:hover { background: #0056b3; }
-    </style>
+  <title>Michel Maths Academy</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
+      color: #222;
+      min-height: 100vh;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 900px;
+      min-height: 100vh;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* =========================
+       ORIGINAL LOGIN PAGE
+       ========================= */
+
+    .logo {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .logo h1 {
+      color: #1677ff;
+      font-size: 32px;
+      font-weight: 800;
+    }
+
+    .logo p {
+      color: #666;
+      margin-top: 6px;
+      font-size: 14px;
+    }
+
+    .login-card {
+      max-width: 430px;
+      margin: 50px auto;
+      padding: 35px;
+      border: 1px solid #e5e5e5;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      background: #fff;
+    }
+
+    .login-card h2 {
+      text-align: center;
+      margin-bottom: 8px;
+      font-size: 25px;
+    }
+
+    .login-card .subtitle {
+      text-align: center;
+      color: #777;
+      margin-bottom: 28px;
+      font-size: 14px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #d5d5d5;
+      border-radius: 9px;
+      font-size: 15px;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    .form-group input:focus {
+      border-color: #1677ff;
+      box-shadow: 0 0 0 3px rgba(22, 119, 255, 0.1);
+    }
+
+    .password-wrapper {
+      position: relative;
+    }
+
+    .password-wrapper input {
+      padding-right: 75px;
+    }
+
+    .show-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: transparent;
+      color: #1677ff;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .login-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      font-size: 13px;
+    }
+
+    .remember-me {
+      display: flex;
+      gap: 7px;
+      align-items: center;
+    }
+
+    .forgot-password {
+      border: none;
+      background: none;
+      color: #1677ff;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 14px;
+      background: #1677ff;
+      color: white;
+      border: none;
+      border-radius: 9px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-top: 10px;
+    }
+
+    .login-btn:hover {
+      background: #0d62d4;
+    }
+
+    .error-message {
+      color: #d93025;
+      font-size: 13px;
+      margin-bottom: 15px;
+      text-align: center;
+      min-height: 18px;
+    }
+
+    /* =========================
+       DASHBOARD
+       ========================= */
+
+    .grade-heading {
+      text-align: center;
+      font-size: 27px;
+      font-weight: 800;
+      color: #222;
+      margin-bottom: 28px;
+    }
+
+    .grade-heading::after {
+      content: "";
+      display: block;
+      width: 55px;
+      height: 4px;
+      background: #1677ff;
+      border-radius: 5px;
+      margin: 10px auto 0;
+    }
+
+    /*
+      iOS 18-inspired blue folder cards
+    */
+
+    .folder-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 25px;
+    }
+
+    .folder-card {
+      position: relative;
+      min-height: 150px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+
+      padding: 28px 20px 24px;
+
+      background: linear-gradient(
+        180deg,
+        #62aaff 0%,
+        #1976ff 100%
+      );
+
+      border: 1px solid #0e6be8;
+      border-radius: 22px;
+
+      color: white;
+      font-size: 18px;
+      font-weight: 700;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 8px 18px rgba(22, 119, 255, 0.20),
+        inset 0 1px 1px rgba(255, 255, 255, 0.35);
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    /*
+      Folder tab
+    */
+
+    .folder-card::before {
+      content: "";
+      position: absolute;
+
+      top: 18px;
+      left: 22px;
+
+      width: 58px;
+      height: 20px;
+
+      background: #66adff;
+
+      border-radius:
+        8px 8px 3px 3px;
+
+      box-shadow:
+        inset 0 1px 1px rgba(255, 255, 255, 0.35);
+    }
+
+    /*
+      Folder front
+    */
+
+    .folder-card::after {
+      content: "";
+      position: absolute;
+
+      top: 29px;
+      left: 16px;
+      right: 16px;
+
+      height: 92px;
+
+      background: linear-gradient(
+        180deg,
+        rgba(102, 181, 255, 0.95),
+        rgba(24, 119, 255, 0.95)
+      );
+
+      border-radius: 14px;
+
+      box-shadow:
+        inset 0 1px 1px rgba(255, 255, 255, 0.25);
+    }
+
+    /*
+      Keeps text above the folder graphic
+    */
+
+    .folder-card span {
+      position: relative;
+      z-index: 2;
+    }
+
+    .folder-card:hover {
+      transform: translateY(-4px);
+
+      box-shadow:
+        0 12px 25px rgba(22, 119, 255, 0.28),
+        inset 0 1px 1px rgba(255, 255, 255, 0.4);
+    }
+
+    .folder-card:active {
+      transform: scale(0.98);
+    }
+
+    .logout-btn {
+      display: block;
+      width: 180px;
+      margin: 30px auto;
+      padding: 12px;
+      border: 1px solid #1677ff;
+      background: white;
+      color: #1677ff;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .logout-btn:hover {
+      background: #1677ff;
+      color: white;
+    }
+
+    /* =========================
+       TOPICS
+       ========================= */
+
+    .topic-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-width: 700px;
+      margin: 0 auto 25px;
+    }
+
+    .topic-card {
+      background: #f7faff;
+      border: 1px solid #dceaff;
+      border-radius: 12px;
+      padding: 20px;
+
+      color: #1677ff;
+      font-size: 16px;
+      font-weight: 700;
+
+      cursor: pointer;
+
+      transition:
+        0.2s ease;
+    }
+
+    .topic-card:hover {
+      background: #eaf3ff;
+      transform: translateX(4px);
+      box-shadow:
+        0 5px 15px rgba(22, 119, 255, 0.1);
+    }
+
+    /* =========================
+       CONTENT
+       ========================= */
+
+    .content-box {
+      max-width: 700px;
+      margin: 0 auto 25px;
+      padding: 30px;
+
+      border: 1px solid #e5e5e5;
+      border-radius: 15px;
+
+      background: white;
+
+      box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .content-box h4 {
+      color: #1677ff;
+      font-size: 21px;
+      margin-bottom: 15px;
+    }
+
+    .content-box p {
+      color: #666;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* =========================
+       MODAL
+       ========================= */
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+
+      background: rgba(0, 0, 0, 0.45);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px;
+      z-index: 1000;
+    }
+
+    .modal {
+      width: 100%;
+      max-width: 400px;
+
+      background: white;
+      border-radius: 15px;
+
+      padding: 30px;
+
+      box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal h3 {
+      margin-bottom: 10px;
+    }
+
+    .modal p {
+      color: #666;
+      line-height: 1.5;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .modal-buttons button {
+      flex: 1;
+      padding: 11px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .close-modal {
+      background: white;
+      border: 1px solid #ccc;
+    }
+
+    .confirm-modal {
+      background: #1677ff;
+      border: 1px solid #1677ff;
+      color: white;
+    }
+
+    /* =========================
+       MOBILE
+       ========================= */
+
+    @media (max-width: 600px) {
+
+      .app-container {
+        padding: 20px 15px;
+      }
+
+      .login-card {
+        margin: 25px auto;
+        padding: 25px 20px;
+      }
+
+      .folder-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .folder-card {
+        min-height: 140px;
+      }
+
+      .grade-heading {
+        font-size: 23px;
+      }
+
+      .topic-card {
+        font-size: 14px;
+        padding: 18px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-    <div class="app-container">
-        <!-- Both Michel and Maths are now blue -->
-        <div class="academy-logo">Michel <span>Maths</span></div>
-        <p class="subtitle" id="appSubtitle">Academy Portal Login</p>
-        
-        <!-- SCREEN 1: LOGIN FORM -->
-        <div id="loginScreen">
-            <div class="error-alert" id="errorAlert">Please fill out all required fields.</div>
-            <form id="loginForm">
-                <div class="input-group">
-                    <label for="username">Username or Email</label>
-                    <input type="text" id="username" placeholder="Enter your username">
-                </div>
-                
-                <div class="input-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Enter your password">
-                    <button type="button" class="toggle-password" id="togglePassword">Show</button>
-                </div>
-                
-                <div class="utilities">
-                    <label><input type="checkbox"> Remember me</label>
-                    <a href="#" id="forgotLink">Forgot password?</a>
-                </div>
-                
-                <button type="submit" class="login-btn">Sign In</button>
-            </form>
-        </div>
-        <!-- SCREEN 2: FOLDERS DASHBOARD -->
-        <div id="dashboardScreen" class="hidden">
-            <div class="grade-heading">Grade 8</div>
-            
-            <div class="folder-grid">
-                <div class="folder-card" onclick="document.getElementById('dashboardScreen').classList.add('hidden'); document.getElementById('term1Screen').classList.remove('hidden');">
-                    <span class="folder-icon">📁</span>
-                    <span class="folder-title">Term 1</span>
-                </div>
-                <div class="folder-card" onclick="alert('Opening Term 2 Files...')">
-                    <span class="folder-icon">📁</span>
-                    <span class="folder-title">Term 2</span>
-                </div>
-                <div class="folder-card" onclick="alert('Opening Term 3 Files...')">
-                    <span class="folder-icon">📁</span>
-                    <span class="folder-title">Term 3</span>
-                </div>
-                <div class="folder-card" onclick="alert('Opening Term 4 Files...')">
-                    <span class="folder-icon">📁</span>
-                    <span class="folder-title">Term 4</span>
-                </div>
+  <div class="app-container">
+
+    <!-- =====================================================
+         ORIGINAL LOGIN PAGE
+         ===================================================== -->
+
+    <div id="loginScreen">
+
+      <div class="logo">
+        <h1>Michel Maths</h1>
+        <p>Maths made simple</p>
+      </div>
+
+      <div class="login-card">
+
+        <h2>Student Login</h2>
+
+        <p class="subtitle">
+          Welcome to Michel Maths Academy
+        </p>
+
+        <form id="loginForm">
+
+          <div class="form-group">
+
+            <label for="username">
+              Username or Email
+            </label>
+
+            <input
+              type="text"
+              id="username"
+              placeholder="Enter your username or email"
+              autocomplete="username"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="password">
+              Password
+            </label>
+
+            <div class="password-wrapper">
+
+              <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+              >
+
+              <button
+                type="button"
+                class="show-password"
+                id="showPassword"
+              >
+                Show
+              </button>
+
             </div>
 
-            <button type="button" class="logout-btn" id="logoutBtn">Sign Out</button>
-        </div>
+          </div>
 
-        <!-- SCREEN 3: TERM 1 DETAILS INSIDE -->
-        <div id="term1Screen" class="hidden">
-            <div class="grade-heading" style="border-left-color: #007bff;">Grade 8 &gt; Term 1</div>
-            
-            <div style="text-align: left; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
-                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 0.8rem 1rem; font-weight: 600; color: #212529; font-size: 0.95rem;">1. WHOLE NUMBERS</div>
-                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 0.8rem 1rem; font-weight: 600; color: #212529; font-size: 0.95rem;">2. INTEGERS</div>
-                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 0.8rem 1rem; font-weight: 600; color: #212529; font-size: 0.95rem;">3. COMMON FRACTIONS</div>
-                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 0.8rem 1rem; font-weight: 600; color: #212529; font-size: 0.95rem;">4. DECIMAL FRACTIONS</div>
-                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 0.8rem 1rem; font-weight: 600; color: #212529; font-size: 0.95rem;">5. NUMERIC AND GEOMETRIC PATTERNS</div>
-            </div>
 
-            <button type="button" class="login-btn" style="padding: 0.6rem; font-size: 0.9rem;" onclick="document.getElementById('term1Screen').classList.add('hidden'); document.getElementById('dashboardScreen').classList.remove('hidden');">Back to Dashboard</button>
-        </div>
+          <div class="login-options">
+
+            <label class="remember-me">
+
+              <input
+                type="checkbox"
+                id="rememberMe"
+              >
+
+              <span>Remember me</span>
+
+            </label>
+
+
+            <button
+              type="button"
+              class="forgot-password"
+              id="forgotPassword"
+            >
+              Forgot password?
+            </button>
+
+          </div>
+
+
+          <div
+            class="error-message"
+            id="loginError"
+          ></div>
+
+
+          <button
+            type="submit"
+            class="login-btn"
+          >
+            Login
+          </button>
+
+        </form>
+
+      </div>
+
     </div>
 
-    <!-- Help Modal Box -->
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-box">
-            <h3>Reset Password</h3>
-            <p>Please contact your administrator at Michel Maths Academy to request a temporary login token.</p>
-            <button class="modal-btn" id="closeModal">Close</button>
+
+    <!-- =====================================================
+         DASHBOARD
+         ===================================================== -->
+
+    <div id="dashboardScreen" class="hidden">
+
+      <div class="logo">
+
+        <h1>Michel Maths</h1>
+
+        <p>
+          Student Dashboard
+        </p>
+
+      </div>
+
+
+      <div class="grade-heading">
+        Grade 8
+      </div>
+
+
+      <div class="folder-grid">
+
+        <div
+          class="folder-card"
+          onclick="openScreen('term1Screen')"
+        >
+          <span>Term 1</span>
         </div>
+
+
+        <div
+          class="folder-card"
+          onclick="openScreen('term2Screen')"
+        >
+          <span>Term 2</span>
+        </div>
+
+
+        <div
+          class="folder-card"
+          onclick="openScreen('term3Screen')"
+        >
+          <span>Term 3</span>
+        </div>
+
+
+        <div
+          class="folder-card"
+          onclick="openScreen('term4Screen')"
+        >
+          <span>Term 4</span>
+        </div>
+
+      </div>
+
+
+      <button
+        class="logout-btn"
+        id="logoutBtn"
+      >
+        Sign Out
+      </button>
+
     </div>
 
-    <script>
-        const loginScreen = document.getElementById('loginScreen');
-        const dashboardScreen = document.getElementById('dashboardScreen');
-        const appSubtitle = document.getElementById('appSubtitle');
-        const loginForm = document.getElementById('loginForm');
-        const usernameInput = document.getElementById('username');
-        const passwordInput = document.getElementById('password');
-        const errorAlert = document.getElementById('errorAlert');
-        const togglePassword = document.getElementById('togglePassword');
-        const logoutBtn = document.getElementById('logoutBtn');
-        const forgotLink = document.getElementById('forgotLink');
-        const modalOverlay = document.getElementById('modalOverlay');
-        const closeModal = document.getElementById('closeModal');
 
-        togglePassword.addEventListener('click', () => {
-            const isPass = passwordInput.getAttribute('type') === 'password';
-            passwordInput.setAttribute('type', isPass ? 'text' : 'password');
-            togglePassword.textContent = isPass ? 'Hide' : 'Show';
-        });
+    <!-- =====================================================
+         TERM 1
+         ===================================================== -->
 
-        forgotLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            modalOverlay.style.display = 'flex';
-        });
-        closeModal.addEventListener('click', () => modalOverlay.style.display = 'none');
+    <div id="term1Screen" class="hidden">
 
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            usernameInput.classList.remove('input-error');
-            passwordInput.classList.remove('input-error');
-            errorAlert.style.display = 'none';
+      <div class="grade-heading">
+        Grade 8 &gt; Term 1
+      </div>
 
-            const userVal = usernameInput.value.trim();
-            const passVal = passwordInput.value.trim();
 
-            if (!userVal || !passVal) {
-                if (!userVal) usernameInput.classList.add('input-error');
-                if (!passVal) passwordInput.classList.add('input-error');
-                errorAlert.textContent = 'Please fill out all fields.';
-                errorAlert.style.display = 'block';
-                return;
-            }
+      <div class="topic-list">
 
-            loginScreen.classList.add('hidden');
-            dashboardScreen.classList.remove('hidden');
-            appSubtitle.textContent = "Welcome back, Student!";
-        });
+        <div
+          class="topic-card"
+          onclick="openScreen('wholeNumbersScreen')"
+        >
+          WHOLE NUMBERS
+        </div>
 
-        logoutBtn.addEventListener('click', () => {
-            usernameInput.value = '';
-            passwordInput.value = '';
-            dashboardScreen.classList.add('hidden');
-            document.getElementById('term1Screen').classList.add('hidden');
-            loginScreen.classList.remove('hidden');
-            appSubtitle.textContent = "Please sign in to continue";
-        });
-    </script>
+
+        <div
+          class="topic-card"
+          onclick="openScreen('integersTerm1Screen')"
+        >
+          INTEGERS
+        </div>
+
+
+        <div
+          class="topic-card"
+          onclick="openScreen('fractionsScreen')"
+        >
+          COMMON FRACTIONS
+        </div>
+
+
+        <div
+          class="topic-card"
+          onclick="openScreen('decimalScreen')"
+        >
+          DECIMAL FRACTIONS
+        </div>
+
+
+        <div
+          class="topic-card"
+          onclick="openScreen('patternsScreen')"
+        >
+          NUMERIC AND GEOMETRIC PATTERNS
+        </div>
+
+      </div>
+
+
+      <button
+        class="login-btn"
+        onclick="openScreen('dashboardScreen')"
+      >
+        Back to Dashboard
+      </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         TERM 2
+         ===================================================== -->
+
+    <div id="term2Screen" class="hidden">
+
+      <div class="grade-heading">
+        Grade 8 &gt; Term 2
+      </div>
+
+
+      <div class="topic-list">
+
+        <div
+          class="topic-card"
+          onclick="openScreen('exponentsScreen')"
+        >
+          EXPONENTS
+        </div>
+
+
+        <div
+          class="topic-card"
+          onclick="openScreen('algebraicExpressionsScreen')"
+        >
+          ALGEBRAIC EXPRESSIONS
+        </div>
+
+
+        <div
+          class="topic-card"
+          onclick="openScreen('equationsScreen')"
+        >
+          EQUATIONS
+        </div>
+
+
+        <div
+          class="topic-card"
+          onclick="openScreen('functionsScreen')"
+        >
+          FUNCTIONS AND RELATIONSHIPS
+        </div>
+
+
+        <div
+          class="topic-card"
+          onclick="openScreen('graphsScreen')"
+        >
+          GRAPHS
+        </div>
+
+      </div>
+
+
+      <button
+        class="login-btn"
+        onclick="openScreen('dashboardScreen')"
+      >
+        Back to Dashboard
+      </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         TERM 3
+         ===================================================== -->
+
+    <div id="term3Screen" class="hidden">
+
+      <div class="grade-heading">
+        Grade 8 &gt; Term 3
+      </div>
+
+
+      <div class="topic-list">
+
+        <div
+          class="topic-card"
+          onclick="openScreen('dataHandlingScreen')"
+        >
+          DATA HANDLING
+        </div>
+
+
+        <div
+          class="topic-card"
+          onclick="openScreen('probabilityScreen')"
+        >
+          PROBABILITY
+        </div>
+
+
+        <div
+          class="topic-card"
+          onclick="openScreen('straightLinesScreen')"
+        >
+          GEOMETRY OF STRAIGHT LINES
+        </div>
+
+
+        <div
+          class="topic-card"
+          onclick="openScreen('twoDShapesScreen')"
+        >
+          GEOMETRY OF 2D SHAPES
+        </div>
+
+      </div>
+
+
+      <button
+        class="login-btn"
+        onclick="openScreen('dashboardScreen')"
+      >
+        Back to Dashboard
+      </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         TERM 4
+         ===================================================== -->
+
+    <div id="term4Screen" class="hidden">
+
+      <div class="grade-heading">
+        Grade 8 &gt; Term 4
+      </div>
+
+
+      <div class="topic-list">
+
+        <div
+          class="topic-card"
+          onclick="openScreen('pythagorasScreen')"
+        >
+          THEOREM OF PYTHAGORAS
+        </div>
+
+
+        <div
+          class="topic-card"
+          onclick="openScreen('transformationGeometryScreen')"
+        >
+          TRANSFORMATION GEOMETRY
+        </div>
+
+
+        <div
+          class="topic-card"
+          onclick="openScreen('areaPerimeterScreen')"
+        >
+          AREA AND PERIMETER OF 2D SHAPES
+        </div>
+
+
+        <div
+          class="topic-card"
+          onclick="openScreen('surfaceVolumeScreen')"
+        >
+          SURFACE AREA AND VOLUME OF 3D OBJECTS
+        </div>
+
+      </div>
+
+
+      <button
+        class="login-btn"
+        onclick="openScreen('dashboardScreen')"
+      >
+        Back to Dashboard
+      </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         TERM 1 TOPICS
+         ===================================================== -->
+
+    <div id="wholeNumbersScreen" class="hidden">
+
+      <div class="grade-heading">
+        Grade 8 &gt; Term 1 &gt; WHOLE NUMBERS
+      </div>
+
+      <div class="content-box">
+
+        <h4>WHOLE NUMBERS</h4>
+
+        <p>
+          Learning materials for Whole Numbers will be placed here.
+        </p>
+
+      </div>
+
+      <button
+        class="login-btn"
+        onclick="openScreen('term1Screen')"
+      >
+        Back to Term 1
+      </button>
+
+    </div>
+
+
+    <div id="integersTerm1Screen" class="hidden">
+
+      <div class="grade-heading">
+        Grade 8 &gt; Term 1 &gt; INTEGERS
+      </div>
+
+      <div class="content-box">
+
+        <h4>INTEGERS</h4>
+
+        <p>
+          Learning materials for Integers will be placed here.
+        </p>
+
+      </div>
+
+      <button
+        class="login-btn"
+        onclick="openScreen('term1Screen')"
+      >
+        Back to Term 1
+      </button>
+
+    </div>
+
+
+    <div id="fractionsScreen" class="hidden">
+
+      <div class="grade-heading">
+        Grade 8 &gt; Term 1 &gt; COMMON FRACTIONS
+      </div>
+
+      <div class="content-box">
+
+        <h4>COMMON FRACTIONS</h4>
+
+        <p>
+          Learning materials for Common Fractions will be placed here.
+        </p>
+
+      </div>
+
+      <button
+        class="login-btn"
+        onclick="openScreen('term1Screen')"
+      >
+        Back to Term 1
+      </button>
+
+    </div>
+
+
+    <div id="decimalScreen" class="hidden">
+
+      <div class="grade-heading">
+        Grade 8 &gt; Term 1 &gt; DECIMAL FRACTIONS
+      </div>
+
+      <div class="content-box">
+
+        <h4>DECIMAL FRACTIONS</h4>
+
+        <p>
+          Learning materials for Decimal Fractions will be placed here.
+        </p>
+
+      </div>
+
+      <button
+        class="login-btn"
+        onclick="openScreen('term1Screen')"
+      >
+        Back to Term 1
+      </button>
+
+    </div>
+
+
+    <div id="patternsScreen" class="hidden">
+
+      <div class="grade-heading">
+        Grade 8 &gt; Term 1 &gt; NUMERIC AND GEOMETRIC PATTERNS
+      </div>
+
+      <div class="content-box">
+
+        <h4>NUMERIC AND GEOMETRIC PATTERNS</h4>
+
+        <p>
+          Learning materials for Numeric and Geometric Patterns
+          will be placed here.
+        </p>
+
+      </div>
+
+      <button
+        class="login-btn"
+        onclick="openScreen('term1Screen')"
+      >
+        Back to Term 1
+      </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         TERM 2 TOPICS
+         ===================================================== -->
+
+    <div id="exponentsScreen" class="hidden">
+
+      <div class="grade-heading">
+        Grade 8 &gt; Term 2 &gt; EXPONENTS
+      </div>
+
+      <div class="content-box">
+
+        <h4>EXPONENTS</h4>
+
+        <p>
+          Learning materials for Exponents will be placed here.
+        </p>
+
+      </div>
+
+      <button
+        class="login-btn"
+        onclick="openScreen('term2Screen')"
+      >
+        Back to Term 2
+      </button>
+
+    </div>
+
+
+    <div id="algebraicExpressionsScreen" class="hidden">
+
+      <div class="grade-heading">
+        Grade 8 &gt; Term 2 &gt; ALGEBRAIC EXPRESSIONS
+      </div>
+
+      <div class="content-box">
+
+        <h4>ALGEBRAIC EXPRESSIONS</h4>
+
+        <p>
+          Learning materials for Algebraic Expressions will be placed here.
+        </p>
+
+      </div>
+
+      <button
+        class="login-btn"
+        onclick="openScreen('term2Screen')"
+      >
+        Back to Term 2
+      </button>
+
+    </div>
+
+
+    <div id="equationsScreen" class="hidden">
+
+      <div class="grade-heading">
+        Grade 8 &gt; Term 2 &gt; EQUATIONS
+      </div>
+
+      <div class="content-box">
+
+        <h4>EQUATIONS</h4>
+
+        <p>
+          Learning materials for Equations will be placed here.
+        </p>
+
+      </div>
+
+      <button
+        class="login-btn"
+        onclick="openScreen('term2Screen')"
+      >
+        Back to Term 2
+      </button>
+
+    </div>
+
+
+    <div id="functionsScreen" class="hidden">
+
+      <div class="grade-heading">
+        Grade 8 &gt; Term 2 &gt; FUNCTIONS AND RELATIONSHIPS
+      </div>
+
+      <div class="content-box">
+
+        <h4>FUNCTIONS AND RELATIONSHIPS</h4>
+
+        <p>
+          Learning materials for Functions and Relationships
+          will be placed here.
+        </p>
+
+      </div>
+
+      <button
+        class="login-btn"
+        onclick="openScreen('term2Screen')"
+      >
+        Back to Term 2
+      </button>
+
+    </div>
+
+
+    <div id="graphsScreen" class="hidden">
+
+      <div class="grade-heading">
+        Grade 8 &gt; Term 2 &gt; GRAPHS
+      </div>
+
+      <div class="content-box">
+
+        <h4>GRAPHS</h4>
+
+        <p>
+          Learning materials for Graphs will be placed here.
+        </p>
+
+      </div>
+
+      <button
+        class="login-btn"
+        onclick="openScreen('term2Screen')"
+      >
+        Back to Term 2
+      </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         TERM 3 TOPICS
+         ===================================================== -->
+
+    <div id="dataHandlingScreen" class="hidden">
+
+      <div class="grade-heading">
+        Grade 8 &gt; Term 3 &gt; DATA HANDLING
+      </div>
+
+      <div class="content-box">
+
+        <h4>DATA HANDLING</h4>
+
+        <p>
+          Learning materials for Data Handling will be placed here.
+        </p>
+
+      </div>
+
+      <button
+        class="login-btn"
+        onclick="openScreen('term3Screen')"
+      >
+        Back to Term 3
+      </button>
+
+    </div>
+
+
+    <div id="probabilityScreen" class="hidden">
+
+      <div class="grade-heading">
+        Grade 8 &gt; Term 3 &gt; PROBABILITY
+      </div>
+
+      <div class="content-box">
+
+        <h4>PROBABILITY</h4>
+
+        <p>
+          Learning materials for Probability will be placed here.
+        </p>
+
+      </div>
+
+      <button
+        class="login-btn"
+        onclick="openScreen('term3Screen')"
+      >
+        Back to Term 3
+      </button>
+
+    </div>
+
+
+    <div id="straightLinesScreen" class="hidden">
+
+      <div class="grade-heading">
+        Grade 8 &gt; Term 3 &gt; GEOMETRY OF STRAIGHT LINES
+      </div>
+
+      <div class="content-box">
+
+        <h4>GEOMETRY OF STRAIGHT LINES</h4>
+
+        <p>
+          Learning materials for Geometry of Straight Lines
+          will be placed here.
+        </p>
+
+      </div>
+
+      <button
+        class="login-btn"
+        onclick="openScreen('term3Screen')"
+      >
+        Back to Term 3
+      </button>
+
+    </div>
+
+
+    <div id="twoDShapesScreen" class="hidden">
+
+      <div class="grade-heading">
+        Grade 8 &gt; Term 3 &gt; GEOMETRY OF 2D SHAPES
+      </div>
+
+      <div class="content-box">
+
+        <h4>GEOMETRY OF 2D SHAPES</h4>
+
+        <p>
+          Learning materials for Geometry of 2D Shapes
+          will be placed here.
+        </p>
+
+      </div>
+
+      <button
+        class="login-btn"
+        onclick="openScreen('term3Screen')"
+      >
+        Back to Term 3
+      </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         TERM 4 TOPICS
+         ===================================================== -->
+
+    <div id="pythagorasScreen" class="hidden">
+
+      <div class="grade-heading">
+        Grade 8 &gt; Term 4 &gt; THEOREM OF PYTHAGORAS
+      </div>
+
+      <div class="content-box">
+
+        <h4>THEOREM OF PYTHAGORAS</h4>
+
+        <p>
+          Learning materials for Theorem of Pythagoras
+          will be placed here.
+        </p>
+
+      </div>
+
+      <button
+        class="login-btn"
+        onclick="openScreen('term4Screen')"
+      >
+        Back to Term 4
+      </button>
+
+    </div>
+
+
+    <div id="transformationGeometryScreen" class="hidden">
+
+      <div class="grade-heading">
+        Grade 8 &gt; Term 4 &gt; TRANSFORMATION GEOMETRY
+      </div>
+
+      <div class="content-box">
+
+        <h4>TRANSFORMATION GEOMETRY</h4>
+
+        <p>
+          Learning materials for Transformation Geometry
+          will be placed here.
+        </p>
+
+      </div>
+
+      <button
+        class="login-btn"
+        onclick="openScreen('term4Screen')"
+      >
+        Back to Term 4
+      </button>
+
+    </div>
+
+
+    <div id="areaPerimeterScreen" class="hidden">
+
+      <div class="grade-heading">
+        Grade 8 &gt; Term 4 &gt; AREA AND PERIMETER OF 2D SHAPES
+      </div>
+
+      <div class="content-box">
+
+        <h4>AREA AND PERIMETER OF 2D SHAPES</h4>
+
+        <p>
+          Learning materials for Area and Perimeter of 2D Shapes
+          will be placed here.
+        </p>
+
+      </div>
+
+      <button
+        class="login-btn"
+        onclick="openScreen('term4Screen')"
+      >
+        Back to Term 4
+      </button>
+
+    </div>
+
+
+    <div id="surfaceVolumeScreen" class="hidden">
+
+      <div class="grade-heading">
+        Grade 8 &gt; Term 4 &gt; SURFACE AREA AND VOLUME OF 3D OBJECTS
+      </div>
+
+      <div class="content-box">
+
+        <h4>SURFACE AREA AND VOLUME OF 3D OBJECTS</h4>
+
+        <p>
+          Learning materials for Surface Area and Volume
+          of 3D Objects will be placed here.
+        </p>
+
+      </div>
+
+      <button
+        class="login-btn"
+        onclick="openScreen('term4Screen')"
+      >
+        Back to Term 4
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       FORGOT PASSWORD MODAL
+       ===================================================== -->
+
+  <div
+    class="modal-overlay hidden"
+    id="forgotModal"
+  >
+
+    <div class="modal">
+
+      <h3>Forgot Password?</h3>
+
+      <p>
+        Please contact your teacher or academy administrator
+        to reset your password.
+      </p>
+
+      <div class="modal-buttons">
+
+        <button
+          type="button"
+          class="close-modal"
+          id="closeModal"
+        >
+          Close
+        </button>
+
+        <button
+          type="button"
+          class="confirm-modal"
+          id="modalDone"
+        >
+          Done
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+       ===================================================== -->
+
+  <script>
+
+    /* =========================
+       SCREEN NAVIGATION
+       ========================= */
+
+    function openScreen(screenId) {
+
+      const screens =
+        document.querySelectorAll(
+          '.app-container > div[id$="Screen"]'
+        );
+
+      screens.forEach(function(screen) {
+
+        screen.classList.add('hidden');
+
+      });
+
+
+      const selectedScreen =
+        document.getElementById(screenId);
+
+
+      if (selectedScreen) {
+
+        selectedScreen.classList.remove('hidden');
+
+      }
+
+
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+
+    }
+
+
+    /* =========================
+       LOGIN
+       ========================= */
+
+    const loginForm =
+      document.getElementById('loginForm');
+
+    const usernameInput =
+      document.getElementById('username');
+
+    const passwordInput =
+      document.getElementById('password');
+
+    const rememberMe =
+      document.getElementById('rememberMe');
+
+    const loginError =
+      document.getElementById('loginError');
+
+
+    loginForm.addEventListener(
+      'submit',
+      function(event) {
+
+        event.preventDefault();
+
+
+        const username =
+          usernameInput.value.trim();
+
+        const password =
+          passwordInput.value.trim();
+
+
+        loginError.textContent = '';
+
+
+        if (
+          username === '' ||
+          password === ''
+        ) {
+
+          loginError.textContent =
+            'Please enter your username and password.';
+
+          return;
+
+        }
+
+
+        if (rememberMe.checked) {
+
+          localStorage.setItem(
+            'michelMathsUsername',
+            username
+          );
+
+        } else {
+
+          localStorage.removeItem(
+            'michelMathsUsername'
+          );
+
+        }
+
+
+        openScreen('dashboardScreen');
+
+      }
+    );
+
+
+    /* =========================
+       REMEMBER USERNAME
+       ========================= */
+
+    const savedUsername =
+      localStorage.getItem(
+        'michelMathsUsername'
+      );
+
+
+    if (savedUsername) {
+
+      usernameInput.value =
+        savedUsername;
+
+      rememberMe.checked = true;
+
+    }
+
+
+    /* =========================
+       SHOW / HIDE PASSWORD
+       ========================= */
+
+    const showPassword =
+      document.getElementById('showPassword');
+
+
+    showPassword.addEventListener(
+      'click',
+      function() {
+
+        if (
+          passwordInput.type === 'password'
+        ) {
+
+          passwordInput.type = 'text';
+
+          showPassword.textContent =
+            'Hide';
+
+        } else {
+
+          passwordInput.type =
+            'password';
+
+          showPassword.textContent =
+            'Show';
+
+        }
+
+      }
+    );
+
+
+    /* =========================
+       LOGOUT
+       ========================= */
+
+    const logoutBtn =
+      document.getElementById('logoutBtn');
+
+
+    logoutBtn.addEventListener(
+      'click',
+      function() {
+
+        passwordInput.value = '';
+
+        loginError.textContent = '';
+
+        openScreen('loginScreen');
+
+      }
+    );
+
+
+    /* =========================
+       FORGOT PASSWORD
+       ========================= */
+
+    const forgotPassword =
+      document.getElementById('forgotPassword');
+
+    const forgotModal =
+      document.getElementById('forgotModal');
+
+    const closeModal =
+      document.getElementById('closeModal');
+
+    const modalDone =
+      document.getElementById('modalDone');
+
+
+    forgotPassword.addEventListener(
+      'click',
+      function() {
+
+        forgotModal.classList.remove(
+          'hidden'
+        );
+
+      }
+    );
+
+
+    closeModal.addEventListener(
+      'click',
+      function() {
+
+        forgotModal.classList.add(
+          'hidden'
+        );
+
+      }
+    );
+
+
+    modalDone.addEventListener(
+      'click',
+      function() {
+
+        forgotModal.classList.add(
+          'hidden'
+        );
+
+      }
+    );
+
+
+    forgotModal.addEventListener(
+      'click',
+      function(event) {
+
+        if (
+          event.target === forgotModal
+        ) {
+
+          forgotModal.classList.add(
+            'hidden'
+          );
+
+        }
+
+      }
+    );
+
+  </script>
+
 </body>
-</html>        
+</html>
+```
