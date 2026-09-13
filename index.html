@@ -92,15 +92,15 @@
                     <span class="folder-icon">📁</span>
                     <span class="folder-title">Term 1</span>
                 </div>
-                <div class="folder-card" onclick="alert('Opening Term 2 Files...')">
+                <div class="folder-card" onclick="document.getElementById('dashboardScreen').classList.add('hidden'); document.getElementById('term2Screen').classList.remove('hidden');">
                     <span class="folder-icon">📁</span>
                     <span class="folder-title">Term 2</span>
                 </div>
-                <div class="folder-card" onclick="alert('Opening Term 3 Files...')">
+                <div class="folder-card" onclick="document.getElementById('dashboardScreen').classList.add('hidden'); document.getElementById('term3Screen').classList.remove('hidden');">
                     <span class="folder-icon">📁</span>
                     <span class="folder-title">Term 3</span>
                 </div>
-                <div class="folder-card" onclick="alert('Opening Term 4 Files...')">
+                <div class="folder-card" onclick="document.getElementById('dashboardScreen').classList.add('hidden'); document.getElementById('term4Screen').classList.remove('hidden');">
                     <span class="folder-icon">📁</span>
                     <span class="folder-title">Term 4</span>
                 </div>
@@ -122,6 +122,49 @@
             </div>
 
             <button type="button" class="login-btn" style="padding: 0.6rem; font-size: 0.9rem;" onclick="document.getElementById('term1Screen').classList.add('hidden'); document.getElementById('dashboardScreen').classList.remove('hidden');">Back to Dashboard</button>
+        </div>
+
+        <!-- SCREEN 4: TERM 2 DETAILS INSIDE -->
+        <div id="term2Screen" class="hidden">
+            <div class="grade-heading" style="border-left-color: #007bff;">Grade 8 &gt; Term 2</div>
+            
+            <div style="text-align: left; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 0.8rem 1rem; font-weight: 600; color: #212529; font-size: 0.95rem;">1. EXPONENTS</div>
+                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 0.8rem 1rem; font-weight: 600; color: #212529; font-size: 0.95rem;">2. ALGEBRAIC EXPRESSIONS</div>
+                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 0.8rem 1rem; font-weight: 600; color: #212529; font-size: 0.95rem;">3. ALGEBRAIC EQUATIONS</div>
+                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 0.8rem 1rem; font-weight: 600; color: #212529; font-size: 0.95rem;">4. FUNCTIONS AND RELATIONSHIPS</div>
+                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 0.8rem 1rem; font-weight: 600; color: #212529; font-size: 0.95rem;">5. GRAPHS</div>
+            </div>
+
+            <button type="button" class="login-btn" style="padding: 0.6rem; font-size: 0.9rem;" onclick="document.getElementById('term2Screen').classList.add('hidden'); document.getElementById('dashboardScreen').classList.remove('hidden');">Back to Dashboard</button>
+        </div>
+
+        <!-- SCREEN 5: TERM 3 DETAILS INSIDE -->
+        <div id="term3Screen" class="hidden">
+            <div class="grade-heading" style="border-left-color: #007bff;">Grade 8 &gt; Term 3</div>
+            
+            <div style="text-align: left; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 0.8rem 1rem; font-weight: 600; color: #212529; font-size: 0.95rem;">1. DATA HANDLING</div>
+                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 0.8rem 1rem; font-weight: 600; color: #212529; font-size: 0.95rem;">2. PROBABILITY</div>
+                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 0.8rem 1rem; font-weight: 600; color: #212529; font-size: 0.95rem;">3. GEOMETRY OF STRAIGHT LINES</div>
+                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 0.8rem 1rem; font-weight: 600; color: #212529; font-size: 0.95rem;">4. GEOMETRY OF 2D SHAPES</div>
+            </div>
+
+            <button type="button" class="login-btn" style="padding: 0.6rem; font-size: 0.9rem;" onclick="document.getElementById('term3Screen').classList.add('hidden'); document.getElementById('dashboardScreen').classList.remove('hidden');">Back to Dashboard</button>
+        </div>
+
+        <!-- SCREEN 6: TERM 4 DETAILS INSIDE -->
+        <div id="term4Screen" class="hidden">
+            <div class="grade-heading" style="border-left-color: #007bff;">Grade 8 &gt; Term 4</div>
+            
+            <div style="text-align: left; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem;">
+                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 0.8rem 1rem; font-weight: 600; color: #212529; font-size: 0.95rem;">1. THEOREM OF PYTHAGORAS</div>
+                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 0.8rem 1rem; font-weight: 600; color: #212529; font-size: 0.95rem;">2. TRANSFORMATION GEOMETRY</div>
+                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 0.8rem 1rem; font-weight: 600; color: #212529; font-size: 0.95rem;">3. AREA AND PERIMETER OF 2-D SHAPES</div>
+                <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 0.8rem 1rem; font-weight: 600; color: #212529; font-size: 0.95rem;">4. SURFACE AREA AND VOLUME OF 3-D OBJECTS</div>
+            </div>
+
+            <button type="button" class="login-btn" style="padding: 0.6rem; font-size: 0.9rem;" onclick="document.getElementById('term4Screen').classList.add('hidden'); document.getElementById('dashboardScreen').classList.remove('hidden');">Back to Dashboard</button>
         </div>
     </div>
 
@@ -170,26 +213,3 @@
             const passVal = passwordInput.value.trim();
 
             if (!userVal || !passVal) {
-                if (!userVal) usernameInput.classList.add('input-error');
-                if (!passVal) passwordInput.classList.add('input-error');
-                errorAlert.textContent = 'Please fill out all fields.';
-                errorAlert.style.display = 'block';
-                return;
-            }
-
-            loginScreen.classList.add('hidden');
-            dashboardScreen.classList.remove('hidden');
-            appSubtitle.textContent = "Welcome back, Student!";
-        });
-
-        logoutBtn.addEventListener('click', () => {
-            usernameInput.value = '';
-            passwordInput.value = '';
-            dashboardScreen.classList.add('hidden');
-            document.getElementById('term1Screen').classList.add('hidden');
-            loginScreen.classList.remove('hidden');
-            appSubtitle.textContent = "Please sign in to continue";
-        });
-    </script>
-</body>
-</html>
