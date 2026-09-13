@@ -1,6 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Michel Maths Academy</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+            padding: 20px;
+        }
+
+        .app-container {
+            background: #ffffff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        .academy-logo {
+            font-size: 2rem;
+            color: #007bff;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .academy-logo span {
+            color: #007bff;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* LOGIN */
+
+        .error-alert {
+            display: none;
+            background-color: #fce4e4;
+            border: 1px solid #fcc2c2;
+            color: #cc0000;
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+            text-align: left;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #444;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #007bff;
+        }
+
+        input.input-error {
+            border-color: #cc0000;
+            background-color: #fff9f9;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 38px;
+            background: none;
+            border: none;
+            color: #777;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .utilities {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        .utilities label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin: 0;
+            font-size: 0.85rem;
+        }
+
+        .utilities a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .utilities a:hover {
+            text-decoration: underline;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: #007bff;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background: #0056b3;
+        }
+
+        /* HEADINGS */
+
+        .grade-heading {
+            font-size: 1.45rem;
+            color: #007bff;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        /* TERM LIST */
+
+        .term-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            margin-bottom: 2rem;
+        }
+
+        .term-row {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: #ffffff;
+            border: 1px solid #e8eaed;
+            border-radius: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            cursor: pointer;
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .term-row:hover {
+            background: #f8fbff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 14px rgba(0, 0, 0, 0.08);
+        }
+
+        .term-name {
+            color: #222;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        /* OLD iOS 18 STYLE FOLDER */
+
+        .ios-folder {
+            position: relative;
+            width: 66px;
+            height: 46px;
+            flex-shrink: 0;
+            background: #69afe0;
+            border-radius: 6px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+        }
+
+        .ios-folder::before {
+            content: "";
+            position: absolute;
+            top: -8px;
+            left: 0;
+            width: 29px;
+            height: 13px;
+            background: #69afe0;
+            border-radius: 6px 6px 0 0;
+        }
+
+        .ios-folder::after {
+            content: "";
+            position: absolute;
+            top: 3px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        /* TOPICS */
+
+        .topic-list {
+            text-align: left;
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        .topic-card {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 0.9rem 1rem;
+            font-weight: 600;
+            color: #212529;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition:
+                background 0.2s ease,
+                border-color 0.2s ease,
+                transform 0.2s ease;
+        }
+
+        .topic-card:hover {
+            border-color: #007bff;
+            background: #f0f7ff;
+            transform: translateX(3px);
+        }
+
+        /* CONTENT */
+
+        .content-box {
+            text-align: left;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-box h4 {
+            color: #007bff;
+            margin-bottom: 0.7rem;
+        }
+
+        .content-box p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* SIGN OUT */
+
+        .logout-btn {
+            padding: 0.6rem 1.4rem;
+            background: white;
+            border: 1.5px solid #007bff;
+            border-radius: 8px;
+            color: #007bff;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .logout-btn:hover {
+            background: #007bff;
+            color: white;
+        }
+
+        /* MODAL */
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-box {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 380px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .modal-box h3 {
+            color: #0056b3;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .modal-box p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-btn {
+            padding: 0.5rem 1.5rem;
+            background: #007bff;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        @media (max-width: 500px) {
+            body {
+                padding: 12px;
+                align-items: flex-start;
+            }
+
+            .app-container {
+                padding: 1.5rem;
+                margin-top: 20px;
+            }
+
+            .grade-heading {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <div class="academy-logo">
+        Michel <span>Maths</span>
+    </div>
+
+    <p class="subtitle" id="appSubtitle">
+        Academy Portal Login
+    </p>
+
+    <!-- LOGIN SCREEN -->
+
+    <div id="loginScreen">
+
+        <div class="error-alert" id="errorAlert">
+            Please fill out all required fields.
+        </div>
+
+        <form id="loginForm">
+
+            <div class="input-group">
+                <label for="username">
+                    Username or Email
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Enter your username"
+                    autocomplete="username"
+                >
+            </div>
+
+            <div class="input-group">
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                >
+
+                <button
+                    type="button"
+                    class="toggle-password"
+                    id="togglePassword"
+                >
+                    Show
+                </button>
+            </div>
+
+            <div class="utilities">
+
+                <label>
+                    <input
+                        type="checkbox"
+                        id="rememberMe"
+                    >
+                    Remember me
+                </label>
+
+                <a href="#" id="forgotLink">
+                    Forgot password?
+                </a>
+
+            </div>
+
+            <button
+                type="submit"
+                class="login-btn"
+            >
+                Sign In
+            </button>
+
+        </form>
+
+    </div>
+
+    <!-- DASHBOARD -->
+
+    <div id="dashboardScreen" class="hidden">
+
+        <div class="grade-heading">
+            Grade 8
+        </div>
+
+        <div class="term-list">
+
+            <div
+                class="term-row"
+                onclick="openScreen('term1Screen')"
+            >
+                <div class="ios-folder"></div>
+                <span class="term-name">Term 1</span>
+            </div>
+
+            <div
+                class="term-row"
+                onclick="openScreen('term2Screen')"
+            >
+                <div class="ios-folder"></div>
+                <span class="term-name">Term 2</span>
+            </div>
+
+            <div
+                class="term-row"
+                onclick="openScreen('term3Screen')"
+            >
+                <div class="ios-folder"></div>
+                <span class="term-name">Term 3</span>
+            </div>
+
+            <div
+                class="term-row"
+                onclick="openScreen('term4Screen')"
+            >
+                <div class="ios-folder"></div>
+                <span class="term-name">Term 4</span>
+            </div>
+
+        </div>
+
+        <button
+            type="button"
+            class="logout-btn"
+            id="logoutBtn"
+        >
+            Sign Out
+        </button>
+
+    </div>
+
+    <!-- TERM 1 -->
+
+    <div id="term1Screen" class="hidden">
+
+        <div class="grade-heading">
+            Grade 8 &gt; Term 1
+        </div>
+
+        <div class="topic-list">
+
+            <div
+                class="topic-card"
+                onclick="openTopic('Term 1','WHOLE NUMBERS','term1Screen')"
+            >
+                1. WHOLE NUMBERS
+            </div>
+
+            <div
+                class="topic-card"
+                onclick="openTopic('Term 1','INTEGERS','term1Screen')"
+            >
+                2. INTEGERS
+            </div>
+
+            <div
+                class="topic-card"
+                onclick="openTopic('Term 1','COMMON FRACTIONS','term1Screen')"
+            >
+                3. COMMON FRACTIONS
+            </div>
+
+            <div
+                class="topic-card"
+                onclick="openTopic('Term 1','DECIMAL FRACTIONS','term1Screen')"
+            >
+                4. DECIMAL FRACTIONS
+            </div>
+
+            <div
+                class="topic-card"
+                onclick="openTopic('Term 1','NUMERIC AND GEOMETRIC PATTERNS','term1Screen')"
+            >
+                5. NUMERIC AND GEOMETRIC PATTERNS
+            </div>
+
+        </div>
+
+        <button
+            class="login-btn"
+            onclick="openScreen('dashboardScreen')"
+        >
+            Back to Dashboard
+        </button>
+
+    </div>
+
+    <!-- TERM 2 -->
+
+    <div id="term2Screen" class="hidden">
+
+        <div class="grade-heading">
+            Grade 8 &gt; Term 2
+        </div>
+
+        <div class="topic-list">
+
+            <div
+                class="topic-card"
+                onclick="openTopic('Term 2','EXPONENTS','term2Screen')"
+            >
+                EXPONENTS
+            </div>
+
+            <div
+                class="topic-card"
+                onclick="openTopic('Term 2','ALGEBRAIC EXPRESSIONS','term2Screen')"
+            >
+                ALGEBRAIC EXPRESSIONS
+            </div>
+
+            <div
+                class="topic-card"
+                onclick="openTopic('Term 2','EQUATIONS','term2Screen')"
+            >
+                EQUATIONS
+            </div>
+
+            <div
+                class="topic-card"
+                onclick="openTopic('Term 2','FUNCTIONS AND RELATIONSHIPS','term2Screen')"
+            >
+                FUNCTIONS AND RELATIONSHIPS
+            </div>
+
+            <div
+                class="topic-card"
+                onclick="openTopic('Term 2','GRAPHS','term2Screen')"
+            >
+                GRAPHS
+            </div>
+
+        </div>
+
+        <button
+            class="login-btn"
+            onclick="openScreen('dashboardScreen')"
+        >
+            Back to Dashboard
+        </button>
+
+    </div>
+
+    <!-- TERM 3 -->
+
+    <div id="term3Screen" class="hidden">
+
+        <div class="grade-heading">
+            Grade 8 &gt; Term 3
+        </div>
+
+        <div class="topic-list">
+
+            <div
+                class="topic-card"
+                onclick="openTopic('Term 3','DATA HANDLING','term3Screen')"
+            >
+                DATA HANDLING
+            </div>
+
+            <div
+                class="topic-card"
+                onclick="openTopic('Term 3','PROBABILITY','term3Screen')"
+            >
+                PROBABILITY
+            </div>
+
+            <div
+                class="topic-card"
+                onclick="openTopic('Term 3','GEOMETRY OF STRAIGHT LINES','term3Screen')"
+            >
+                GEOMETRY OF STRAIGHT LINES
+            </div>
+
+            <div
+                class="topic-card"
+                onclick="openTopic('Term 3','GEOMETRY OF 2D SHAPES','term3Screen')"
+            >
+                GEOMETRY OF 2D SHAPES
+            </div>
+
+        </div>
+
+        <button
+            class="login-btn"
+            onclick="openScreen('dashboardScreen')"
+        >
+            Back to Dashboard
+        </button>
+
+    </div>
+
+    <!-- TERM 4 -->
+
+    <div id="term4Screen" class="hidden">
+
+        <div class="grade-heading">
+            Grade 8 &gt; Term 4
+        </div>
+
+        <div class="topic-list">
+
+            <div
+                class="topic-card"
+                onclick="openTopic('Term 4','THEOREM OF PYTHAGORAS','term4Screen')"
+            >
+                THEOREM OF PYTHAGORAS
+            </div>
+
+            <div
+                class="topic-card"
+                onclick="openTopic('Term 4','TRANSFORMATION GEOMETRY','term4Screen')"
+            >
+                TRANSFORMATION GEOMETRY
+            </div>
+
+            <div
+                class="topic-card"
+                onclick="openTopic('Term 4','AREA AND PERIMETER OF 2D SHAPES','term4Screen')"
+            >
+                AREA AND PERIMETER OF 2D SHAPES
+            </div>
+
+            <div
+                class="topic-card"
+                onclick="openTopic('Term 4','SURFACE AREA AND VOLUME OF 3D OBJECTS','term4Screen')"
+            >
+                SURFACE AREA AND VOLUME OF 3D OBJECTS
+            </div>
+
+        </div>
+
+        <button
+            class="login-btn"
+            onclick="openScreen('dashboardScreen')"
+        >
+            Back to Dashboard
+        </button>
+
+    </div>
+
+    <!-- TOPIC SCREEN -->
+
+    <div id="topicScreen" class="hidden">
+
+        <div
+            class="grade-heading"
+            id="topicHeading"
+        ></div>
+
+        <div class="content-box">
+
+            <h4 id="topicTitle"></h4>
+
+            <p id="topicText"></p>
+
+        </div>
+
+        <button
+            class="login-btn"
+            id="topicBackBtn"
+        >
+            Back
+        </button>
+
+    </div>
+
+</div>
+
+<!-- FORGOT PASSWORD MODAL -->
+
+<div
+    class="modal-overlay"
+    id="modalOverlay"
+>
+
+    <div class="modal-box">
+
+        <h3>Reset Password</h3>
+
+        <p>
+            Please contact your administrator at
+            Michel Maths Academy to request a temporary login token.
+        </p>
+
+        <button
+            class="modal-btn"
+            id="closeModal"
+        >
+            Close
+        </button>
+
+    </div>
+
+</div>
+
 <script>
-    const loginScreen =
-        document.getElementById('loginScreen');
 
     const appSubtitle =
         document.getElementById('appSubtitle');
@@ -32,8 +805,11 @@
     const closeModal =
         document.getElementById('closeModal');
 
+    const rememberMe =
+        document.getElementById('rememberMe');
 
-    /* SCREEN NAVIGATION */
+
+    /* NAVIGATION */
 
     function openScreen(screenId) {
 
@@ -62,7 +838,11 @@
 
     /* OPEN TOPIC */
 
-    function openTopic(term, topic, backScreen) {
+    function openTopic(
+        term,
+        topic,
+        backScreen
+    ) {
 
         document.getElementById(
             'topicHeading'
@@ -74,7 +854,8 @@
 
         document.getElementById(
             'topicTitle'
-        ).textContent = topic;
+        ).textContent =
+            topic;
 
         document.getElementById(
             'topicText'
@@ -85,11 +866,18 @@
 
         document.getElementById(
             'topicBackBtn'
-        ).onclick = function() {
-            openScreen(backScreen);
-        };
+        ).onclick =
+            function() {
 
-        openScreen('topicScreen');
+                openScreen(
+                    backScreen
+                );
+
+            };
+
+        openScreen(
+            'topicScreen'
+        );
     }
 
 
@@ -99,14 +887,19 @@
         'click',
         function() {
 
-            const isPass =
-                passwordInput.type === 'password';
+            const isPassword =
+                passwordInput.type ===
+                'password';
 
             passwordInput.type =
-                isPass ? 'text' : 'password';
+                isPassword
+                    ? 'text'
+                    : 'password';
 
             togglePassword.textContent =
-                isPass ? 'Hide' : 'Show';
+                isPassword
+                    ? 'Hide'
+                    : 'Show';
         }
     );
 
@@ -115,9 +908,9 @@
 
     forgotLink.addEventListener(
         'click',
-        function(e) {
+        function(event) {
 
-            e.preventDefault();
+            event.preventDefault();
 
             modalOverlay.style.display =
                 'flex';
@@ -135,13 +928,30 @@
     );
 
 
+    modalOverlay.addEventListener(
+        'click',
+        function(event) {
+
+            if (
+                event.target ===
+                modalOverlay
+            ) {
+
+                modalOverlay.style.display =
+                    'none';
+
+            }
+        }
+    );
+
+
     /* LOGIN */
 
     loginForm.addEventListener(
         'submit',
-        function(e) {
+        function(event) {
 
-            e.preventDefault();
+            event.preventDefault();
 
             usernameInput.classList.remove(
                 'input-error'
@@ -151,13 +961,8 @@
                 'input-error'
             );
 
-            errorAlert.style.display = 'none';
-
-
-            /*
-             * trim() removes accidental spaces
-             * before or after the login details.
-             */
+            errorAlert.style.display =
+                'none';
 
             const userVal =
                 usernameInput.value.trim();
@@ -166,17 +971,22 @@
                 passwordInput.value.trim();
 
 
-            /* EMPTY FIELDS */
+            if (
+                userVal === '' ||
+                passVal === ''
+            ) {
 
-            if (!userVal || !passVal) {
-
-                if (!userVal) {
+                if (
+                    userVal === ''
+                ) {
                     usernameInput.classList.add(
                         'input-error'
                     );
                 }
 
-                if (!passVal) {
+                if (
+                    passVal === ''
+                ) {
                     passwordInput.classList.add(
                         'input-error'
                     );
@@ -202,20 +1012,29 @@
                 errorAlert.style.display =
                     'none';
 
-                usernameInput.classList.remove(
-                    'input-error'
-                );
+                if (
+                    rememberMe.checked
+                ) {
 
-                passwordInput.classList.remove(
-                    'input-error'
-                );
+                    localStorage.setItem(
+                        'michelMathsUsername',
+                        'Michel'
+                    );
+
+                } else {
+
+                    localStorage.removeItem(
+                        'michelMathsUsername'
+                    );
+
+                }
 
                 openScreen(
                     'dashboardScreen'
                 );
 
                 appSubtitle.textContent =
-                    'Welcome back, Michel!';
+                    'Welcome back, Student!';
 
                 return;
             }
@@ -240,14 +1059,40 @@
     );
 
 
+    /* REMEMBER USERNAME */
+
+    const savedUsername =
+        localStorage.getItem(
+            'michelMathsUsername'
+        );
+
+    if (
+        savedUsername
+    ) {
+
+        usernameInput.value =
+            savedUsername;
+
+        rememberMe.checked =
+            true;
+    }
+
+
     /* LOGOUT */
 
     logoutBtn.addEventListener(
         'click',
         function() {
 
-            usernameInput.value = '';
-            passwordInput.value = '';
+            if (
+                !rememberMe.checked
+            ) {
+                usernameInput.value =
+                    '';
+            }
+
+            passwordInput.value =
+                '';
 
             errorAlert.style.display =
                 'none';
@@ -265,8 +1110,11 @@
             );
 
             appSubtitle.textContent =
-                'Please sign in to continue';
+                'Academy Portal Login';
         }
     );
 
 </script>
+
+</body>
+</html>
