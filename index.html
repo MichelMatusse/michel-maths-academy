@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Michel Maths Academy</title>
 
     <style>
@@ -12,46 +11,75 @@
             --light-blue: #70B7EA;
             --dark-blue: #4094D1;
             --very-light-blue: #F2F8FC;
+
+            --accept-blue: #007AFF;
+            --accept-blue-dark: #0071E3;
+
+            --apple-black: #1D1D1F;
+            --apple-grey: #6E6E73;
+            --apple-grey-light: #86868B;
+            --apple-bg: #F5F5F7;
+            --apple-border: #D2D2D7;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+
             font-family:
                 -apple-system,
                 BlinkMacSystemFont,
                 "Segoe UI",
-                Tahoma,
-                Geneva,
-                Verdana,
+                "Helvetica Neue",
+                Arial,
                 sans-serif;
         }
 
         body {
-            background-color: #ffffff;
+            min-height: 100vh;
+            padding: 20px;
+
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+
+            background: #ffffff;
             color: #333;
-            padding: 20px;
         }
 
         .app-container {
-            background: #ffffff;
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
             width: 100%;
             max-width: 450px;
+
+            padding: 2.5rem;
+
+            background: #ffffff;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 8px 24px
+                rgba(0,0,0,0.15);
+
             text-align: center;
         }
 
+        .hidden {
+            display: none !important;
+        }
+
+
+        /* =====================================
+           MAIN BRAND
+        ===================================== */
+
         .academy-logo {
-            font-size: 2rem;
-            color: var(--main-blue);
             margin-bottom: 0.5rem;
+
+            color: var(--main-blue);
+
+            font-size: 2rem;
             font-weight: 700;
         }
 
@@ -60,52 +88,69 @@
         }
 
         .subtitle {
-            color: #666;
-            font-size: 0.95rem;
             margin-bottom: 1.5rem;
+
+            color: #666;
+
+            font-size: 0.95rem;
         }
 
-        .hidden {
-            display: none !important;
-        }
 
-        /* LOGIN */
+        /* =====================================
+           LOGIN
+        ===================================== */
 
         .error-alert {
             display: none;
-            background-color: #fce4e4;
-            border: 1px solid #fcc2c2;
-            color: #cc0000;
-            padding: 0.75rem;
-            border-radius: 6px;
+
             margin-bottom: 1.5rem;
+            padding: 0.75rem;
+
+            background: #FCE4E4;
+
+            border: 1px solid #FCC2C2;
+            border-radius: 6px;
+
+            color: #CC0000;
+
             font-size: 0.85rem;
             text-align: left;
         }
 
         .input-group {
-            margin-bottom: 1.5rem;
-            text-align: left;
             position: relative;
+
+            margin-bottom: 1.5rem;
+
+            text-align: left;
         }
 
         label {
             display: block;
+
             margin-bottom: 0.5rem;
-            font-weight: 600;
-            font-size: 0.9rem;
+
             color: #444;
+
+            font-size: 0.9rem;
+            font-weight: 600;
         }
 
         input[type="text"],
         input[type="password"] {
             width: 100%;
+
             padding: 0.75rem 1rem;
-            border: 2px solid #ddd;
+
+            border: 2px solid #DDD;
             border-radius: 6px;
-            font-size: 1rem;
+
             outline: none;
-            transition: border-color 0.3s ease;
+
+            font-size: 1rem;
+
+            transition:
+                border-color 0.25s ease;
         }
 
         input:focus {
@@ -113,61 +158,85 @@
         }
 
         input.input-error {
-            border-color: #cc0000;
-            background-color: #fff9f9;
+            border-color: #CC0000;
+
+            background: #FFF9F9;
         }
 
         .toggle-password {
             position: absolute;
-            right: 12px;
+
             top: 38px;
-            background: none;
+            right: 12px;
+
             border: none;
+
+            background: transparent;
+
             color: #777;
+
             cursor: pointer;
+
             font-size: 0.85rem;
         }
 
         .utilities {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+
             margin-bottom: 1.5rem;
+
             font-size: 0.85rem;
         }
 
         .utilities label {
             display: flex;
             align-items: center;
+
             gap: 6px;
+
             margin: 0;
+
             font-size: 0.85rem;
         }
 
-        .utilities a {
+        .utilities a,
+        .login-terms a {
             color: var(--main-blue);
+
             text-decoration: none;
+
             font-weight: 600;
         }
 
-        .utilities a:hover {
+        .utilities a:hover,
+        .login-terms a:hover {
             color: var(--dark-blue);
+
             text-decoration: underline;
         }
 
         .login-btn {
             width: 100%;
+
             padding: 0.75rem;
-            background: var(--main-blue);
+
             border: none;
             border-radius: 6px;
-            color: white;
+
+            background: var(--main-blue);
+
+            color: #ffffff;
+
             font-size: 1rem;
             font-weight: 600;
+
             cursor: pointer;
+
             transition:
-                background 0.3s ease,
-                transform 0.15s ease;
+                background 0.25s ease,
+                transform 0.1s ease;
         }
 
         .login-btn:hover {
@@ -178,112 +247,177 @@
             transform: scale(0.99);
         }
 
-        /* HEADINGS */
+        .login-terms {
+            margin-top: 1rem;
+
+            color: var(--apple-grey-light);
+
+            font-size: 0.76rem;
+            line-height: 1.5;
+        }
+
+
+        /* =====================================
+           GRADE
+        ===================================== */
 
         .grade-heading {
-            font-size: 1.45rem;
-            color: var(--main-blue);
-            font-weight: 700;
             margin-bottom: 1.5rem;
+
+            color: var(--main-blue);
+
+            font-size: 1.45rem;
+            font-weight: 700;
+
             text-align: left;
         }
 
-        /* TERM LIST */
+
+        /* =====================================
+           TERM FOLDERS
+        ===================================== */
 
         .term-list {
             display: flex;
             flex-direction: column;
+
             gap: 0.85rem;
+
             margin-bottom: 2rem;
         }
 
         .term-row {
+            width: 100%;
+
             display: flex;
             align-items: center;
+
             gap: 1.25rem;
-            width: 100%;
+
             padding: 1rem 1.2rem;
+
             background: #ffffff;
-            border: 1px solid #e8eaed;
+
+            border: 1px solid #E8EAED;
             border-radius: 15px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+            box-shadow:
+                0 2px 8px
+                rgba(0,0,0,0.04);
+
             cursor: pointer;
+
             transition:
-                transform 0.2s ease,
                 background 0.2s ease,
                 border-color 0.2s ease,
-                box-shadow 0.2s ease;
+                box-shadow 0.2s ease,
+                transform 0.2s ease;
         }
 
         .term-row:hover {
             background: var(--very-light-blue);
-            border-color: rgba(90, 170, 230, 0.45);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 14px rgba(0, 0, 0, 0.08);
-        }
 
-        .term-row:active {
-            transform: scale(0.99);
+            border-color:
+                rgba(90,170,230,0.4);
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 5px 14px
+                rgba(0,0,0,0.08);
         }
 
         .term-name {
             color: #222;
+
             font-size: 1.1rem;
             font-weight: 700;
         }
 
-        /* APPLE-LIKE FOLDER */
+
+        /* iOS 18 inspired folder */
 
         .ios-folder {
             position: relative;
+
             width: 66px;
             height: 46px;
+
             flex-shrink: 0;
+
             background: var(--main-blue);
+
             border-radius: 6px;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.10);
+
+            box-shadow:
+                0 1px 2px
+                rgba(0,0,0,0.10);
         }
 
         .ios-folder::before {
             content: "";
+
             position: absolute;
+
             top: -8px;
             left: 0;
+
             width: 29px;
             height: 13px;
+
             background: var(--light-blue);
-            border-radius: 6px 6px 0 0;
+
+            border-radius:
+                6px 6px 0 0;
         }
 
         .ios-folder::after {
             content: "";
+
             position: absolute;
+
             top: 3px;
             left: 0;
             right: 0;
+
             height: 1px;
-            background: rgba(255, 255, 255, 0.20);
+
+            background:
+                rgba(255,255,255,0.20);
         }
 
-        /* TOPICS */
+
+        /* =====================================
+           TOPICS
+        ===================================== */
 
         .topic-list {
-            text-align: left;
-            margin-bottom: 1.5rem;
             display: flex;
             flex-direction: column;
+
             gap: 0.7rem;
+
+            margin-bottom: 1.5rem;
+
+            text-align: left;
         }
 
         .topic-card {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
             padding: 0.9rem 1rem;
-            font-weight: 600;
+
+            background: #F8F9FA;
+
+            border: 1px solid #E9ECEF;
+            border-radius: 8px;
+
             color: #212529;
+
             font-size: 0.95rem;
+            font-weight: 600;
+
             cursor: pointer;
+
             transition:
                 background 0.2s ease,
                 border-color 0.2s ease,
@@ -291,149 +425,456 @@
         }
 
         .topic-card:hover {
-            border-color: var(--main-blue);
             background: var(--very-light-blue);
+
+            border-color: var(--main-blue);
+
             transform: translateX(3px);
         }
 
-        .topic-card:active {
-            transform: scale(0.99);
-        }
 
-        /* CONTENT */
+        /* =====================================
+           TOPIC SCREEN
+        ===================================== */
 
         .content-box {
-            text-align: left;
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
-            padding: 1rem;
             margin-bottom: 1.5rem;
+            padding: 1rem;
+
+            background: #F8F9FA;
+
+            border: 1px solid #E9ECEF;
+            border-radius: 8px;
+
+            text-align: left;
         }
 
         .content-box h4 {
-            color: var(--main-blue);
             margin-bottom: 0.7rem;
+
+            color: var(--main-blue);
         }
 
         .content-box p {
             color: #666;
+
             font-size: 0.9rem;
             line-height: 1.5;
         }
 
-        /* SIGN OUT */
+
+        /* =====================================
+           SIGN OUT
+        ===================================== */
 
         .logout-btn {
             padding: 0.6rem 1.4rem;
-            background: white;
+
+            background: #ffffff;
+
             border: 1.5px solid var(--main-blue);
             border-radius: 8px;
+
             color: var(--main-blue);
-            font-weight: 600;
-            cursor: pointer;
+
             font-size: 0.9rem;
-            transition:
-                background 0.2s ease,
-                color 0.2s ease;
+            font-weight: 600;
+
+            cursor: pointer;
         }
 
         .logout-btn:hover {
             background: var(--main-blue);
-            color: white;
+
+            color: #ffffff;
         }
 
-        /* MODAL */
+
+        /* =====================================
+           RESET PASSWORD MODAL
+        ===================================== */
 
         .modal-overlay {
             display: none;
+
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.4);
+
             z-index: 100;
-            justify-content: center;
+
             align-items: center;
+            justify-content: center;
+
+            background:
+                rgba(0,0,0,0.4);
         }
 
         .modal-box {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 12px;
             width: 90%;
             max-width: 380px;
+
+            padding: 2rem;
+
+            background: #ffffff;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 15px
+                rgba(0,0,0,0.2);
+
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .modal-box h3 {
-            color: var(--dark-blue);
             margin-bottom: 0.5rem;
-            font-size: 1.25rem;
+
+            color: var(--dark-blue);
         }
 
         .modal-box p {
-            color: #666;
-            font-size: 0.9rem;
             margin-bottom: 1.5rem;
+
+            color: #666;
+
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
         .modal-btn {
             padding: 0.5rem 1.5rem;
-            background: var(--main-blue);
+
             border: none;
             border-radius: 6px;
-            color: white;
+
+            background: var(--main-blue);
+
+            color: #ffffff;
+
             font-weight: 600;
+
             cursor: pointer;
         }
 
-        .modal-btn:hover {
-            background: var(--dark-blue);
+
+        /* =====================================
+           TERMS & CONDITIONS
+        ===================================== */
+
+        .terms-screen {
+            color: var(--apple-black);
+
+            text-align: left;
         }
 
+        .terms-topbar {
+            margin-bottom: 2rem;
+        }
+
+        .terms-back {
+            padding: 3px 0;
+
+            border: none;
+
+            background: transparent;
+
+            color: var(--accept-blue);
+
+            font-size: 16px;
+
+            cursor: pointer;
+        }
+
+
+        /* Header */
+
+        .terms-header {
+            padding-bottom: 24px;
+
+            border-bottom:
+                1px solid
+                var(--apple-border);
+        }
+
+        .terms-eyebrow {
+            margin-bottom: 8px;
+
+            color: var(--apple-grey);
+
+            font-size: 12px;
+            font-weight: 600;
+
+            letter-spacing: 0.05em;
+        }
+
+        .terms-title {
+            margin-bottom: 12px;
+
+            color: var(--apple-black);
+
+            font-size: 32px;
+            font-weight: 700;
+
+            letter-spacing: -0.03em;
+            line-height: 1.08;
+        }
+
+        .terms-intro {
+            color: var(--apple-grey);
+
+            font-size: 15px;
+            line-height: 1.55;
+        }
+
+        .terms-date {
+            margin-top: 10px;
+
+            color: var(--apple-grey-light);
+
+            font-size: 12px;
+        }
+
+
+        /* No lines between legal sections */
+
+        .terms-section {
+            display: grid;
+
+            grid-template-columns:
+                42px 1fr;
+
+            column-gap: 12px;
+
+            padding-top: 24px;
+        }
+
+        .terms-number {
+            color: #9297A8;
+
+            font-size: 14px;
+            font-weight: 400;
+
+            line-height: 1.45;
+        }
+
+        .terms-section-content h2 {
+            margin-bottom: 7px;
+
+            color: var(--apple-black);
+
+            font-size: 16px;
+            font-weight: 600;
+
+            line-height: 1.3;
+        }
+
+        .terms-section-content p,
+        .terms-section-content li {
+            color: #5E6376;
+
+            font-size: 13.5px;
+            line-height: 1.55;
+        }
+
+        .terms-section-content p + p {
+            margin-top: 8px;
+        }
+
+        .terms-section-content ul {
+            margin-top: 10px;
+            padding-left: 18px;
+        }
+
+        .terms-section-content li {
+            margin-bottom: 6px;
+        }
+
+
+        /* =====================================
+           TERMS ACCEPTANCE
+        ===================================== */
+
+        .terms-accept-box {
+            margin-top: 28px;
+
+            padding: 18px;
+
+            background: var(--apple-bg);
+
+            border-radius: 14px;
+        }
+
+        .terms-check {
+            display: flex;
+            align-items: flex-start;
+
+            gap: 11px;
+
+            margin: 0;
+
+            color: #4F5568;
+
+            font-size: 13px;
+            line-height: 1.5;
+
+            cursor: pointer;
+        }
+
+        .terms-check input {
+            width: 19px;
+            height: 19px;
+
+            margin-top: 2px;
+
+            flex-shrink: 0;
+
+            accent-color:
+                var(--accept-blue);
+        }
+
+        .terms-continue-wrap {
+            text-align: center;
+        }
+
+        .terms-continue-btn {
+            display: inline-block;
+
+            min-width: 165px;
+
+            margin-top: 15px;
+            padding: 10px 20px;
+
+            border: none;
+            border-radius: 999px;
+
+            background:
+                var(--accept-blue);
+
+            color: #ffffff;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition:
+                background 0.15s ease,
+                transform 0.1s ease;
+        }
+
+        .terms-continue-btn:hover:not(:disabled) {
+            background:
+                var(--accept-blue-dark);
+        }
+
+        .terms-continue-btn:active:not(:disabled) {
+            transform: scale(0.98);
+        }
+
+        .terms-continue-btn:disabled {
+            background: #BFC3CD;
+
+            color: #ffffff;
+
+            cursor: not-allowed;
+        }
+
+
+        /* =====================================
+           TERMS FOOTER
+        ===================================== */
+
+        .terms-footer {
+            padding-top: 10px;
+
+            text-align: center;
+        }
+
+        .terms-footer-copy {
+            color: var(--apple-grey);
+
+            font-size: 11px;
+        }
+
+        .terms-footer-tagline {
+            margin-top: 3px;
+
+            color: var(--apple-grey-light);
+
+            font-size: 11px;
+            font-style: italic;
+        }
+
+
+        /* =====================================
+           MOBILE
+        ===================================== */
+
         @media (max-width: 500px) {
+
             body {
                 padding: 12px;
+
                 align-items: flex-start;
             }
 
             .app-container {
-                padding: 1.5rem;
                 margin-top: 20px;
+
+                padding: 1.5rem;
             }
 
-            .academy-logo {
-                font-size: 2rem;
+            .terms-title {
+                font-size: 29px;
             }
 
-            .grade-heading {
-                font-size: 1.5rem;
-            }
+            .terms-section {
+                grid-template-columns:
+                    34px 1fr;
 
-            .term-row {
-                padding: 1rem;
+                column-gap: 8px;
+
+                padding-top: 22px;
             }
         }
     </style>
 </head>
 
+
 <body>
 
 <div class="app-container">
 
-    <div class="academy-logo">
+
+    <!-- =====================================
+         MAIN BRAND
+    ====================================== -->
+
+    <div
+        class="academy-logo"
+        id="academyLogo"
+    >
         Michel <span>Maths</span>
     </div>
 
-    <p class="subtitle" id="appSubtitle">
+    <p
+        class="subtitle"
+        id="appSubtitle"
+    >
         Academy Portal Login
     </p>
 
-    <!-- LOGIN -->
+
+    <!-- =====================================
+         LOGIN
+    ====================================== -->
 
     <div id="loginScreen">
 
-        <div class="error-alert" id="errorAlert">
+        <div
+            class="error-alert"
+            id="errorAlert"
+        >
             Please fill out all required fields.
         </div>
 
@@ -453,6 +894,7 @@
                 >
 
             </div>
+
 
             <div class="input-group">
 
@@ -477,18 +919,30 @@
 
             </div>
 
+
             <div class="utilities">
 
                 <label>
-                    <input type="checkbox" id="rememberMe">
+
+                    <input
+                        type="checkbox"
+                        id="rememberMe"
+                    >
+
                     Remember me
+
                 </label>
 
-                <a href="#" id="forgotLink">
+
+                <a
+                    href="#"
+                    id="forgotLink"
+                >
                     Forgot password?
                 </a>
 
             </div>
+
 
             <button
                 type="submit"
@@ -497,17 +951,38 @@
                 Sign In
             </button>
 
+
+            <p class="login-terms">
+
+                By signing in, you agree to our
+
+                <a
+                    href="#"
+                    id="termsLink"
+                >
+                    Terms &amp; Conditions
+                </a>.
+
+            </p>
+
         </form>
 
     </div>
 
-    <!-- DASHBOARD -->
 
-    <div id="dashboardScreen" class="hidden">
+    <!-- =====================================
+         DASHBOARD
+    ====================================== -->
+
+    <div
+        id="dashboardScreen"
+        class="hidden"
+    >
 
         <div class="grade-heading">
             Grade 8
         </div>
+
 
         <div class="term-list">
 
@@ -516,34 +991,50 @@
                 onclick="openScreen('term1Screen')"
             >
                 <div class="ios-folder"></div>
-                <span class="term-name">Term 1</span>
+
+                <span class="term-name">
+                    Term 1
+                </span>
             </div>
+
 
             <div
                 class="term-row"
                 onclick="openScreen('term2Screen')"
             >
                 <div class="ios-folder"></div>
-                <span class="term-name">Term 2</span>
+
+                <span class="term-name">
+                    Term 2
+                </span>
             </div>
+
 
             <div
                 class="term-row"
                 onclick="openScreen('term3Screen')"
             >
                 <div class="ios-folder"></div>
-                <span class="term-name">Term 3</span>
+
+                <span class="term-name">
+                    Term 3
+                </span>
             </div>
+
 
             <div
                 class="term-row"
                 onclick="openScreen('term4Screen')"
             >
                 <div class="ios-folder"></div>
-                <span class="term-name">Term 4</span>
+
+                <span class="term-name">
+                    Term 4
+                </span>
             </div>
 
         </div>
+
 
         <button
             type="button"
@@ -555,9 +1046,15 @@
 
     </div>
 
-    <!-- TERM 1 -->
 
-    <div id="term1Screen" class="hidden">
+    <!-- =====================================
+         TERM 1
+    ====================================== -->
+
+    <div
+        id="term1Screen"
+        class="hidden"
+    >
 
         <div class="grade-heading">
             Grade 8 &gt; Term 1
@@ -565,32 +1062,63 @@
 
         <div class="topic-list">
 
-            <div class="topic-card"
-                 onclick="openTopic('Term 1','WHOLE NUMBERS','term1Screen')">
+            <div
+                class="topic-card"
+                onclick="openTopic(
+                    'Term 1',
+                    'WHOLE NUMBERS',
+                    'term1Screen'
+                )"
+            >
                 1. WHOLE NUMBERS
             </div>
 
-            <div class="topic-card"
-                 onclick="openTopic('Term 1','INTEGERS','term1Screen')">
+            <div
+                class="topic-card"
+                onclick="openTopic(
+                    'Term 1',
+                    'INTEGERS',
+                    'term1Screen'
+                )"
+            >
                 2. INTEGERS
             </div>
 
-            <div class="topic-card"
-                 onclick="openTopic('Term 1','COMMON FRACTIONS','term1Screen')">
+            <div
+                class="topic-card"
+                onclick="openTopic(
+                    'Term 1',
+                    'COMMON FRACTIONS',
+                    'term1Screen'
+                )"
+            >
                 3. COMMON FRACTIONS
             </div>
 
-            <div class="topic-card"
-                 onclick="openTopic('Term 1','DECIMAL FRACTIONS','term1Screen')">
+            <div
+                class="topic-card"
+                onclick="openTopic(
+                    'Term 1',
+                    'DECIMAL FRACTIONS',
+                    'term1Screen'
+                )"
+            >
                 4. DECIMAL FRACTIONS
             </div>
 
-            <div class="topic-card"
-                 onclick="openTopic('Term 1','NUMERIC AND GEOMETRIC PATTERNS','term1Screen')">
+            <div
+                class="topic-card"
+                onclick="openTopic(
+                    'Term 1',
+                    'NUMERIC AND GEOMETRIC PATTERNS',
+                    'term1Screen'
+                )"
+            >
                 5. NUMERIC AND GEOMETRIC PATTERNS
             </div>
 
         </div>
+
 
         <button
             class="login-btn"
@@ -601,9 +1129,15 @@
 
     </div>
 
-    <!-- TERM 2 -->
 
-    <div id="term2Screen" class="hidden">
+    <!-- =====================================
+         TERM 2
+    ====================================== -->
+
+    <div
+        id="term2Screen"
+        class="hidden"
+    >
 
         <div class="grade-heading">
             Grade 8 &gt; Term 2
@@ -611,32 +1145,63 @@
 
         <div class="topic-list">
 
-            <div class="topic-card"
-                 onclick="openTopic('Term 2','EXPONENTS','term2Screen')">
+            <div
+                class="topic-card"
+                onclick="openTopic(
+                    'Term 2',
+                    'EXPONENTS',
+                    'term2Screen'
+                )"
+            >
                 EXPONENTS
             </div>
 
-            <div class="topic-card"
-                 onclick="openTopic('Term 2','ALGEBRAIC EXPRESSIONS','term2Screen')">
+            <div
+                class="topic-card"
+                onclick="openTopic(
+                    'Term 2',
+                    'ALGEBRAIC EXPRESSIONS',
+                    'term2Screen'
+                )"
+            >
                 ALGEBRAIC EXPRESSIONS
             </div>
 
-            <div class="topic-card"
-                 onclick="openTopic('Term 2','EQUATIONS','term2Screen')">
+            <div
+                class="topic-card"
+                onclick="openTopic(
+                    'Term 2',
+                    'EQUATIONS',
+                    'term2Screen'
+                )"
+            >
                 EQUATIONS
             </div>
 
-            <div class="topic-card"
-                 onclick="openTopic('Term 2','FUNCTIONS AND RELATIONSHIPS','term2Screen')">
+            <div
+                class="topic-card"
+                onclick="openTopic(
+                    'Term 2',
+                    'FUNCTIONS AND RELATIONSHIPS',
+                    'term2Screen'
+                )"
+            >
                 FUNCTIONS AND RELATIONSHIPS
             </div>
 
-            <div class="topic-card"
-                 onclick="openTopic('Term 2','GRAPHS','term2Screen')">
+            <div
+                class="topic-card"
+                onclick="openTopic(
+                    'Term 2',
+                    'GRAPHS',
+                    'term2Screen'
+                )"
+            >
                 GRAPHS
             </div>
 
         </div>
+
 
         <button
             class="login-btn"
@@ -647,9 +1212,15 @@
 
     </div>
 
-    <!-- TERM 3 -->
 
-    <div id="term3Screen" class="hidden">
+    <!-- =====================================
+         TERM 3
+    ====================================== -->
+
+    <div
+        id="term3Screen"
+        class="hidden"
+    >
 
         <div class="grade-heading">
             Grade 8 &gt; Term 3
@@ -657,27 +1228,52 @@
 
         <div class="topic-list">
 
-            <div class="topic-card"
-                 onclick="openTopic('Term 3','DATA HANDLING','term3Screen')">
+            <div
+                class="topic-card"
+                onclick="openTopic(
+                    'Term 3',
+                    'DATA HANDLING',
+                    'term3Screen'
+                )"
+            >
                 DATA HANDLING
             </div>
 
-            <div class="topic-card"
-                 onclick="openTopic('Term 3','PROBABILITY','term3Screen')">
+            <div
+                class="topic-card"
+                onclick="openTopic(
+                    'Term 3',
+                    'PROBABILITY',
+                    'term3Screen'
+                )"
+            >
                 PROBABILITY
             </div>
 
-            <div class="topic-card"
-                 onclick="openTopic('Term 3','GEOMETRY OF STRAIGHT LINES','term3Screen')">
+            <div
+                class="topic-card"
+                onclick="openTopic(
+                    'Term 3',
+                    'GEOMETRY OF STRAIGHT LINES',
+                    'term3Screen'
+                )"
+            >
                 GEOMETRY OF STRAIGHT LINES
             </div>
 
-            <div class="topic-card"
-                 onclick="openTopic('Term 3','GEOMETRY OF 2D SHAPES','term3Screen')">
+            <div
+                class="topic-card"
+                onclick="openTopic(
+                    'Term 3',
+                    'GEOMETRY OF 2D SHAPES',
+                    'term3Screen'
+                )"
+            >
                 GEOMETRY OF 2D SHAPES
             </div>
 
         </div>
+
 
         <button
             class="login-btn"
@@ -688,9 +1284,15 @@
 
     </div>
 
-    <!-- TERM 4 -->
 
-    <div id="term4Screen" class="hidden">
+    <!-- =====================================
+         TERM 4
+    ====================================== -->
+
+    <div
+        id="term4Screen"
+        class="hidden"
+    >
 
         <div class="grade-heading">
             Grade 8 &gt; Term 4
@@ -698,27 +1300,52 @@
 
         <div class="topic-list">
 
-            <div class="topic-card"
-                 onclick="openTopic('Term 4','THEOREM OF PYTHAGORAS','term4Screen')">
+            <div
+                class="topic-card"
+                onclick="openTopic(
+                    'Term 4',
+                    'THEOREM OF PYTHAGORAS',
+                    'term4Screen'
+                )"
+            >
                 THEOREM OF PYTHAGORAS
             </div>
 
-            <div class="topic-card"
-                 onclick="openTopic('Term 4','TRANSFORMATION GEOMETRY','term4Screen')">
+            <div
+                class="topic-card"
+                onclick="openTopic(
+                    'Term 4',
+                    'TRANSFORMATION GEOMETRY',
+                    'term4Screen'
+                )"
+            >
                 TRANSFORMATION GEOMETRY
             </div>
 
-            <div class="topic-card"
-                 onclick="openTopic('Term 4','AREA AND PERIMETER OF 2D SHAPES','term4Screen')">
+            <div
+                class="topic-card"
+                onclick="openTopic(
+                    'Term 4',
+                    'AREA AND PERIMETER OF 2D SHAPES',
+                    'term4Screen'
+                )"
+            >
                 AREA AND PERIMETER OF 2D SHAPES
             </div>
 
-            <div class="topic-card"
-                 onclick="openTopic('Term 4','SURFACE AREA AND VOLUME OF 3D OBJECTS','term4Screen')">
+            <div
+                class="topic-card"
+                onclick="openTopic(
+                    'Term 4',
+                    'SURFACE AREA AND VOLUME OF 3D OBJECTS',
+                    'term4Screen'
+                )"
+            >
                 SURFACE AREA AND VOLUME OF 3D OBJECTS
             </div>
 
         </div>
+
 
         <button
             class="login-btn"
@@ -729,9 +1356,15 @@
 
     </div>
 
-    <!-- TOPIC SCREEN -->
 
-    <div id="topicScreen" class="hidden">
+    <!-- =====================================
+         TOPIC SCREEN
+    ====================================== -->
+
+    <div
+        id="topicScreen"
+        class="hidden"
+    >
 
         <div
             class="grade-heading"
@@ -755,9 +1388,492 @@
 
     </div>
 
+
+    <!-- =====================================
+         TERMS & CONDITIONS
+    ====================================== -->
+
+    <div
+        id="termsScreen"
+        class="hidden terms-screen"
+    >
+
+        <div class="terms-topbar">
+
+            <button
+                type="button"
+                class="terms-back"
+                id="termsBackBtn"
+            >
+                ‹ Back
+            </button>
+
+        </div>
+
+
+        <header class="terms-header">
+
+            <div class="terms-eyebrow">
+                LEGAL
+            </div>
+
+            <h1 class="terms-title">
+                Terms &amp; Conditions
+            </h1>
+
+            <p class="terms-intro">
+                These terms explain the conditions under which
+                Michel Maths Academy provides educational materials,
+                learning access and related services.
+            </p>
+
+            <p class="terms-date">
+                Last updated: September 2026
+            </p>
+
+        </header>
+
+
+        <!-- 01 -->
+
+        <section class="terms-section">
+
+            <div class="terms-number">
+                01
+            </div>
+
+            <div class="terms-section-content">
+
+                <h2>
+                    Agreement to these terms
+                </h2>
+
+                <p>
+                    By purchasing access to, registering for or using
+                    Michel Maths Academy materials or services, the
+                    student, parent, guardian or purchaser agrees to
+                    comply with these Terms and Conditions.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- 02 -->
+
+        <section class="terms-section">
+
+            <div class="terms-number">
+                02
+            </div>
+
+            <div class="terms-section-content">
+
+                <h2>
+                    Payment and access
+                </h2>
+
+                <p>
+                    Fees are communicated directly to the student,
+                    parent or guardian. Payments are handled manually
+                    using the payment method agreed with Michel Maths
+                    Academy.
+                </p>
+
+                <p>
+                    Access to paid learning materials or services will
+                    normally be provided once payment has been
+                    confirmed, unless another arrangement has been
+                    agreed to in writing.
+                </p>
+
+                <p>
+                    Proof of payment may be requested before access
+                    is activated or continued.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- 03 -->
+
+        <section class="terms-section">
+
+            <div class="terms-number">
+                03
+            </div>
+
+            <div class="terms-section-content">
+
+                <h2>
+                    Personal educational use
+                </h2>
+
+                <p>
+                    Paid Michel Maths Academy materials are supplied
+                    for the registered student's personal educational
+                    use only.
+                </p>
+
+                <p>
+                    Purchasing access gives the student permission to
+                    use the materials for learning. It does not
+                    transfer ownership of the materials or their
+                    copyright.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- 04 -->
+
+        <section class="terms-section">
+
+            <div class="terms-number">
+                04
+            </div>
+
+            <div class="terms-section-content">
+
+                <h2>
+                    Copyright and ownership
+                </h2>
+
+                <p>
+                    Unless otherwise stated, original notes,
+                    worksheets, exercises, assessments, answer sheets,
+                    graphics, PDFs, videos, lesson content and other
+                    resources created for Michel Maths Academy remain
+                    the intellectual property of Michel Maths Academy
+                    and/or their relevant creator.
+                </p>
+
+                <p>
+                    These materials are protected under applicable
+                    South African copyright law, including the
+                    Copyright Act 98 of 1978.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- 05 -->
+
+        <section class="terms-section">
+
+            <div class="terms-number">
+                05
+            </div>
+
+            <div class="terms-section-content">
+
+                <h2>
+                    No unauthorised sharing
+                </h2>
+
+                <p>
+                    Without prior written permission from Michel Maths
+                    Academy, users may not:
+                </p>
+
+                <ul>
+
+                    <li>
+                        Forward paid worksheets, PDFs, videos or
+                        other resources to another person.
+                    </li>
+
+                    <li>
+                        Upload materials to WhatsApp groups, social
+                        media, websites, shared drives, Telegram
+                        groups or other platforms.
+                    </li>
+
+                    <li>
+                        Copy or reproduce materials for distribution.
+                    </li>
+
+                    <li>
+                        Sell, resell or commercially exploit the
+                        materials.
+                    </li>
+
+                    <li>
+                        Remove Michel Maths Academy branding,
+                        copyright notices or ownership information.
+                    </li>
+
+                    <li>
+                        Share login or account details with another
+                        person without permission.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- 06 -->
+
+        <section class="terms-section">
+
+            <div class="terms-number">
+                06
+            </div>
+
+            <div class="terms-section-content">
+
+                <h2>
+                    Outstanding payments
+                </h2>
+
+                <p>
+                    If an agreed payment becomes overdue, Michel Maths
+                    Academy may temporarily pause access to paid
+                    materials or services until the outstanding
+                    amount has been settled or another arrangement
+                    has been agreed to.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- 07 -->
+
+        <section class="terms-section">
+
+            <div class="terms-number">
+                07
+            </div>
+
+            <div class="terms-section-content">
+
+                <h2>
+                    Parent or guardian responsibility
+                </h2>
+
+                <p>
+                    Where a student is a minor, the parent or guardian
+                    responsible for payment should review and accept
+                    these Terms and Conditions on the student's behalf.
+                </p>
+
+                <p>
+                    An adult student may accept these terms personally.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- 08 -->
+
+        <section class="terms-section">
+
+            <div class="terms-number">
+                08
+            </div>
+
+            <div class="terms-section-content">
+
+                <h2>
+                    Permission to use materials
+                </h2>
+
+                <p>
+                    A student, parent, teacher, school or organisation
+                    wishing to reproduce, distribute, display or use
+                    Michel Maths Academy materials beyond personal
+                    study must obtain prior written permission.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- 09 -->
+
+        <section class="terms-section">
+
+            <div class="terms-number">
+                09
+            </div>
+
+            <div class="terms-section-content">
+
+                <h2>
+                    Breach of these terms
+                </h2>
+
+                <p>
+                    Where these terms are seriously breached, Michel
+                    Maths Academy may take reasonable action including
+                    temporarily restricting access, terminating access,
+                    requesting removal of unlawfully shared material,
+                    or pursuing remedies available under applicable
+                    law.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- 10 -->
+
+        <section class="terms-section">
+
+            <div class="terms-number">
+                10
+            </div>
+
+            <div class="terms-section-content">
+
+                <h2>
+                    Consumer rights
+                </h2>
+
+                <p>
+                    Nothing in these Terms and Conditions is intended
+                    to remove or limit rights a consumer may have
+                    under applicable South African law, including the
+                    Consumer Protection Act 68 of 2008.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- 11 -->
+
+        <section class="terms-section">
+
+            <div class="terms-number">
+                11
+            </div>
+
+            <div class="terms-section-content">
+
+                <h2>
+                    Changes to these terms
+                </h2>
+
+                <p>
+                    Michel Maths Academy may update these Terms and
+                    Conditions when reasonably necessary. Where a
+                    material change affects an existing student's
+                    paid access or obligations, the updated terms
+                    should be communicated before they take effect.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- 12 -->
+
+        <section class="terms-section">
+
+            <div class="terms-number">
+                12
+            </div>
+
+            <div class="terms-section-content">
+
+                <h2>
+                    Acceptance
+                </h2>
+
+                <p>
+                    By accepting these terms, the student, parent,
+                    guardian or purchaser confirms that they have
+                    read, understood and agreed to comply with these
+                    Terms and Conditions.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================
+             ACCEPTANCE BOX
+        ================================== -->
+
+        <div class="terms-accept-box">
+
+            <label class="terms-check">
+
+                <input
+                    type="checkbox"
+                    id="termsAcceptCheckbox"
+                >
+
+                <span>
+                    I have read and agree to the Michel Maths Academy
+                    Terms and Conditions, including the payment terms
+                    and rules concerning the sharing and distribution
+                    of paid learning materials.
+                </span>
+
+            </label>
+
+
+            <div class="terms-continue-wrap">
+
+                <button
+                    type="button"
+                    class="terms-continue-btn"
+                    id="termsContinueBtn"
+                    disabled
+                >
+                    Accept &amp; Continue
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================
+             FOOTER
+        ================================== -->
+
+        <footer class="terms-footer">
+
+            <div class="terms-footer-copy">
+                © 2026 Michel Maths Academy
+            </div>
+
+            <div class="terms-footer-tagline">
+                More than maths. A brighter tomorrow.
+            </div>
+
+        </footer>
+
+    </div>
+
 </div>
 
-<!-- FORGOT PASSWORD MODAL -->
+
+<!-- =====================================
+     PASSWORD RESET MODAL
+====================================== -->
 
 <div
     class="modal-overlay"
@@ -766,11 +1882,13 @@
 
     <div class="modal-box">
 
-        <h3>Reset Password</h3>
+        <h3>
+            Reset Password
+        </h3>
 
         <p>
-            Please contact your administrator at Michel Maths Academy
-            to request a temporary login token.
+            Please contact your administrator at Michel Maths
+            Academy to request a temporary login token.
         </p>
 
         <button
@@ -784,41 +1902,100 @@
 
 </div>
 
+
 <script>
 
+    /* =====================================
+       ELEMENTS
+    ===================================== */
+
+    const academyLogo =
+        document.getElementById(
+            'academyLogo'
+        );
+
     const appSubtitle =
-        document.getElementById('appSubtitle');
+        document.getElementById(
+            'appSubtitle'
+        );
 
     const loginForm =
-        document.getElementById('loginForm');
+        document.getElementById(
+            'loginForm'
+        );
 
     const usernameInput =
-        document.getElementById('username');
+        document.getElementById(
+            'username'
+        );
 
     const passwordInput =
-        document.getElementById('password');
+        document.getElementById(
+            'password'
+        );
 
     const errorAlert =
-        document.getElementById('errorAlert');
+        document.getElementById(
+            'errorAlert'
+        );
 
     const togglePassword =
-        document.getElementById('togglePassword');
-
-    const logoutBtn =
-        document.getElementById('logoutBtn');
-
-    const forgotLink =
-        document.getElementById('forgotLink');
-
-    const modalOverlay =
-        document.getElementById('modalOverlay');
-
-    const closeModal =
-        document.getElementById('closeModal');
+        document.getElementById(
+            'togglePassword'
+        );
 
     const rememberMe =
-        document.getElementById('rememberMe');
+        document.getElementById(
+            'rememberMe'
+        );
 
+    const logoutBtn =
+        document.getElementById(
+            'logoutBtn'
+        );
+
+    const forgotLink =
+        document.getElementById(
+            'forgotLink'
+        );
+
+    const modalOverlay =
+        document.getElementById(
+            'modalOverlay'
+        );
+
+    const closeModal =
+        document.getElementById(
+            'closeModal'
+        );
+
+    const termsLink =
+        document.getElementById(
+            'termsLink'
+        );
+
+    const termsBackBtn =
+        document.getElementById(
+            'termsBackBtn'
+        );
+
+    const termsAcceptCheckbox =
+        document.getElementById(
+            'termsAcceptCheckbox'
+        );
+
+    const termsContinueBtn =
+        document.getElementById(
+            'termsContinueBtn'
+        );
+
+
+    let pendingLogin = false;
+
+
+    /* =====================================
+       NAVIGATION
+    ===================================== */
 
     function openScreen(screenId) {
 
@@ -827,23 +2004,73 @@
                 '.app-container > div[id$="Screen"]'
             );
 
-        screens.forEach(function(screen) {
-            screen.classList.add('hidden');
-        });
+        screens.forEach(
+            function(screen) {
+
+                screen.classList.add(
+                    'hidden'
+                );
+
+            }
+        );
+
 
         const selectedScreen =
-            document.getElementById(screenId);
+            document.getElementById(
+                screenId
+            );
+
 
         if (selectedScreen) {
-            selectedScreen.classList.remove('hidden');
+
+            selectedScreen.classList.remove(
+                'hidden'
+            );
+
         }
+
+
+        /*
+         * Hide Michel Maths heading completely
+         * on Terms & Conditions page.
+         */
+
+        if (
+            screenId === 'termsScreen'
+        ) {
+
+            academyLogo.classList.add(
+                'hidden'
+            );
+
+            appSubtitle.classList.add(
+                'hidden'
+            );
+
+        } else {
+
+            academyLogo.classList.remove(
+                'hidden'
+            );
+
+            appSubtitle.classList.remove(
+                'hidden'
+            );
+
+        }
+
 
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
+
     }
 
+
+    /* =====================================
+       OPEN TOPIC
+    ===================================== */
 
     function openTopic(
         term,
@@ -859,9 +2086,12 @@
             ' > ' +
             topic;
 
+
         document.getElementById(
             'topicTitle'
-        ).textContent = topic;
+        ).textContent =
+            topic;
+
 
         document.getElementById(
             'topicText'
@@ -870,37 +2100,57 @@
             topic +
             ' will be placed here.';
 
+
         document.getElementById(
             'topicBackBtn'
-        ).onclick = function() {
+        ).onclick =
+            function() {
 
-            openScreen(backScreen);
+                openScreen(
+                    backScreen
+                );
 
-        };
+            };
 
-        openScreen('topicScreen');
+
+        openScreen(
+            'topicScreen'
+        );
+
     }
 
+
+    /* =====================================
+       PASSWORD SHOW / HIDE
+    ===================================== */
 
     togglePassword.addEventListener(
         'click',
         function() {
 
-            const isPassword =
-                passwordInput.type === 'password';
+            const isHidden =
+                passwordInput.type ===
+                'password';
+
 
             passwordInput.type =
-                isPassword
+                isHidden
                     ? 'text'
                     : 'password';
 
+
             togglePassword.textContent =
-                isPassword
+                isHidden
                     ? 'Hide'
                     : 'Show';
+
         }
     );
 
+
+    /* =====================================
+       FORGOT PASSWORD
+    ===================================== */
 
     forgotLink.addEventListener(
         'click',
@@ -910,6 +2160,7 @@
 
             modalOverlay.style.display =
                 'flex';
+
         }
     );
 
@@ -920,6 +2171,7 @@
 
             modalOverlay.style.display =
                 'none';
+
         }
     );
 
@@ -928,19 +2180,123 @@
         'click',
         function(event) {
 
-            if (event.target === modalOverlay) {
+            if (
+                event.target ===
+                modalOverlay
+            ) {
+
                 modalOverlay.style.display =
                     'none';
+
             }
+
         }
     );
 
+
+    /* =====================================
+       TERMS LINK
+    ===================================== */
+
+    termsLink.addEventListener(
+        'click',
+        function(event) {
+
+            event.preventDefault();
+
+            pendingLogin = false;
+
+            openScreen(
+                'termsScreen'
+            );
+
+        }
+    );
+
+
+    termsBackBtn.addEventListener(
+        'click',
+        function() {
+
+            pendingLogin = false;
+
+            openScreen(
+                'loginScreen'
+            );
+
+        }
+    );
+
+
+    /* =====================================
+       TERMS ACCEPT BUTTON
+    ===================================== */
+
+    termsAcceptCheckbox.addEventListener(
+        'change',
+        function() {
+
+            termsContinueBtn.disabled =
+                !termsAcceptCheckbox.checked;
+
+        }
+    );
+
+
+    termsContinueBtn.addEventListener(
+        'click',
+        function() {
+
+            if (
+                !termsAcceptCheckbox.checked
+            ) {
+
+                return;
+
+            }
+
+
+            localStorage.setItem(
+                'michelMathsTermsAccepted',
+                'yes'
+            );
+
+
+            if (
+                pendingLogin
+            ) {
+
+                pendingLogin = false;
+
+                openScreen(
+                    'dashboardScreen'
+                );
+
+                appSubtitle.textContent =
+                    'Welcome back, Student!';
+
+            } else {
+
+                openScreen(
+                    'loginScreen'
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =====================================
+       LOGIN
+    ===================================== */
 
     loginForm.addEventListener(
         'submit',
         function(event) {
 
             event.preventDefault();
+
 
             usernameInput.classList.remove(
                 'input-error'
@@ -953,49 +2309,68 @@
             errorAlert.style.display =
                 'none';
 
-            const userVal =
+
+            const username =
                 usernameInput.value.trim();
 
-            const passVal =
+
+            const password =
                 passwordInput.value.trim();
 
 
+            /* EMPTY FIELDS */
+
             if (
-                userVal === '' ||
-                passVal === ''
+                username === '' ||
+                password === ''
             ) {
 
-                if (userVal === '') {
+                if (
+                    username === ''
+                ) {
+
                     usernameInput.classList.add(
                         'input-error'
                     );
+
                 }
 
-                if (passVal === '') {
+
+                if (
+                    password === ''
+                ) {
+
                     passwordInput.classList.add(
                         'input-error'
                     );
+
                 }
+
 
                 errorAlert.textContent =
                     'Please fill out all fields.';
 
+
                 errorAlert.style.display =
                     'block';
 
+
                 return;
+
             }
 
 
+            /* CORRECT LOGIN */
+
             if (
-                userVal === 'Michel' &&
-                passVal === 'Michel 123'
+                username === 'Michel' &&
+                password === 'Michel 123'
             ) {
 
-                errorAlert.style.display =
-                    'none';
 
-                if (rememberMe.checked) {
+                if (
+                    rememberMe.checked
+                ) {
 
                     localStorage.setItem(
                         'michelMathsUsername',
@@ -1010,76 +2385,147 @@
 
                 }
 
+
+                const termsAccepted =
+                    localStorage.getItem(
+                        'michelMathsTermsAccepted'
+                    );
+
+
+                /*
+                 * First successful login:
+                 * require Terms acceptance.
+                 */
+
+                if (
+                    termsAccepted !== 'yes'
+                ) {
+
+                    pendingLogin = true;
+
+
+                    termsAcceptCheckbox.checked =
+                        false;
+
+
+                    termsContinueBtn.disabled =
+                        true;
+
+
+                    openScreen(
+                        'termsScreen'
+                    );
+
+
+                    return;
+
+                }
+
+
                 openScreen(
                     'dashboardScreen'
                 );
 
+
                 appSubtitle.textContent =
                     'Welcome back, Student!';
 
+
                 return;
+
             }
 
+
+            /* WRONG LOGIN */
 
             usernameInput.classList.add(
                 'input-error'
             );
 
+
             passwordInput.classList.add(
                 'input-error'
             );
 
+
             errorAlert.textContent =
                 'Incorrect username or password. Please try again.';
 
+
             errorAlert.style.display =
                 'block';
+
         }
     );
 
+
+    /* =====================================
+       REMEMBER USERNAME
+    ===================================== */
 
     const savedUsername =
         localStorage.getItem(
             'michelMathsUsername'
         );
 
-    if (savedUsername) {
+
+    if (
+        savedUsername
+    ) {
 
         usernameInput.value =
             savedUsername;
 
         rememberMe.checked =
             true;
+
     }
 
+
+    /* =====================================
+       LOGOUT
+    ===================================== */
 
     logoutBtn.addEventListener(
         'click',
         function() {
 
-            if (!rememberMe.checked) {
-                usernameInput.value = '';
+            if (
+                !rememberMe.checked
+            ) {
+
+                usernameInput.value =
+                    '';
+
             }
 
-            passwordInput.value = '';
+
+            passwordInput.value =
+                '';
+
 
             errorAlert.style.display =
                 'none';
+
 
             usernameInput.classList.remove(
                 'input-error'
             );
 
+
             passwordInput.classList.remove(
                 'input-error'
             );
+
 
             openScreen(
                 'loginScreen'
             );
 
+
             appSubtitle.textContent =
                 'Academy Portal Login';
+
         }
     );
 
