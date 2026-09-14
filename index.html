@@ -3,3591 +3,2104 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Michel Maths Academy</title>
-
 <style>
-
 :root{
-    --main-blue:#5AAAE6;
-    --light-blue:#70B7EA;
-    --dark-blue:#4094D1;
-    --very-light-blue:#F2F8FC;
-
-    --action-blue:#007AFF;
-    --action-blue-dark:#0071E3;
-
-    --ink:#1D1D1F;
-    --text:#424245;
-    --muted:#6E6E73;
-    --muted2:#86868B;
-
-    --surface:#F5F5F7;
-    --border:#D2D2D7;
-
-    --danger:#C70000;
-}
-
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        "Helvetica Neue",
-        Arial,
-        sans-serif;
-}
-
-
-body{
-    min-height:100vh;
-
-    padding:20px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    background:#ffffff;
-
-    color:#333;
-}
-
-
-.app-container{
-    width:100%;
-    max-width:450px;
-
-    padding:2.5rem;
-
-    background:#ffffff;
-
-    border-radius:12px;
-
-    box-shadow:
-        0 8px 24px
-        rgba(0,0,0,.15);
-
-    text-align:center;
-}
-
-
-.hidden{
-    display:none!important;
-}
-
-
-
-/* =====================================
-   BRAND
-===================================== */
-
-.academy-logo{
-    margin-bottom:.5rem;
-
-    color:var(--main-blue);
-
-    font-size:2rem;
-    font-weight:700;
-}
-
-
-.subtitle{
-    margin-bottom:1.5rem;
-
-    color:#666;
-
-    font-size:.95rem;
-}
-
-
-
-/* =====================================
-   LOGIN
-===================================== */
-
-.error-alert{
-    display:none;
-
-    margin-bottom:1.5rem;
-
-    padding:.75rem;
-
-    background:#FCE4E4;
-
-    border:1px solid #FCC2C2;
-    border-radius:6px;
-
-    color:var(--danger);
-
-    font-size:.85rem;
-
-    text-align:left;
-}
-
-
-.input-group{
-    position:relative;
-
-    margin-bottom:1.5rem;
-
-    text-align:left;
-}
-
-
-label{
-    display:block;
-
-    margin-bottom:.5rem;
-
-    color:#444;
-
-    font-size:.9rem;
-    font-weight:600;
-}
-
-
-input[type="text"],
-input[type="password"]{
-    width:100%;
-
-    padding:.75rem 1rem;
-
-    border:2px solid #DDD;
-    border-radius:6px;
-
-    outline:none;
-
-    font-size:1rem;
-
-    transition:
-        border-color .25s ease;
-}
-
-
-input:focus{
-    border-color:var(--main-blue);
-}
-
-
-input.input-error{
-    border-color:var(--danger);
-
-    background:#FFF9F9;
-}
-
-
-.toggle-password{
-    position:absolute;
-
-    top:38px;
-    right:12px;
-
-    border:none;
-
-    background:transparent;
-
-    color:#777;
-
-    cursor:pointer;
-
-    font-size:.85rem;
-}
-
-
-.utilities{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    margin-bottom:1.5rem;
-
-    font-size:.85rem;
-}
-
-
-.utilities label{
-    display:flex;
-    align-items:center;
-
-    gap:6px;
-
-    margin:0;
-
-    font-size:.85rem;
-}
-
-
-.utilities a,
-.legal-links a{
-    color:var(--main-blue);
-
-    text-decoration:none;
-
-    font-weight:600;
-}
-
-
-.utilities a:hover,
-.legal-links a:hover{
-    text-decoration:underline;
-}
-
-
-.primary-btn{
-    width:100%;
-
-    padding:.75rem;
-
-    border:none;
-    border-radius:7px;
-
-    background:var(--main-blue);
-
-    color:#ffffff;
-
-    font-size:1rem;
-    font-weight:600;
-
-    cursor:pointer;
-
-    transition:.2s;
-}
-
-
-.primary-btn:hover{
-    background:var(--dark-blue);
-}
-
-
-.legal-links{
-    margin-top:1rem;
-
-    color:var(--muted2);
-
-    font-size:.76rem;
-    line-height:1.7;
-}
-
-
-.legal-links .dot{
-    padding:0 .3rem;
-
-    color:#BBB;
-}
-
-
-
-/* =====================================
-   DASHBOARD
-===================================== */
-
-.grade-heading{
-    margin-bottom:1.5rem;
-
-    color:var(--main-blue);
-
-    font-size:1.45rem;
-    font-weight:700;
-
-    text-align:left;
-}
-
-
-.term-list{
-    display:flex;
-    flex-direction:column;
-
-    gap:.85rem;
-
-    margin-bottom:2rem;
-}
-
-
-.term-row{
-    width:100%;
-
-    display:flex;
-    align-items:center;
-
-    gap:1.25rem;
-
-    padding:1rem 1.2rem;
-
-    background:#ffffff;
-
-    border:1px solid #E8EAED;
-    border-radius:15px;
-
-    box-shadow:
-        0 2px 8px
-        rgba(0,0,0,.04);
-
-    cursor:pointer;
-
-    transition:.2s;
-}
-
-
-.term-row:hover{
-    background:var(--very-light-blue);
-
-    border-color:
-        rgba(90,170,230,.4);
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 5px 14px
-        rgba(0,0,0,.08);
-}
-
-
-.term-name{
-    color:#222;
-
-    font-size:1.1rem;
-    font-weight:700;
-}
-
-
-
-/* =====================================
-   iOS 18-STYLE FOLDER
-===================================== */
-
-.ios-folder{
-    position:relative;
-
-    width:66px;
-    height:46px;
-
-    flex-shrink:0;
-
-    background:var(--main-blue);
-
-    border-radius:6px;
-
-    box-shadow:
-        0 1px 2px
-        rgba(0,0,0,.1);
-}
-
-
-.ios-folder::before{
-    content:"";
-
-    position:absolute;
-
-    top:-8px;
-    left:0;
-
-    width:29px;
-    height:13px;
-
-    background:var(--light-blue);
-
-    border-radius:
-        6px 6px 0 0;
-}
-
-
-.ios-folder::after{
-    content:"";
-
-    position:absolute;
-
-    top:3px;
-    left:0;
-    right:0;
-
-    height:1px;
-
-    background:
-        rgba(255,255,255,.2);
-}
-
-
-
-/* =====================================
-   SIGN OUT
-===================================== */
-
-.logout-btn{
-    padding:.6rem 1.4rem;
-
-    background:#ffffff;
-
-    border:1.5px solid var(--main-blue);
-    border-radius:8px;
-
-    color:var(--main-blue);
-
-    font-size:.9rem;
-    font-weight:600;
-
-    cursor:pointer;
-}
-
-
-.logout-btn:hover{
-    background:var(--main-blue);
-
-    color:#ffffff;
-}
-
-
-
-/* =====================================
-   TOPICS
-===================================== */
-
-.topic-list{
-    display:flex;
-    flex-direction:column;
-
-    gap:.7rem;
-
-    margin-bottom:1.5rem;
-
-    text-align:left;
-}
-
-
-.topic-card{
-    padding:.9rem 1rem;
-
-    background:#F8F9FA;
-
-    border:1px solid #E9ECEF;
-    border-radius:8px;
-
-    color:#212529;
-
-    font-size:.95rem;
-    font-weight:600;
-
-    cursor:pointer;
-
-    transition:.2s;
-}
-
-
-.topic-card:hover{
-    background:var(--very-light-blue);
-
-    border-color:var(--main-blue);
-
-    transform:
-        translateX(3px);
-}
-
-
-.content-box{
-    margin-bottom:1.5rem;
-
-    padding:1rem;
-
-    background:#F8F9FA;
-
-    border:1px solid #E9ECEF;
-    border-radius:8px;
-
-    text-align:left;
-}
-
-
-.content-box h4{
-    margin-bottom:.7rem;
-
-    color:var(--main-blue);
-}
-
-
-.content-box p{
-    color:#666;
-
-    font-size:.9rem;
-    line-height:1.5;
-}
-
-
-
-/* =====================================
-   FORGOT PASSWORD
-===================================== */
-
-.modal-overlay{
-    display:none;
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:100;
-
-    align-items:center;
-    justify-content:center;
-
-    background:
-        rgba(0,0,0,.4);
-}
-
-
-.modal-box{
-    width:90%;
-    max-width:380px;
-
-    padding:2rem;
-
-    background:#ffffff;
-
-    border-radius:12px;
-
-    box-shadow:
-        0 4px 15px
-        rgba(0,0,0,.2);
-
-    text-align:center;
-}
-
-
-.modal-box h3{
-    margin-bottom:.5rem;
-
-    color:var(--dark-blue);
-}
-
-
-.modal-box p{
-    margin-bottom:1.5rem;
-
-    color:#666;
-
-    font-size:.9rem;
-    line-height:1.5;
-}
-
-
-.modal-btn{
-    padding:.5rem 1.5rem;
-
-    border:none;
-    border-radius:6px;
-
-    background:var(--main-blue);
-
-    color:#ffffff;
-
-    font-weight:600;
-
-    cursor:pointer;
-}
-
-
-
-/* =====================================
-   LEGAL PAGES
-===================================== */
-
-.legal-screen{
-    color:var(--ink);
-
-    text-align:left;
-}
-
-
-.legal-topbar{
-    margin-bottom:2rem;
-}
-
-
-.legal-back{
-    padding:3px 0;
-
-    border:none;
-
-    background:transparent;
-
-    color:var(--action-blue);
-
-    font-size:16px;
-
-    cursor:pointer;
-}
-
-
-.legal-header{
-    padding-bottom:24px;
-
-    border-bottom:
-        1px solid
-        var(--border);
-}
-
-
-.legal-eyebrow{
-    margin-bottom:8px;
-
-    color:var(--muted);
-
-    font-size:12px;
-    font-weight:600;
-
-    letter-spacing:.05em;
-}
-
-
-.legal-title{
-    margin-bottom:12px;
-
-    color:var(--ink);
-
-    font-size:32px;
-    font-weight:700;
-
-    letter-spacing:-.03em;
-
-    line-height:1.08;
-}
-
-
-.legal-intro{
-    color:var(--muted);
-
-    font-size:15px;
-    line-height:1.55;
-}
-
-
-.legal-date{
-    margin-top:10px;
-
-    color:var(--muted2);
-
-    font-size:12px;
-}
-
-
-
-/* No divider lines between sections */
-
-.legal-section{
-    display:grid;
-
-    grid-template-columns:
-        42px 1fr;
-
-    column-gap:12px;
-
-    padding-top:24px;
-}
-
-
-.legal-number{
-    color:#9297A8;
-
-    font-size:14px;
-
-    line-height:1.45;
-}
-
-
-.legal-section-content h2{
-    margin-bottom:7px;
-
-    color:var(--ink);
-
-    font-size:16px;
-    font-weight:600;
-
-    line-height:1.3;
-}
-
-
-.legal-section-content p,
-.legal-section-content li{
-    color:#5E6376;
-
-    font-size:13.5px;
-
-    line-height:1.58;
-}
-
-
-.legal-section-content p + p{
-    margin-top:8px;
-}
-
-
-.legal-section-content ul{
-    margin-top:10px;
-
-    padding-left:18px;
-}
-
-
-.legal-section-content li{
-    margin-bottom:6px;
-}
-
-
-.legal-section-content a{
-    color:var(--action-blue);
-
-    text-decoration:none;
-}
-
-
-.legal-section-content a:hover{
-    text-decoration:underline;
-}
-
-
-.legal-footer{
-    padding-top:24px;
-
-    text-align:center;
-}
-
-
-.legal-footer-copy{
-    color:var(--muted);
-
-    font-size:11px;
-}
-
-
-.legal-footer-tagline{
-    margin-top:3px;
-
-    color:var(--muted2);
-
-    font-size:11px;
-    font-style:italic;
-}
-
-
-
-/* =====================================
-   TERMS ACCEPTANCE
-===================================== */
-
-.terms-accept-box{
-    margin-top:28px;
-
-    padding:18px;
-
-    background:var(--surface);
-
-    border-radius:14px;
-}
-
-
-.terms-check{
-    display:flex;
-    align-items:flex-start;
-
-    gap:11px;
-
-    margin:0;
-
-    color:#4F5568;
-
-    font-size:13px;
-    line-height:1.5;
-
-    cursor:pointer;
-}
-
-
-.terms-check input{
-    width:19px;
-    height:19px;
-
-    margin-top:2px;
-
-    flex-shrink:0;
-
-    accent-color:
-        var(--action-blue);
-}
-
-
-.terms-continue-wrap{
-    text-align:center;
-}
-
-
-.terms-continue-btn{
-    display:inline-block;
-
-    min-width:165px;
-
-    margin-top:15px;
-
-    padding:10px 20px;
-
-    border:none;
-
-    border-radius:999px;
-
-    background:var(--action-blue);
-
-    color:#ffffff;
-
-    font-size:14px;
-    font-weight:600;
-
-    cursor:pointer;
-
-    transition:.15s;
-}
-
-
-.terms-continue-btn:hover:not(:disabled){
-    background:var(--action-blue-dark);
-}
-
-
-.terms-continue-btn:disabled{
-    background:#BFC3CD;
-
-    cursor:not-allowed;
-}
-
-
-
-/* =====================================
-   CONTACT
-===================================== */
-
-.contact-card{
-    padding:18px;
-
-    background:var(--surface);
-
-    border-radius:16px;
-
-    margin-top:22px;
-}
-
-
-.contact-item{
-    padding:14px 0;
-
-    text-align:left;
-}
-
-
-.contact-item + .contact-item{
-    border-top:
-        1px solid
-        #E1E1E4;
-}
-
-
-.contact-label{
-    margin-bottom:4px;
-
-    color:var(--muted2);
-
-    font-size:12px;
-}
-
-
-.contact-value{
-    color:var(--ink);
-
-    font-size:15px;
-    font-weight:600;
-
-    word-break:break-word;
-}
-
-
-.contact-actions{
-    display:flex;
-
-    justify-content:center;
-
-    margin-top:20px;
-}
-
-
-.contact-action{
-    display:inline-block;
-
-    min-width:145px;
-
-    padding:10px 18px;
-
-    border-radius:999px;
-
-    background:var(--action-blue);
-
-    color:#ffffff;
-
-    text-align:center;
-    text-decoration:none;
-
-    font-size:13px;
-    font-weight:600;
-
-    transition:
-        background .15s ease,
-        transform .1s ease;
-}
-
-
-.contact-action:hover{
-    background:var(--action-blue-dark);
-}
-
-
-.contact-action:active{
-    transform:scale(.98);
-}
-
-
-
-/* =====================================
-   MOBILE
-===================================== */
+  --main-blue:#5AAAE6;
+  --light-blue:#70B7EA;
+  --dark-blue:#4094D1;
+  --very-light-blue:#F2F8FC;
+  --action-blue:#007AFF;
+  --action-blue-dark:#0071E3;
+  --ink:#1D1D1F;
+  --text:#424245;
+  --muted:#6E6E73;
+  --muted2:#86868B;
+  --surface:#F5F5F7;
+  --border:#D2D2D7;
+  --danger:#C70000;
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif}
+body{min-height:100vh;padding:20px;display:flex;justify-content:center;align-items:center;background:#fff;color:#333}
+.app-container{width:100%;max-width:450px;padding:2.5rem;background:#fff;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.15);text-align:center}
+.hidden{display:none!important}
+.academy-logo{margin-bottom:.5rem;color:var(--main-blue);font-size:2rem;font-weight:700}
+.subtitle{margin-bottom:1.5rem;color:#666;font-size:.95rem}
+.error-alert{display:none;margin-bottom:1.5rem;padding:.75rem;background:#fce4e4;border:1px solid #fcc2c2;border-radius:6px;color:var(--danger);font-size:.85rem;text-align:left}
+.input-group{position:relative;margin-bottom:1.5rem;text-align:left}
+label{display:block;margin-bottom:.5rem;color:#444;font-size:.9rem;font-weight:600}
+input[type=text],input[type=password]{width:100%;padding:.75rem 1rem;border:2px solid #ddd;border-radius:6px;outline:none;font-size:1rem;transition:border-color .25s ease}
+input:focus{border-color:var(--main-blue)}
+input.input-error{border-color:var(--danger);background:#fff9f9}
+.toggle-password{position:absolute;top:38px;right:12px;border:none;background:transparent;color:#777;cursor:pointer;font-size:.85rem}
+.utilities{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;font-size:.85rem}
+.utilities label{display:flex;align-items:center;gap:6px;margin:0;font-size:.85rem}
+.utilities a,.legal-links a{color:var(--main-blue);text-decoration:none;font-weight:600}
+.utilities a:hover,.legal-links a:hover{text-decoration:underline}
+.primary-btn{width:100%;padding:.75rem;border:none;border-radius:7px;background:var(--main-blue);color:#fff;font-size:1rem;font-weight:600;cursor:pointer;transition:.2s}
+.primary-btn:hover{background:var(--dark-blue)}
+.legal-links{margin-top:1rem;color:var(--muted2);font-size:.76rem;line-height:1.7}
+.legal-links .dot{padding:0 .3rem;color:#bbb}
+.grade-heading{margin-bottom:1.5rem;color:var(--main-blue);font-size:1.45rem;font-weight:700;text-align:left}
+.term-list{display:flex;flex-direction:column;gap:.85rem;margin-bottom:2rem}
+.term-row{width:100%;display:flex;align-items:center;gap:1.25rem;padding:1rem 1.2rem;background:#fff;border:1px solid #e8eaed;border-radius:15px;box-shadow:0 2px 8px rgba(0,0,0,.04);cursor:pointer;transition:.2s}
+.term-row:hover{background:var(--very-light-blue);border-color:rgba(90,170,230,.4);transform:translateY(-2px);box-shadow:0 5px 14px rgba(0,0,0,.08)}
+.term-name{color:#222;font-size:1.1rem;font-weight:700}
+.ios-folder{position:relative;width:66px;height:46px;flex-shrink:0;background:var(--main-blue);border-radius:6px;box-shadow:0 1px 2px rgba(0,0,0,.1)}
+.ios-folder:before{content:"";position:absolute;top:-8px;left:0;width:29px;height:13px;background:var(--light-blue);border-radius:6px 6px 0 0}
+.ios-folder:after{content:"";position:absolute;top:3px;left:0;right:0;height:1px;background:rgba(255,255,255,.2)}
+.logout-btn{padding:.6rem 1.4rem;background:#fff;border:1.5px solid var(--main-blue);border-radius:8px;color:var(--main-blue);font-size:.9rem;font-weight:600;cursor:pointer}
+.logout-btn:hover{background:var(--main-blue);color:#fff}
+.topic-list{display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.5rem;text-align:left}
+.topic-card{padding:.9rem 1rem;background:#f8f9fa;border:1px solid #e9ecef;border-radius:8px;color:#212529;font-size:.95rem;font-weight:600;cursor:pointer;transition:.2s}
+.topic-card:hover{background:var(--very-light-blue);border-color:var(--main-blue);transform:translateX(3px)}
+.content-box{margin-bottom:1.5rem;padding:1rem;background:#f8f9fa;border:1px solid #e9ecef;border-radius:8px;text-align:left}
+.content-box h4{margin-bottom:.7rem;color:var(--main-blue)}
+.content-box p{color:#666;font-size:.9rem;line-height:1.5}
+.modal-overlay{display:none;position:fixed;inset:0;z-index:100;align-items:center;justify-content:center;background:rgba(0,0,0,.4)}
+.modal-box{width:90%;max-width:380px;padding:2rem;background:#fff;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,.2);text-align:center}
+.modal-box h3{margin-bottom:.5rem;color:var(--dark-blue)}
+.modal-box p{margin-bottom:1.5rem;color:#666;font-size:.9rem;line-height:1.5}
+.modal-btn{padding:.5rem 1.5rem;border:none;border-radius:6px;background:var(--main-blue);color:#fff;font-weight:600;cursor:pointer}
+.legal-screen{color:var(--ink);text-align:left}
+.legal-topbar{margin-bottom:2rem}
+.legal-back{padding:3px 0;border:none;background:transparent;color:var(--action-blue);font-size:16px;cursor:pointer}
+.legal-header{padding-bottom:24px;border-bottom:1px solid var(--border)}
+.legal-eyebrow{margin-bottom:8px;color:var(--muted);font-size:12px;font-weight:600;letter-spacing:.05em}
+.legal-title{margin-bottom:12px;color:var(--ink);font-size:32px;font-weight:700;letter-spacing:-.03em;line-height:1.08}
+.legal-intro{color:var(--muted);font-size:15px;line-height:1.55}
+.legal-date{margin-top:10px;color:var(--muted2);font-size:12px}
+.legal-section{display:grid;grid-template-columns:42px 1fr;column-gap:12px;padding-top:24px}
+.legal-number{color:#9297a8;font-size:14px;line-height:1.45}
+.legal-section-content h2{margin-bottom:7px;color:var(--ink);font-size:16px;font-weight:600;line-height:1.3}
+.legal-section-content p,.legal-section-content li{color:#5e6376;font-size:13.5px;line-height:1.58}
+.legal-section-content p+p{margin-top:8px}
+.legal-section-content ul{margin-top:10px;padding-left:18px}
+.legal-section-content li{margin-bottom:6px}
+.legal-section-content a{color:var(--action-blue);text-decoration:none}
+.legal-section-content a:hover{text-decoration:underline}
+.legal-footer{padding-top:24px;text-align:center}
+.legal-footer-copy{color:var(--muted);font-size:11px}
+.legal-footer-tagline{margin-top:3px;color:var(--muted2);font-size:11px;font-style:italic}
+.terms-accept-box{margin-top:28px;padding:18px;background:#fff;border:1px solid var(--border);border-radius:14px;box-shadow:none}
+.terms-check{display:flex;align-items:flex-start;gap:11px;margin:0;color:#4f5568;font-size:13px;line-height:1.5;cursor:pointer}
+.terms-check input{width:19px;height:19px;margin-top:2px;flex-shrink:0;accent-color:var(--action-blue)}
+.accept-symbol-wrap{display:flex;justify-content:center;align-items:center;margin:18px 0 2px}
+.accept-symbol{width:78px;max-width:100%;height:auto;display:block;object-fit:contain;box-shadow:none;filter:none}
+.terms-continue-wrap{text-align:center}
+.terms-continue-btn{display:inline-block;min-width:165px;margin-top:15px;padding:10px 20px;border:none;border-radius:999px;background:var(--action-blue);color:#fff;font-size:14px;font-weight:600;cursor:pointer;transition:.15s}
+.terms-continue-btn:hover:not(:disabled){background:var(--action-blue-dark)}
+.terms-continue-btn:disabled{background:#bfc3cd;cursor:not-allowed}
+.contact-card{padding:18px;background:var(--surface);border-radius:16px;margin-top:22px}
+.contact-item{padding:14px 0;text-align:left}
+.contact-item+.contact-item{border-top:1px solid #e1e1e4}
+.contact-label{color:var(--muted2);font-size:12px;margin-bottom:4px}
+.contact-value{color:var(--ink);font-size:15px;font-weight:600;word-break:break-word}
+.contact-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:20px}
+.contact-action{display:inline-block;min-width:145px;text-align:center;padding:10px 18px;border-radius:999px;background:var(--action-blue);color:#fff;text-decoration:none;font-size:13px;font-weight:600;transition:background .15s ease,transform .1s ease}
+.contact-action:hover{background:var(--action-blue-dark)}
+.contact-action.secondary{background:#fff;color:var(--action-blue);border:1px solid var(--action-blue)}
+.contact-action.secondary:hover{background:var(--very-light-blue)}
+.contact-action:active{transform:scale(.98)}
 
 @media(max-width:500px){
-
-    body{
-        padding:12px;
-
-        align-items:flex-start;
-    }
-
-
-    .app-container{
-        margin-top:20px;
-
-        padding:1.5rem;
-    }
-
-
-    .legal-title{
-        font-size:29px;
-    }
-
-
-    .legal-section{
-        grid-template-columns:
-            34px 1fr;
-
-        column-gap:8px;
-
-        padding-top:22px;
-    }
-
+ body{padding:12px;align-items:flex-start}
+ .app-container{margin-top:20px;padding:1.5rem}
+ .legal-title{font-size:29px}
+ .legal-section{grid-template-columns:34px 1fr;column-gap:8px;padding-top:22px}
+ .accept-symbol{width:72px}
 }
-
 </style>
 </head>
-
 
 <body>
 
 <div class="app-container">
 
+<div class="academy-logo" id="academyLogo">Michel Maths</div>
+<p class="subtitle" id="appSubtitle">Academy Portal Login</p>
 
-<!-- =====================================
-     BRAND
-====================================== -->
-
-<div
-    class="academy-logo"
-    id="academyLogo"
->
-    Michel Maths
-</div>
-
-
-<p
-    class="subtitle"
-    id="appSubtitle"
->
-    Academy Portal Login
-</p>
-
-
-
-<!-- =====================================
-     LOGIN
-====================================== -->
 
 <div id="loginScreen">
 
-    <div
-        class="error-alert"
-        id="errorAlert"
-    >
-        Please fill out all required fields.
+  <div class="error-alert" id="errorAlert">
+    Please fill out all required fields.
+  </div>
+
+  <form id="loginForm">
+
+    <div class="input-group">
+      <label for="username">Username or Email</label>
+      <input
+        type="text"
+        id="username"
+        placeholder="Enter your username"
+        autocomplete="username"
+      >
     </div>
 
-
-    <form id="loginForm">
-
-
-        <div class="input-group">
-
-            <label for="username">
-                Username or Email
-            </label>
-
-            <input
-                type="text"
-                id="username"
-                placeholder="Enter your username"
-                autocomplete="username"
-            >
-
-        </div>
-
-
-        <div class="input-group">
-
-            <label for="password">
-                Password
-            </label>
-
-            <input
-                type="password"
-                id="password"
-                placeholder="Enter your password"
-                autocomplete="current-password"
-            >
-
-            <button
-                type="button"
-                class="toggle-password"
-                id="togglePassword"
-            >
-                Show
-            </button>
-
-        </div>
-
-
-        <div class="utilities">
-
-            <label>
-
-                <input
-                    type="checkbox"
-                    id="rememberMe"
-                >
-
-                Remember me
-
-            </label>
-
-
-            <a
-                href="#"
-                id="forgotLink"
-            >
-                Forgot password?
-            </a>
-
-        </div>
-
-
-        <button
-            type="submit"
-            class="primary-btn"
-        >
-            Sign In
-        </button>
-
-
-        <div class="legal-links">
-
-            <a
-                href="#"
-                id="termsLink"
-            >
-                Terms &amp; Conditions
-            </a>
-
-            <span class="dot">
-                ·
-            </span>
-
-            <a
-                href="#"
-                id="privacyLink"
-            >
-                Privacy Policy
-            </a>
-
-            <span class="dot">
-                ·
-            </span>
-
-            <a
-                href="#"
-                id="contactLink"
-            >
-                Contact
-            </a>
-
-        </div>
-
-    </form>
-
-</div>
-
-
-
-<!-- =====================================
-     DASHBOARD
-====================================== -->
-
-<div
-    id="dashboardScreen"
-    class="hidden"
->
-
-    <div class="grade-heading">
-        Grade 8
-    </div>
-
-
-    <div class="term-list">
-
-
-        <div
-            class="term-row"
-            onclick="openScreen('term1Screen')"
-        >
-
-            <div class="ios-folder"></div>
-
-            <span class="term-name">
-                Term 1
-            </span>
-
-        </div>
-
-
-        <div
-            class="term-row"
-            onclick="openScreen('term2Screen')"
-        >
-
-            <div class="ios-folder"></div>
-
-            <span class="term-name">
-                Term 2
-            </span>
-
-        </div>
-
-
-        <div
-            class="term-row"
-            onclick="openScreen('term3Screen')"
-        >
-
-            <div class="ios-folder"></div>
-
-            <span class="term-name">
-                Term 3
-            </span>
-
-        </div>
-
-
-        <div
-            class="term-row"
-            onclick="openScreen('term4Screen')"
-        >
-
-            <div class="ios-folder"></div>
-
-            <span class="term-name">
-                Term 4
-            </span>
-
-        </div>
-
-
-    </div>
-
-
-    <button
+    <div class="input-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        placeholder="Enter your password"
+        autocomplete="current-password"
+      >
+      <button
         type="button"
-        class="logout-btn"
-        id="logoutBtn"
-    >
-        Sign Out
+        class="toggle-password"
+        id="togglePassword"
+      >
+        Show
+      </button>
+    </div>
+
+    <div class="utilities">
+      <label>
+        <input type="checkbox" id="rememberMe">
+        Remember me
+      </label>
+
+      <a href="#" id="forgotLink">
+        Forgot password?
+      </a>
+    </div>
+
+    <button type="submit" class="primary-btn">
+      Sign In
     </button>
+
+    <div class="legal-links">
+      <a href="#" id="termsLink">
+        Terms &amp; Conditions
+      </a>
+
+      <span class="dot">·</span>
+
+      <a href="#" id="privacyLink">
+        Privacy Policy
+      </a>
+
+      <span class="dot">·</span>
+
+      <a href="#" id="contactLink">
+        Contact
+      </a>
+    </div>
+
+  </form>
 
 </div>
 
 
+<div id="dashboardScreen" class="hidden">
 
-<!-- =====================================
-     TERM 1
-====================================== -->
+  <div class="grade-heading">
+    Grade 8
+  </div>
 
-<div
-    id="term1Screen"
-    class="hidden"
->
-
-    <div class="grade-heading">
-        Grade 8 &gt; Term 1
-    </div>
-
-
-    <div class="topic-list">
-
-
-        <div
-            class="topic-card"
-            onclick="openTopic(
-                'Term 1',
-                'WHOLE NUMBERS',
-                'term1Screen'
-            )"
-        >
-            1. WHOLE NUMBERS
-        </div>
-
-
-        <div
-            class="topic-card"
-            onclick="openTopic(
-                'Term 1',
-                'INTEGERS',
-                'term1Screen'
-            )"
-        >
-            2. INTEGERS
-        </div>
-
-
-        <div
-            class="topic-card"
-            onclick="openTopic(
-                'Term 1',
-                'COMMON FRACTIONS',
-                'term1Screen'
-            )"
-        >
-            3. COMMON FRACTIONS
-        </div>
-
-
-        <div
-            class="topic-card"
-            onclick="openTopic(
-                'Term 1',
-                'DECIMAL FRACTIONS',
-                'term1Screen'
-            )"
-        >
-            4. DECIMAL FRACTIONS
-        </div>
-
-
-        <div
-            class="topic-card"
-            onclick="openTopic(
-                'Term 1',
-                'NUMERIC AND GEOMETRIC PATTERNS',
-                'term1Screen'
-            )"
-        >
-            5. NUMERIC AND GEOMETRIC PATTERNS
-        </div>
-
-
-    </div>
-
-
-    <button
-        class="primary-btn"
-        onclick="openScreen('dashboardScreen')"
-    >
-        Back to Dashboard
-    </button>
-
-</div>
-
-
-
-<!-- =====================================
-     TERM 2
-====================================== -->
-
-<div
-    id="term2Screen"
-    class="hidden"
->
-
-    <div class="grade-heading">
-        Grade 8 &gt; Term 2
-    </div>
-
-
-    <div class="topic-list">
-
-
-        <div
-            class="topic-card"
-            onclick="openTopic(
-                'Term 2',
-                'EXPONENTS',
-                'term2Screen'
-            )"
-        >
-            EXPONENTS
-        </div>
-
-
-        <div
-            class="topic-card"
-            onclick="openTopic(
-                'Term 2',
-                'ALGEBRAIC EXPRESSIONS',
-                'term2Screen'
-            )"
-        >
-            ALGEBRAIC EXPRESSIONS
-        </div>
-
-
-        <div
-            class="topic-card"
-            onclick="openTopic(
-                'Term 2',
-                'EQUATIONS',
-                'term2Screen'
-            )"
-        >
-            EQUATIONS
-        </div>
-
-
-        <div
-            class="topic-card"
-            onclick="openTopic(
-                'Term 2',
-                'FUNCTIONS AND RELATIONSHIPS',
-                'term2Screen'
-            )"
-        >
-            FUNCTIONS AND RELATIONSHIPS
-        </div>
-
-
-        <div
-            class="topic-card"
-            onclick="openTopic(
-                'Term 2',
-                'GRAPHS',
-                'term2Screen'
-            )"
-        >
-            GRAPHS
-        </div>
-
-
-    </div>
-
-
-    <button
-        class="primary-btn"
-        onclick="openScreen('dashboardScreen')"
-    >
-        Back to Dashboard
-    </button>
-
-</div>
-
-
-
-<!-- =====================================
-     TERM 3
-====================================== -->
-
-<div
-    id="term3Screen"
-    class="hidden"
->
-
-    <div class="grade-heading">
-        Grade 8 &gt; Term 3
-    </div>
-
-
-    <div class="topic-list">
-
-
-        <div
-            class="topic-card"
-            onclick="openTopic(
-                'Term 3',
-                'DATA HANDLING',
-                'term3Screen'
-            )"
-        >
-            DATA HANDLING
-        </div>
-
-
-        <div
-            class="topic-card"
-            onclick="openTopic(
-                'Term 3',
-                'PROBABILITY',
-                'term3Screen'
-            )"
-        >
-            PROBABILITY
-        </div>
-
-
-        <div
-            class="topic-card"
-            onclick="openTopic(
-                'Term 3',
-                'GEOMETRY OF STRAIGHT LINES',
-                'term3Screen'
-            )"
-        >
-            GEOMETRY OF STRAIGHT LINES
-        </div>
-
-
-        <div
-            class="topic-card"
-            onclick="openTopic(
-                'Term 3',
-                'GEOMETRY OF 2D SHAPES',
-                'term3Screen'
-            )"
-        >
-            GEOMETRY OF 2D SHAPES
-        </div>
-
-
-    </div>
-
-
-    <button
-        class="primary-btn"
-        onclick="openScreen('dashboardScreen')"
-    >
-        Back to Dashboard
-    </button>
-
-</div>
-
-
-
-<!-- =====================================
-     TERM 4
-====================================== -->
-
-<div
-    id="term4Screen"
-    class="hidden"
->
-
-    <div class="grade-heading">
-        Grade 8 &gt; Term 4
-    </div>
-
-
-    <div class="topic-list">
-
-
-        <div
-            class="topic-card"
-            onclick="openTopic(
-                'Term 4',
-                'THEOREM OF PYTHAGORAS',
-                'term4Screen'
-            )"
-        >
-            THEOREM OF PYTHAGORAS
-        </div>
-
-
-        <div
-            class="topic-card"
-            onclick="openTopic(
-                'Term 4',
-                'TRANSFORMATION GEOMETRY',
-                'term4Screen'
-            )"
-        >
-            TRANSFORMATION GEOMETRY
-        </div>
-
-
-        <div
-            class="topic-card"
-            onclick="openTopic(
-                'Term 4',
-                'AREA AND PERIMETER OF 2D SHAPES',
-                'term4Screen'
-            )"
-        >
-            AREA AND PERIMETER OF 2D SHAPES
-        </div>
-
-
-        <div
-            class="topic-card"
-            onclick="openTopic(
-                'Term 4',
-                'SURFACE AREA AND VOLUME OF 3D OBJECTS',
-                'term4Screen'
-            )"
-        >
-            SURFACE AREA AND VOLUME OF 3D OBJECTS
-        </div>
-
-
-    </div>
-
-
-    <button
-        class="primary-btn"
-        onclick="openScreen('dashboardScreen')"
-    >
-        Back to Dashboard
-    </button>
-
-</div>
-
-
-
-<!-- =====================================
-     TOPIC PAGE
-====================================== -->
-
-<div
-    id="topicScreen"
-    class="hidden"
->
+  <div class="term-list">
 
     <div
-        class="grade-heading"
-        id="topicHeading"
-    ></div>
+      class="term-row"
+      onclick="openScreen('term1Screen')"
+    >
+      <div class="ios-folder"></div>
+      <span class="term-name">Term 1</span>
+    </div>
+
+    <div
+      class="term-row"
+      onclick="openScreen('term2Screen')"
+    >
+      <div class="ios-folder"></div>
+      <span class="term-name">Term 2</span>
+    </div>
+
+    <div
+      class="term-row"
+      onclick="openScreen('term3Screen')"
+    >
+      <div class="ios-folder"></div>
+      <span class="term-name">Term 3</span>
+    </div>
+
+    <div
+      class="term-row"
+      onclick="openScreen('term4Screen')"
+    >
+      <div class="ios-folder"></div>
+      <span class="term-name">Term 4</span>
+    </div>
+
+  </div>
+
+  <button
+    type="button"
+    class="logout-btn"
+    id="logoutBtn"
+  >
+    Sign Out
+  </button>
+
+</div>
 
 
-    <div class="content-box">
+<div id="term1Screen" class="hidden">
 
-        <h4 id="topicTitle"></h4>
+  <div class="grade-heading">
+    Grade 8 &gt; Term 1
+  </div>
 
-        <p>
-            Your lesson videos, worksheets,
-            memos and memo explanations
-            will be placed here.
-        </p>
+  <div class="topic-list">
+
+    <div
+      class="topic-card"
+      onclick="openTopic('Term 1','WHOLE NUMBERS','term1Screen')"
+    >
+      1. WHOLE NUMBERS
+    </div>
+
+    <div
+      class="topic-card"
+      onclick="openTopic('Term 1','INTEGERS','term1Screen')"
+    >
+      2. INTEGERS
+    </div>
+
+    <div
+      class="topic-card"
+      onclick="openTopic('Term 1','COMMON FRACTIONS','term1Screen')"
+    >
+      3. COMMON FRACTIONS
+    </div>
+
+    <div
+      class="topic-card"
+      onclick="openTopic('Term 1','DECIMAL FRACTIONS','term1Screen')"
+    >
+      4. DECIMAL FRACTIONS
+    </div>
+
+    <div
+      class="topic-card"
+      onclick="openTopic('Term 1','NUMERIC AND GEOMETRIC PATTERNS','term1Screen')"
+    >
+      5. NUMERIC AND GEOMETRIC PATTERNS
+    </div>
+
+  </div>
+
+  <button
+    class="primary-btn"
+    onclick="openScreen('dashboardScreen')"
+  >
+    Back to Dashboard
+  </button>
+
+</div>
+
+
+<div id="term2Screen" class="hidden">
+
+  <div class="grade-heading">
+    Grade 8 &gt; Term 2
+  </div>
+
+  <div class="topic-list">
+
+    <div
+      class="topic-card"
+      onclick="openTopic('Term 2','EXPONENTS','term2Screen')"
+    >
+      EXPONENTS
+    </div>
+
+    <div
+      class="topic-card"
+      onclick="openTopic('Term 2','ALGEBRAIC EXPRESSIONS','term2Screen')"
+    >
+      ALGEBRAIC EXPRESSIONS
+    </div>
+
+    <div
+      class="topic-card"
+      onclick="openTopic('Term 2','EQUATIONS','term2Screen')"
+    >
+      EQUATIONS
+    </div>
+
+    <div
+      class="topic-card"
+      onclick="openTopic('Term 2','FUNCTIONS AND RELATIONSHIPS','term2Screen')"
+    >
+      FUNCTIONS AND RELATIONSHIPS
+    </div>
+
+    <div
+      class="topic-card"
+      onclick="openTopic('Term 2','GRAPHS','term2Screen')"
+    >
+      GRAPHS
+    </div>
+
+  </div>
+
+  <button
+    class="primary-btn"
+    onclick="openScreen('dashboardScreen')"
+  >
+    Back to Dashboard
+  </button>
+
+</div>
+
+
+<div id="term3Screen" class="hidden">
+
+  <div class="grade-heading">
+    Grade 8 &gt; Term 3
+  </div>
+
+  <div class="topic-list">
+
+    <div
+      class="topic-card"
+      onclick="openTopic('Term 3','DATA HANDLING','term3Screen')"
+    >
+      DATA HANDLING
+    </div>
+
+    <div
+      class="topic-card"
+      onclick="openTopic('Term 3','PROBABILITY','term3Screen')"
+    >
+      PROBABILITY
+    </div>
+
+    <div
+      class="topic-card"
+      onclick="openTopic('Term 3','GEOMETRY OF STRAIGHT LINES','term3Screen')"
+    >
+      GEOMETRY OF STRAIGHT LINES
+    </div>
+
+    <div
+      class="topic-card"
+      onclick="openTopic('Term 3','GEOMETRY OF 2D SHAPES','term3Screen')"
+    >
+      GEOMETRY OF 2D SHAPES
+    </div>
+
+  </div>
+
+  <button
+    class="primary-btn"
+    onclick="openScreen('dashboardScreen')"
+  >
+    Back to Dashboard
+  </button>
+
+</div>
+
+
+<div id="term4Screen" class="hidden">
+
+  <div class="grade-heading">
+    Grade 8 &gt; Term 4
+  </div>
+
+  <div class="topic-list">
+
+    <div
+      class="topic-card"
+      onclick="openTopic('Term 4','THEOREM OF PYTHAGORAS','term4Screen')"
+    >
+      THEOREM OF PYTHAGORAS
+    </div>
+
+    <div
+      class="topic-card"
+      onclick="openTopic('Term 4','TRANSFORMATION GEOMETRY','term4Screen')"
+    >
+      TRANSFORMATION GEOMETRY
+    </div>
+
+    <div
+      class="topic-card"
+      onclick="openTopic('Term 4','AREA AND PERIMETER OF 2D SHAPES','term4Screen')"
+    >
+      AREA AND PERIMETER OF 2D SHAPES
+    </div>
+
+    <div
+      class="topic-card"
+      onclick="openTopic('Term 4','SURFACE AREA AND VOLUME OF 3D OBJECTS','term4Screen')"
+    >
+      SURFACE AREA AND VOLUME OF 3D OBJECTS
+    </div>
+
+  </div>
+
+  <button
+    class="primary-btn"
+    onclick="openScreen('dashboardScreen')"
+  >
+    Back to Dashboard
+  </button>
+
+</div>
+
+
+<div id="topicScreen" class="hidden">
+
+  <div
+    class="grade-heading"
+    id="topicHeading"
+  ></div>
+
+  <div class="content-box">
+
+    <h4 id="topicTitle"></h4>
+
+    <p>
+      Your lesson videos, worksheets,
+      memos and memo explanations will
+      be placed here.
+    </p>
+
+  </div>
+
+  <button
+    class="primary-btn"
+    id="topicBackBtn"
+  >
+    Back
+  </button>
+
+</div>
+
+
+<div id="termsScreen" class="hidden legal-screen">
+
+  <div class="legal-topbar">
+    <button
+      class="legal-back"
+      id="termsBackBtn"
+    >
+      ‹ Back
+    </button>
+  </div>
+
+  <header class="legal-header">
+
+    <div class="legal-eyebrow">
+      LEGAL
+    </div>
+
+    <h1 class="legal-title">
+      Terms &amp; Conditions
+    </h1>
+
+    <p class="legal-intro">
+      These terms explain the conditions
+      under which Michel Maths Academy
+      provides educational materials,
+      learning access and related services.
+    </p>
+
+    <p class="legal-date">
+      Last updated: September 2026
+    </p>
+
+  </header>
+
+
+  <section class="legal-section">
+
+    <div class="legal-number">01</div>
+
+    <div class="legal-section-content">
+
+      <h2>
+        Agreement to these terms
+      </h2>
+
+      <p>
+        By purchasing access to,
+        registering for or using Michel
+        Maths Academy materials or services,
+        the student, parent, guardian or
+        purchaser agrees to comply with
+        these Terms and Conditions.
+      </p>
 
     </div>
 
+  </section>
+
+
+  <section class="legal-section">
+
+    <div class="legal-number">02</div>
+
+    <div class="legal-section-content">
+
+      <h2>
+        Payment and access
+      </h2>
+
+      <p>
+        Fees and payment arrangements are
+        agreed directly with the student,
+        parent or guardian through WhatsApp
+        or another agreed communication
+        method. Access to paid learning
+        materials or services will normally
+        be provided once payment has been
+        confirmed, unless another arrangement
+        has been agreed to in writing.
+      </p>
+
+      <p>
+        Proof of payment may be requested
+        before access is activated or
+        continued.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="legal-section">
+
+    <div class="legal-number">03</div>
+
+    <div class="legal-section-content">
+
+      <h2>
+        Personal educational use
+      </h2>
+
+      <p>
+        Paid Michel Maths Academy materials
+        are supplied for the registered
+        student's personal educational use
+        only. Purchasing access gives
+        permission to use the materials
+        for learning; it does not transfer
+        ownership or copyright.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="legal-section">
+
+    <div class="legal-number">04</div>
+
+    <div class="legal-section-content">
+
+      <h2>
+        Copyright and ownership
+      </h2>
+
+      <p>
+        Unless otherwise stated, original
+        notes, worksheets, exercises,
+        assessments, answer sheets,
+        graphics, PDFs, videos, lesson
+        content and other resources created
+        for Michel Maths Academy remain
+        the intellectual property of
+        Michel Maths Academy and/or their
+        relevant creator.
+      </p>
+
+      <p>
+        These materials are protected under
+        applicable South African copyright
+        law, including the Copyright Act
+        98 of 1978.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="legal-section">
+
+    <div class="legal-number">05</div>
+
+    <div class="legal-section-content">
+
+      <h2>
+        No unauthorised sharing
+      </h2>
+
+      <p>
+        Without prior written permission
+        from Michel Maths Academy,
+        users may not:
+      </p>
+
+      <ul>
+        <li>
+          forward paid worksheets,
+          PDFs, videos or other resources
+          to another person;
+        </li>
+
+        <li>
+          upload materials to WhatsApp
+          groups, social media, websites,
+          shared drives, Telegram groups
+          or other platforms;
+        </li>
+
+        <li>
+          copy or reproduce materials
+          for distribution;
+        </li>
+
+        <li>
+          sell, resell or commercially
+          exploit the materials;
+        </li>
+
+        <li>
+          remove Michel Maths Academy
+          branding, copyright notices
+          or ownership information; or
+        </li>
+
+        <li>
+          share login or account details
+          with another person without
+          permission.
+        </li>
+      </ul>
+
+    </div>
+
+  </section>
+
+
+  <section class="legal-section">
+
+    <div class="legal-number">06</div>
+
+    <div class="legal-section-content">
+
+      <h2>
+        Outstanding payments
+      </h2>
+
+      <p>
+        If an agreed payment becomes overdue,
+        Michel Maths Academy may temporarily
+        pause access to paid materials or
+        services until the outstanding amount
+        has been settled or another arrangement
+        has been agreed to.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="legal-section">
+
+    <div class="legal-number">07</div>
+
+    <div class="legal-section-content">
+
+      <h2>
+        Parent or guardian responsibility
+      </h2>
+
+      <p>
+        Where a student is a minor,
+        the parent or guardian responsible
+        for payment should review and accept
+        these Terms and Conditions on the
+        student's behalf. An adult student
+        may accept them personally.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="legal-section">
+
+    <div class="legal-number">08</div>
+
+    <div class="legal-section-content">
+
+      <h2>
+        Permission to use materials
+      </h2>
+
+      <p>
+        A student, parent, teacher,
+        school or organisation wishing
+        to reproduce, distribute, display
+        or use Michel Maths Academy
+        materials beyond personal study
+        must obtain prior written permission.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="legal-section">
+
+    <div class="legal-number">09</div>
+
+    <div class="legal-section-content">
+
+      <h2>
+        Breach of these terms
+      </h2>
+
+      <p>
+        Where these terms are seriously
+        breached, Michel Maths Academy
+        may take reasonable action including
+        restricting or terminating access,
+        requesting removal of unlawfully
+        shared material, or pursuing remedies
+        available under applicable law.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="legal-section">
+
+    <div class="legal-number">10</div>
+
+    <div class="legal-section-content">
+
+      <h2>
+        Consumer rights
+      </h2>
+
+      <p>
+        Nothing in these Terms and Conditions
+        is intended to remove or limit rights
+        a consumer may have under applicable
+        South African law, including the
+        Consumer Protection Act 68 of 2008.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="legal-section">
+
+    <div class="legal-number">11</div>
+
+    <div class="legal-section-content">
+
+      <h2>
+        Changes to these terms
+      </h2>
+
+      <p>
+        Michel Maths Academy may update
+        these Terms and Conditions when
+        reasonably necessary. Material
+        changes affecting existing paid
+        access or obligations should be
+        communicated before they take effect.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="legal-section">
+
+    <div class="legal-number">12</div>
+
+    <div class="legal-section-content">
+
+      <h2>
+        Acceptance
+      </h2>
+
+      <p>
+        By accepting these terms,
+        the student, parent, guardian
+        or purchaser confirms that they
+        have read, understood and agreed
+        to comply with them and acknowledges
+        the Michel Maths Academy
+        Privacy Policy.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <div class="terms-accept-box">
+
+    <label class="terms-check">
+
+      <input
+        type="checkbox"
+        id="termsAcceptCheckbox"
+      >
+
+      <span>
+        I have read and agree to the
+        Michel Maths Academy Terms &amp;
+        Conditions and acknowledge the
+        Privacy Policy, including the
+        rules concerning payment, access
+        and sharing of paid learning
+        materials.
+      </span>
+
+    </label>
+
+
+    <div
+      class="accept-symbol-wrap"
+      aria-hidden="true"
+    >
+
+      <img
+        class="accept-symbol"
+        src="data:image/webp;base64,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"
+        alt=""
+        draggable="false"
+      >
+
+    </div>
+
+
+    <div class="terms-continue-wrap">
+
+      <button
+        type="button"
+        class="terms-continue-btn"
+        id="termsContinueBtn"
+        disabled
+      >
+        Accept &amp; Continue
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <footer class="legal-footer">
+
+    <div class="legal-footer-copy">
+      © 2026 Michel Maths Academy
+    </div>
+
+    <div class="legal-footer-tagline">
+      More than maths. A brighter future.
+    </div>
+
+  </footer>
+
+</div>
+
+
+<div id="privacyScreen" class="hidden legal-screen">
+
+  <div class="legal-topbar">
 
     <button
-        class="primary-btn"
-        id="topicBackBtn"
+      class="legal-back"
+      id="privacyBackBtn"
     >
-        Back
+      ‹ Back
     </button>
 
-</div>
+  </div>
 
 
+  <header class="legal-header">
 
-<!-- =====================================
-     TERMS & CONDITIONS
-====================================== -->
+    <div class="legal-eyebrow">
+      PRIVACY
+    </div>
 
-<div
-    id="termsScreen"
-    class="hidden legal-screen"
->
+    <h1 class="legal-title">
+      Privacy Policy
+    </h1>
 
-    <div class="legal-topbar">
+    <p class="legal-intro">
+      This policy explains how Michel
+      Maths Academy handles personal
+      information relating to students,
+      parents and guardians.
+    </p>
 
-        <button
-            class="legal-back"
-            id="termsBackBtn"
-        >
-            ‹ Back
-        </button>
+    <p class="legal-date">
+      Last updated: September 2026
+    </p>
+
+  </header>
+
+
+  <section class="legal-section">
+
+    <div class="legal-number">01</div>
+
+    <div class="legal-section-content">
+
+      <h2>
+        About this policy
+      </h2>
+
+      <p>
+        Michel Maths Academy respects
+        the privacy of students, parents
+        and guardians and aims to handle
+        personal information responsibly
+        and in accordance with applicable
+        South African privacy law,
+        including the Protection of
+        Personal Information Act 4
+        of 2013 (POPIA).
+      </p>
 
     </div>
 
+  </section>
 
-    <header class="legal-header">
 
-        <div class="legal-eyebrow">
-            LEGAL
-        </div>
+  <section class="legal-section">
 
+    <div class="legal-number">02</div>
 
-        <h1 class="legal-title">
-            Terms &amp; Conditions
-        </h1>
+    <div class="legal-section-content">
 
+      <h2>
+        Information we may collect
+      </h2>
 
-        <p class="legal-intro">
-
-            These terms explain the
-            conditions under which
-            Michel Maths Academy provides
-            educational materials,
-            learning access and related
-            services.
-
-        </p>
-
-
-        <p class="legal-date">
-            Last updated: September 2026
-        </p>
-
-    </header>
-
-
-
-    <section class="legal-section">
-
-        <div class="legal-number">
-            01
-        </div>
-
-        <div class="legal-section-content">
-
-            <h2>
-                Agreement to these terms
-            </h2>
-
-            <p>
-                By purchasing access to,
-                registering for or using
-                Michel Maths Academy
-                materials or services, the
-                student, parent, guardian
-                or purchaser agrees to
-                comply with these Terms
-                and Conditions.
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <section class="legal-section">
-
-        <div class="legal-number">
-            02
-        </div>
-
-        <div class="legal-section-content">
-
-            <h2>
-                Payment and access
-            </h2>
-
-            <p>
-                Fees and payment arrangements
-                are agreed directly with the
-                student, parent or guardian
-                through WhatsApp or another
-                agreed communication method.
-                Access to paid learning
-                materials or services will
-                normally be provided once
-                payment has been confirmed,
-                unless another arrangement has
-                been agreed to in writing.
-            </p>
-
-            <p>
-                Proof of payment may be
-                requested before access is
-                activated or continued.
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <section class="legal-section">
-
-        <div class="legal-number">
-            03
-        </div>
-
-        <div class="legal-section-content">
-
-            <h2>
-                Personal educational use
-            </h2>
-
-            <p>
-                Paid Michel Maths Academy
-                materials are supplied for
-                the registered student's
-                personal educational use
-                only.
-            </p>
-
-            <p>
-                Purchasing access gives
-                permission to use the
-                materials for learning.
-                It does not transfer
-                ownership or copyright.
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <section class="legal-section">
-
-        <div class="legal-number">
-            04
-        </div>
-
-        <div class="legal-section-content">
-
-            <h2>
-                Copyright and ownership
-            </h2>
-
-            <p>
-                Unless otherwise stated,
-                original notes, worksheets,
-                exercises, assessments,
-                answer sheets, graphics,
-                PDFs, videos, lesson content
-                and other resources created
-                for Michel Maths Academy
-                remain the intellectual
-                property of Michel Maths
-                Academy and/or their
-                relevant creator.
-            </p>
-
-            <p>
-                These materials are protected
-                under applicable South African
-                copyright law, including the
-                Copyright Act 98 of 1978.
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <section class="legal-section">
-
-        <div class="legal-number">
-            05
-        </div>
-
-        <div class="legal-section-content">
-
-            <h2>
-                No unauthorised sharing
-            </h2>
-
-            <p>
-                Without prior written
-                permission from Michel Maths
-                Academy, users may not:
-            </p>
-
-            <ul>
-
-                <li>
-                    Forward paid worksheets,
-                    PDFs, videos or other
-                    resources to another
-                    person.
-                </li>
-
-                <li>
-                    Upload materials to
-                    WhatsApp groups, social
-                    media, websites, shared
-                    drives, Telegram groups
-                    or other platforms.
-                </li>
-
-                <li>
-                    Copy or reproduce
-                    materials for
-                    distribution.
-                </li>
-
-                <li>
-                    Sell, resell or
-                    commercially exploit
-                    the materials.
-                </li>
-
-                <li>
-                    Remove Michel Maths
-                    Academy branding,
-                    copyright notices or
-                    ownership information.
-                </li>
-
-                <li>
-                    Share login or account
-                    details with another
-                    person without permission.
-                </li>
-
-            </ul>
-
-        </div>
-
-    </section>
-
-
-
-    <section class="legal-section">
-
-        <div class="legal-number">
-            06
-        </div>
-
-        <div class="legal-section-content">
-
-            <h2>
-                Outstanding payments
-            </h2>
-
-            <p>
-                If an agreed payment becomes
-                overdue, Michel Maths Academy
-                may temporarily pause access
-                to paid materials or services
-                until the outstanding amount
-                has been settled or another
-                arrangement has been agreed
-                to.
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <section class="legal-section">
-
-        <div class="legal-number">
-            07
-        </div>
-
-        <div class="legal-section-content">
-
-            <h2>
-                Parent or guardian responsibility
-            </h2>
-
-            <p>
-                Where a student is a minor,
-                the parent or guardian
-                responsible for payment should
-                review and accept these Terms
-                and Conditions on the student's
-                behalf.
-            </p>
-
-            <p>
-                An adult student may accept
-                these terms personally.
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <section class="legal-section">
-
-        <div class="legal-number">
-            08
-        </div>
-
-        <div class="legal-section-content">
-
-            <h2>
-                Permission to use materials
-            </h2>
-
-            <p>
-                A student, parent, teacher,
-                school or organisation wishing
-                to reproduce, distribute,
-                display or use Michel Maths
-                Academy materials beyond
-                personal study must obtain
-                prior written permission.
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <section class="legal-section">
-
-        <div class="legal-number">
-            09
-        </div>
-
-        <div class="legal-section-content">
-
-            <h2>
-                Breach of these terms
-            </h2>
-
-            <p>
-                Where these terms are seriously
-                breached, Michel Maths Academy
-                may take reasonable action
-                including restricting or
-                terminating access, requesting
-                removal of unlawfully shared
-                material, or pursuing remedies
-                available under applicable law.
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <section class="legal-section">
-
-        <div class="legal-number">
-            10
-        </div>
-
-        <div class="legal-section-content">
-
-            <h2>
-                Consumer rights
-            </h2>
-
-            <p>
-                Nothing in these Terms and
-                Conditions is intended to
-                remove or limit rights a
-                consumer may have under
-                applicable South African law,
-                including the Consumer
-                Protection Act 68 of 2008.
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <section class="legal-section">
-
-        <div class="legal-number">
-            11
-        </div>
-
-        <div class="legal-section-content">
-
-            <h2>
-                Changes to these terms
-            </h2>
-
-            <p>
-                Michel Maths Academy may update
-                these Terms and Conditions when
-                reasonably necessary. Material
-                changes affecting existing paid
-                access or obligations should be
-                communicated before they take
-                effect.
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <section class="legal-section">
-
-        <div class="legal-number">
-            12
-        </div>
-
-        <div class="legal-section-content">
-
-            <h2>
-                Acceptance
-            </h2>
-
-            <p>
-                By accepting these terms, the
-                student, parent, guardian or
-                purchaser confirms that they
-                have read, understood and
-                agreed to comply with them and
-                acknowledges the Michel Maths
-                Academy Privacy Policy.
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ACCEPTANCE -->
-
-    <div class="terms-accept-box">
-
-        <label class="terms-check">
-
-            <input
-                type="checkbox"
-                id="termsAcceptCheckbox"
-            >
-
-            <span>
-
-                I have read and agree to the
-                Michel Maths Academy Terms
-                &amp; Conditions and acknowledge
-                the Privacy Policy, including
-                the rules concerning payment,
-                access and sharing of paid
-                learning materials.
-
-            </span>
-
-        </label>
-
-
-        <div class="terms-continue-wrap">
-
-            <button
-                type="button"
-                class="terms-continue-btn"
-                id="termsContinueBtn"
-                disabled
-            >
-                Accept &amp; Continue
-            </button>
-
-        </div>
+      <p>
+        Depending on the service, we may
+        collect information such as a
+        student's name, grade, contact
+        information, parent or guardian
+        details, account information,
+        communications, payment confirmation
+        details and information reasonably
+        required to provide educational
+        services.
+      </p>
 
     </div>
 
+  </section>
 
 
-    <footer class="legal-footer">
+  <section class="legal-section">
 
-        <div class="legal-footer-copy">
-            © 2026 Michel Maths Academy
-        </div>
+    <div class="legal-number">03</div>
 
-        <div class="legal-footer-tagline">
-            More than maths. A brighter tomorrow.
-        </div>
+    <div class="legal-section-content">
 
-    </footer>
+      <h2>
+        How information is used
+      </h2>
 
-</div>
-
-
-
-<!-- =====================================
-     PRIVACY POLICY
-====================================== -->
-
-<div
-    id="privacyScreen"
-    class="hidden legal-screen"
->
-
-    <div class="legal-topbar">
-
-        <button
-            class="legal-back"
-            id="privacyBackBtn"
-        >
-            ‹ Back
-        </button>
+      <p>
+        Personal information may be used
+        to manage student access, provide
+        learning materials, communicate
+        about lessons or services,
+        confirm payment arrangements,
+        respond to support requests,
+        keep appropriate records and meet
+        applicable legal obligations.
+      </p>
 
     </div>
 
+  </section>
 
-    <header class="legal-header">
 
-        <div class="legal-eyebrow">
-            PRIVACY
-        </div>
+  <section class="legal-section">
 
+    <div class="legal-number">04</div>
 
-        <h1 class="legal-title">
-            Privacy Policy
-        </h1>
+    <div class="legal-section-content">
 
+      <h2>
+        Children and students
+      </h2>
 
-        <p class="legal-intro">
-
-            This policy explains how
-            Michel Maths Academy handles
-            personal information relating
-            to students, parents and
-            guardians.
-
-        </p>
-
-
-        <p class="legal-date">
-            Last updated: September 2026
-        </p>
-
-    </header>
-
-
-
-    <section class="legal-section">
-
-        <div class="legal-number">
-            01
-        </div>
-
-        <div class="legal-section-content">
-
-            <h2>
-                About this policy
-            </h2>
-
-            <p>
-                Michel Maths Academy respects
-                the privacy of students,
-                parents and guardians and aims
-                to handle personal information
-                responsibly and in accordance
-                with applicable South African
-                privacy law, including the
-                Protection of Personal
-                Information Act 4 of 2013
-                (POPIA).
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <section class="legal-section">
-
-        <div class="legal-number">
-            02
-        </div>
-
-        <div class="legal-section-content">
-
-            <h2>
-                Information we may collect
-            </h2>
-
-            <p>
-                Depending on the service, we
-                may collect information such
-                as a student's name, grade,
-                contact information, parent or
-                guardian details, account
-                information, communications,
-                payment confirmation details
-                and information reasonably
-                required to provide educational
-                services.
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <section class="legal-section">
-
-        <div class="legal-number">
-            03
-        </div>
-
-        <div class="legal-section-content">
-
-            <h2>
-                How information is used
-            </h2>
-
-            <p>
-                Personal information may be
-                used to manage student access,
-                provide learning materials,
-                communicate about lessons or
-                services, confirm payment
-                arrangements, respond to
-                support requests, keep
-                appropriate records and meet
-                applicable legal obligations.
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <section class="legal-section">
-
-        <div class="legal-number">
-            04
-        </div>
-
-        <div class="legal-section-content">
-
-            <h2>
-                Children and students
-            </h2>
-
-            <p>
-                Where a student is a minor,
-                Michel Maths Academy may
-                communicate with or rely on
-                the involvement of a parent
-                or guardian where appropriate.
-                Personal information relating
-                to minors will be handled with
-                additional care and only for
-                legitimate educational,
-                administrative or legal
-                purposes.
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <section class="legal-section">
-
-        <div class="legal-number">
-            05
-        </div>
-
-        <div class="legal-section-content">
-
-            <h2>
-                WhatsApp, email and telephone
-            </h2>
-
-            <p>
-                Michel Maths Academy may use
-                WhatsApp, email or telephone
-                for academy-related
-                communication, including
-                scheduling, access support,
-                payment confirmation and other
-                service-related matters.
-                Users should avoid sending
-                unnecessary sensitive
-                information through these
-                channels.
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <section class="legal-section">
-
-        <div class="legal-number">
-            06
-        </div>
-
-        <div class="legal-section-content">
-
-            <h2>
-                Sharing personal information
-            </h2>
-
-            <p>
-                Michel Maths Academy does not
-                sell personal information.
-                Information may be disclosed
-                only where reasonably necessary
-                to provide the service, where
-                permission has been given,
-                where a service provider is
-                legitimately involved, or
-                where disclosure is required
-                or permitted by law.
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <section class="legal-section">
-
-        <div class="legal-number">
-            07
-        </div>
-
-        <div class="legal-section-content">
-
-            <h2>
-                Security
-            </h2>
-
-            <p>
-                Reasonable organisational and
-                technical measures will be
-                used to protect personal
-                information against loss,
-                misuse, unauthorised access,
-                alteration or disclosure.
-                No electronic system can,
-                however, be guaranteed to be
-                completely secure.
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <section class="legal-section">
-
-        <div class="legal-number">
-            08
-        </div>
-
-        <div class="legal-section-content">
-
-            <h2>
-                Retention
-            </h2>
-
-            <p>
-                Personal information will be
-                kept only for as long as
-                reasonably necessary for the
-                purpose for which it was
-                collected, for legitimate
-                record-keeping needs, or where
-                a longer period is required or
-                permitted by law.
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <section class="legal-section">
-
-        <div class="legal-number">
-            09
-        </div>
-
-        <div class="legal-section-content">
-
-            <h2>
-                Your privacy rights
-            </h2>
-
-            <p>
-                Subject to applicable law, a
-                student, parent or guardian
-                may ask what personal
-                information is held about
-                them, request correction of
-                inaccurate information, or
-                raise a privacy concern.
-                Certain records may need to
-                be retained where required
-                by law or reasonably necessary
-                for legitimate purposes.
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <section class="legal-section">
-
-        <div class="legal-number">
-            10
-        </div>
-
-        <div class="legal-section-content">
-
-            <h2>
-                Changes to this policy
-            </h2>
-
-            <p>
-                This Privacy Policy may be
-                updated when the academy's
-                practices, services or legal
-                obligations change. Material
-                updates should be communicated
-                where reasonably necessary.
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <section class="legal-section">
-
-        <div class="legal-number">
-            11
-        </div>
-
-        <div class="legal-section-content">
-
-            <h2>
-                Privacy contact
-            </h2>
-
-            <p>
-                Questions or requests about
-                privacy can be directed to
-                Michel Maths Academy using
-                the contact details below.
-            </p>
-
-
-            <p>
-
-                Phone / WhatsApp:
-
-                <a href="tel:+27678087278">
-                    067 808 7278
-                </a>
-
-                <br>
-
-                Email:
-
-                <a href="mailto:michel.matusse@icloud.com">
-                    michel.matusse@icloud.com
-                </a>
-
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <footer class="legal-footer">
-
-        <div class="legal-footer-copy">
-            © 2026 Michel Maths Academy
-        </div>
-
-        <div class="legal-footer-tagline">
-            More than maths. A brighter tomorrow.
-        </div>
-
-    </footer>
-
-</div>
-
-
-
-<!-- =====================================
-     CONTACT
-====================================== -->
-
-<div
-    id="contactScreen"
-    class="hidden legal-screen"
->
-
-    <div class="legal-topbar">
-
-        <button
-            class="legal-back"
-            id="contactBackBtn"
-        >
-            ‹ Back
-        </button>
+      <p>
+        Where a student is a minor,
+        Michel Maths Academy may communicate
+        with or rely on the involvement of
+        a parent or guardian where appropriate.
+        Personal information relating to
+        minors will be handled with additional
+        care and only for legitimate educational,
+        administrative or legal purposes.
+      </p>
 
     </div>
 
-
-    <header class="legal-header">
-
-        <div class="legal-eyebrow">
-            CONTACT
-        </div>
+  </section>
 
 
-        <h1 class="legal-title">
-            Contact Michel Maths
-        </h1>
+  <section class="legal-section">
 
+    <div class="legal-number">05</div>
 
-        <p class="legal-intro">
+    <div class="legal-section-content">
 
-            For learning access,
-            account help, payment
-            confirmation or general
-            enquiries, contact
-            Michel Maths Academy
-            directly.
+      <h2>
+        WhatsApp, email and telephone
+      </h2>
 
-        </p>
-
-    </header>
-
-
-
-    <div class="contact-card">
-
-
-        <div class="contact-item">
-
-            <div class="contact-label">
-                Phone / WhatsApp
-            </div>
-
-            <div class="contact-value">
-                067 808 7278
-            </div>
-
-        </div>
-
-
-
-        <div class="contact-item">
-
-            <div class="contact-label">
-                Email
-            </div>
-
-            <div class="contact-value">
-                michel.matusse@icloud.com
-            </div>
-
-        </div>
-
+      <p>
+        Michel Maths Academy may use
+        WhatsApp, email or telephone for
+        academy-related communication,
+        including scheduling, access support,
+        payment confirmation and other
+        service-related matters. Users should
+        avoid sending unnecessary sensitive
+        information through these channels.
+      </p>
 
     </div>
 
+  </section>
 
 
-    <!-- ONE MAIN CONTACT ACTION -->
+  <section class="legal-section">
 
-    <div class="contact-actions">
+    <div class="legal-number">06</div>
 
-        <a
-            class="contact-action"
-            href="https://wa.me/27678087278"
-            target="_blank"
-            rel="noopener"
-        >
-            WhatsApp
+    <div class="legal-section-content">
+
+      <h2>
+        Sharing personal information
+      </h2>
+
+      <p>
+        Michel Maths Academy does not sell
+        personal information. Information may
+        be disclosed only where reasonably
+        necessary to provide the service,
+        where permission has been given,
+        where a service provider is legitimately
+        involved, or where disclosure is
+        required or permitted by law.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="legal-section">
+
+    <div class="legal-number">07</div>
+
+    <div class="legal-section-content">
+
+      <h2>
+        Security
+      </h2>
+
+      <p>
+        Reasonable organisational and
+        technical measures will be used
+        to protect personal information
+        against loss, misuse, unauthorised
+        access, alteration or disclosure.
+        No electronic system can, however,
+        be guaranteed to be completely secure.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="legal-section">
+
+    <div class="legal-number">08</div>
+
+    <div class="legal-section-content">
+
+      <h2>
+        Retention
+      </h2>
+
+      <p>
+        Personal information will be kept
+        only for as long as reasonably
+        necessary for the purpose for which
+        it was collected, for legitimate
+        record-keeping needs, or where a
+        longer period is required or
+        permitted by law.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="legal-section">
+
+    <div class="legal-number">09</div>
+
+    <div class="legal-section-content">
+
+      <h2>
+        Your privacy rights
+      </h2>
+
+      <p>
+        Subject to applicable law,
+        a student, parent or guardian may ask
+        what personal information is held
+        about them, request correction of
+        inaccurate information, or raise a
+        privacy concern. Certain records may
+        need to be retained where required
+        by law or reasonably necessary for
+        legitimate purposes.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="legal-section">
+
+    <div class="legal-number">10</div>
+
+    <div class="legal-section-content">
+
+      <h2>
+        Changes to this policy
+      </h2>
+
+      <p>
+        This Privacy Policy may be updated
+        when the academy's practices,
+        services or legal obligations change.
+        Material updates should be communicated
+        where reasonably necessary.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section class="legal-section">
+
+    <div class="legal-number">11</div>
+
+    <div class="legal-section-content">
+
+      <h2>
+        Privacy contact
+      </h2>
+
+      <p>
+        Questions or requests about privacy
+        can be directed to Michel Maths Academy
+        using the contact details below.
+      </p>
+
+      <p>
+        Phone / WhatsApp:
+        <a href="tel:+27678087278">
+          067 808 7278
         </a>
 
+        <br>
+
+        Email:
+        <a href="mailto:michel.matusse@icloud.com">
+          michel.matusse@icloud.com
+        </a>
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <footer class="legal-footer">
+
+    <div class="legal-footer-copy">
+      © 2026 Michel Maths Academy
+    </div>
+
+    <div class="legal-footer-tagline">
+      More than maths. A brighter future.
+    </div>
+
+  </footer>
+
+</div>
+
+
+<div id="contactScreen" class="hidden legal-screen">
+
+  <div class="legal-topbar">
+
+    <button
+      class="legal-back"
+      id="contactBackBtn"
+    >
+      ‹ Back
+    </button>
+
+  </div>
+
+
+  <header class="legal-header">
+
+    <div class="legal-eyebrow">
+      CONTACT
+    </div>
+
+    <h1 class="legal-title">
+      Contact Michel Maths
+    </h1>
+
+    <p class="legal-intro">
+      For learning access, account help,
+      payment confirmation or general
+      enquiries, contact Michel Maths
+      Academy directly.
+    </p>
+
+  </header>
+
+
+  <div class="contact-card">
+
+    <div class="contact-item">
+
+      <div class="contact-label">
+        Phone / WhatsApp
+      </div>
+
+      <div class="contact-value">
+        067 808 7278
+      </div>
+
     </div>
 
 
+    <div class="contact-item">
 
-    <footer class="legal-footer">
+      <div class="contact-label">
+        Email
+      </div>
 
-        <div class="legal-footer-copy">
-            © 2026 Michel Maths Academy
-        </div>
+      <div class="contact-value">
+        michel.matusse@icloud.com
+      </div>
 
-        <div class="legal-footer-tagline">
-            More than maths. A brighter tomorrow.
-        </div>
+    </div>
 
-    </footer>
+  </div>
+
+
+  <div class="contact-actions">
+
+    <a
+      class="contact-action"
+      href="https://wa.me/27678087278"
+      target="_blank"
+      rel="noopener"
+    >
+      WhatsApp
+    </a>
+
+    <a
+      class="contact-action secondary"
+      href="mailto:michel.matusse@icloud.com"
+    >
+      Email
+    </a>
+
+  </div>
+
+
+  <footer class="legal-footer">
+
+    <div class="legal-footer-copy">
+      © 2026 Michel Maths Academy
+    </div>
+
+    <div class="legal-footer-tagline">
+      More than maths. A brighter future.
+    </div>
+
+  </footer>
 
 </div>
 
-
 </div>
 
-
-
-<!-- =====================================
-     FORGOT PASSWORD MODAL
-====================================== -->
 
 <div
-    class="modal-overlay"
-    id="modalOverlay"
+  class="modal-overlay"
+  id="modalOverlay"
 >
 
-    <div class="modal-box">
+  <div class="modal-box">
 
+    <h3>
+      Reset Password
+    </h3>
 
-        <h3>
-            Reset Password
-        </h3>
+    <p>
+      Please contact Michel Maths Academy
+      for account assistance.
+    </p>
 
+    <button
+      class="modal-btn"
+      id="closeModal"
+    >
+      Close
+    </button>
 
-        <p>
-            Please contact Michel Maths
-            Academy for account assistance.
-        </p>
-
-
-        <button
-            class="modal-btn"
-            id="closeModal"
-        >
-            Close
-        </button>
-
-
-    </div>
+  </div>
 
 </div>
-
 
 
 <script>
 
-/* =====================================
-   ELEMENTS
-===================================== */
-
 const academyLogo =
-    document.getElementById(
-        'academyLogo'
-    );
-
+  document.getElementById(
+    'academyLogo'
+  );
 
 const appSubtitle =
-    document.getElementById(
-        'appSubtitle'
-    );
-
+  document.getElementById(
+    'appSubtitle'
+  );
 
 const loginForm =
-    document.getElementById(
-        'loginForm'
-    );
-
+  document.getElementById(
+    'loginForm'
+  );
 
 const usernameInput =
-    document.getElementById(
-        'username'
-    );
-
+  document.getElementById(
+    'username'
+  );
 
 const passwordInput =
-    document.getElementById(
-        'password'
-    );
-
+  document.getElementById(
+    'password'
+  );
 
 const errorAlert =
-    document.getElementById(
-        'errorAlert'
-    );
-
+  document.getElementById(
+    'errorAlert'
+  );
 
 const togglePassword =
-    document.getElementById(
-        'togglePassword'
-    );
-
+  document.getElementById(
+    'togglePassword'
+  );
 
 const rememberMe =
-    document.getElementById(
-        'rememberMe'
-    );
-
+  document.getElementById(
+    'rememberMe'
+  );
 
 const logoutBtn =
-    document.getElementById(
-        'logoutBtn'
-    );
-
+  document.getElementById(
+    'logoutBtn'
+  );
 
 const forgotLink =
-    document.getElementById(
-        'forgotLink'
-    );
-
+  document.getElementById(
+    'forgotLink'
+  );
 
 const modalOverlay =
-    document.getElementById(
-        'modalOverlay'
-    );
-
+  document.getElementById(
+    'modalOverlay'
+  );
 
 const closeModal =
-    document.getElementById(
-        'closeModal'
-    );
-
+  document.getElementById(
+    'closeModal'
+  );
 
 const termsLink =
-    document.getElementById(
-        'termsLink'
-    );
-
+  document.getElementById(
+    'termsLink'
+  );
 
 const privacyLink =
-    document.getElementById(
-        'privacyLink'
-    );
-
+  document.getElementById(
+    'privacyLink'
+  );
 
 const contactLink =
-    document.getElementById(
-        'contactLink'
-    );
-
+  document.getElementById(
+    'contactLink'
+  );
 
 const termsBackBtn =
-    document.getElementById(
-        'termsBackBtn'
-    );
-
+  document.getElementById(
+    'termsBackBtn'
+  );
 
 const privacyBackBtn =
-    document.getElementById(
-        'privacyBackBtn'
-    );
-
+  document.getElementById(
+    'privacyBackBtn'
+  );
 
 const contactBackBtn =
-    document.getElementById(
-        'contactBackBtn'
-    );
-
+  document.getElementById(
+    'contactBackBtn'
+  );
 
 const termsAcceptCheckbox =
-    document.getElementById(
-        'termsAcceptCheckbox'
-    );
-
+  document.getElementById(
+    'termsAcceptCheckbox'
+  );
 
 const termsContinueBtn =
-    document.getElementById(
-        'termsContinueBtn'
-    );
-
+  document.getElementById(
+    'termsContinueBtn'
+  );
 
 
 let pendingLogin =
-    false;
-
+  false;
 
 let previousPublicScreen =
-    'loginScreen';
+  'loginScreen';
 
-
-
-/* =====================================
-   CHECK LEGAL SCREEN
-===================================== */
 
 function isLegalScreen(id){
 
-    return [
-
-        'termsScreen',
-        'privacyScreen',
-        'contactScreen'
-
-    ].includes(id);
+  return [
+    'termsScreen',
+    'privacyScreen',
+    'contactScreen'
+  ].includes(id);
 
 }
 
-
-
-/* =====================================
-   NAVIGATION
-===================================== */
 
 function openScreen(screenId){
 
+  document.querySelectorAll(
+    '.app-container > div[id$="Screen"]'
+  ).forEach(
+    function(screen){
 
-    document.querySelectorAll(
-        '.app-container > div[id$="Screen"]'
-    ).forEach(
+      screen.classList.add(
+        'hidden'
+      );
 
-        function(screen){
+    }
+  );
 
-            screen.classList.add(
-                'hidden'
-            );
 
-        }
-
+  const target =
+    document.getElementById(
+      screenId
     );
 
 
-    const target =
-        document.getElementById(
-            screenId
-        );
+  if(target){
+
+    target.classList.remove(
+      'hidden'
+    );
+
+  }
 
 
-    if(target){
+  if(
+    isLegalScreen(
+      screenId
+    )
+  ){
 
-        target.classList.remove(
-            'hidden'
-        );
+    academyLogo.classList.add(
+      'hidden'
+    );
 
-    }
+    appSubtitle.classList.add(
+      'hidden'
+    );
 
+  }else{
 
+    academyLogo.classList.remove(
+      'hidden'
+    );
 
-    /*
-     * Hide main Michel Maths
-     * branding on legal/contact pages.
-     */
+    appSubtitle.classList.remove(
+      'hidden'
+    );
 
-    if(
-        isLegalScreen(
-            screenId
-        )
-    ){
-
-        academyLogo.classList.add(
-            'hidden'
-        );
-
-
-        appSubtitle.classList.add(
-            'hidden'
-        );
-
-    }else{
-
-        academyLogo.classList.remove(
-            'hidden'
-        );
+  }
 
 
-        appSubtitle.classList.remove(
-            'hidden'
-        );
-
-    }
-
-
-
-    window.scrollTo({
-
-        top:0,
-
-        behavior:'smooth'
-
-    });
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
+  });
 
 }
 
 
+function openPublicLegal(screenId){
 
-/* =====================================
-   OPEN PUBLIC PAGE
-===================================== */
+  previousPublicScreen =
+    'loginScreen';
 
-function openPublicLegal(
+  pendingLogin =
+    false;
+
+  openScreen(
     screenId
-){
-
-    previousPublicScreen =
-        'loginScreen';
-
-
-    pendingLogin =
-        false;
-
-
-    openScreen(
-        screenId
-    );
+  );
 
 }
 
-
-
-/* =====================================
-   OPEN TOPIC
-===================================== */
 
 function openTopic(
-    term,
-    topic,
-    backScreen
+  term,
+  topic,
+  backScreen
 ){
 
-    document.getElementById(
-        'topicHeading'
-    ).textContent =
-        'Grade 8 > ' +
-        term +
-        ' > ' +
-        topic;
+  document.getElementById(
+    'topicHeading'
+  ).textContent =
+    'Grade 8 > ' +
+    term +
+    ' > ' +
+    topic;
 
 
-    document.getElementById(
-        'topicTitle'
-    ).textContent =
-        topic;
+  document.getElementById(
+    'topicTitle'
+  ).textContent =
+    topic;
 
 
-    document.getElementById(
-        'topicBackBtn'
-    ).onclick =
-        function(){
+  document.getElementById(
+    'topicBackBtn'
+  ).onclick =
+    function(){
 
-            openScreen(
-                backScreen
-            );
+      openScreen(
+        backScreen
+      );
 
-        };
+    };
 
 
-    openScreen(
-        'topicScreen'
-    );
+  openScreen(
+    'topicScreen'
+  );
 
 }
 
 
-
-/* =====================================
-   SHOW / HIDE PASSWORD
-===================================== */
-
 togglePassword.addEventListener(
-    'click',
+  'click',
+  function(){
 
-    function(){
-
-        const hidden =
-            passwordInput.type ===
-            'password';
-
-
-        passwordInput.type =
-            hidden
-                ? 'text'
-                : 'password';
+    const hidden =
+      passwordInput.type ===
+      'password';
 
 
-        togglePassword.textContent =
-            hidden
-                ? 'Hide'
-                : 'Show';
+    passwordInput.type =
+      hidden
+        ? 'text'
+        : 'password';
 
-    }
+
+    togglePassword.textContent =
+      hidden
+        ? 'Hide'
+        : 'Show';
+
+  }
 );
 
-
-
-/* =====================================
-   FORGOT PASSWORD
-===================================== */
 
 forgotLink.addEventListener(
-    'click',
+  'click',
+  function(event){
 
-    function(event){
+    event.preventDefault();
 
-        event.preventDefault();
+    modalOverlay.style.display =
+      'flex';
 
-
-        modalOverlay.style.display =
-            'flex';
-
-    }
+  }
 );
-
 
 
 closeModal.addEventListener(
-    'click',
+  'click',
+  function(){
 
-    function(){
+    modalOverlay.style.display =
+      'none';
 
-        modalOverlay.style.display =
-            'none';
-
-    }
+  }
 );
-
 
 
 modalOverlay.addEventListener(
-    'click',
+  'click',
+  function(event){
 
-    function(event){
+    if(
+      event.target ===
+      modalOverlay
+    ){
 
-        if(
-            event.target ===
-            modalOverlay
-        ){
-
-            modalOverlay.style.display =
-                'none';
-
-        }
+      modalOverlay.style.display =
+        'none';
 
     }
+
+  }
 );
 
-
-
-/* =====================================
-   LEGAL / CONTACT LINKS
-===================================== */
 
 termsLink.addEventListener(
-    'click',
+  'click',
+  function(event){
 
-    function(event){
+    event.preventDefault();
 
-        event.preventDefault();
+    openPublicLegal(
+      'termsScreen'
+    );
 
-
-        openPublicLegal(
-            'termsScreen'
-        );
-
-    }
+  }
 );
-
 
 
 privacyLink.addEventListener(
-    'click',
+  'click',
+  function(event){
 
-    function(event){
+    event.preventDefault();
 
-        event.preventDefault();
+    openPublicLegal(
+      'privacyScreen'
+    );
 
-
-        openPublicLegal(
-            'privacyScreen'
-        );
-
-    }
+  }
 );
-
 
 
 contactLink.addEventListener(
-    'click',
+  'click',
+  function(event){
 
-    function(event){
+    event.preventDefault();
 
-        event.preventDefault();
+    openPublicLegal(
+      'contactScreen'
+    );
 
-
-        openPublicLegal(
-            'contactScreen'
-        );
-
-    }
+  }
 );
 
-
-
-/* =====================================
-   BACK BUTTONS
-===================================== */
 
 termsBackBtn.addEventListener(
-    'click',
+  'click',
+  function(){
 
-    function(){
+    if(
+      pendingLogin
+    ){
 
-        if(
-            pendingLogin
-        ){
-
-            pendingLogin =
-                false;
-
-        }
-
-
-        openScreen(
-            previousPublicScreen
-        );
+      pendingLogin =
+        false;
 
     }
-);
 
+
+    openScreen(
+      previousPublicScreen
+    );
+
+  }
+);
 
 
 privacyBackBtn.addEventListener(
-    'click',
+  'click',
+  function(){
 
-    function(){
+    openScreen(
+      previousPublicScreen
+    );
 
-        openScreen(
-            previousPublicScreen
-        );
-
-    }
+  }
 );
-
 
 
 contactBackBtn.addEventListener(
-    'click',
+  'click',
+  function(){
 
-    function(){
+    openScreen(
+      previousPublicScreen
+    );
 
-        openScreen(
-            previousPublicScreen
-        );
-
-    }
+  }
 );
 
-
-
-/* =====================================
-   TERMS CHECKBOX
-===================================== */
 
 termsAcceptCheckbox.addEventListener(
-    'change',
+  'change',
+  function(){
 
-    function(){
+    termsContinueBtn.disabled =
+      !termsAcceptCheckbox.checked;
 
-        termsContinueBtn.disabled =
-            !termsAcceptCheckbox.checked;
-
-    }
+  }
 );
 
-
-
-/* =====================================
-   ACCEPT TERMS
-===================================== */
 
 termsContinueBtn.addEventListener(
-    'click',
+  'click',
+  function(){
 
-    function(){
+    if(
+      !termsAcceptCheckbox.checked
+    ){
 
-        if(
-            !termsAcceptCheckbox.checked
-        ){
-
-            return;
-
-        }
-
-
-
-        /*
-         * Test version:
-         * acceptance is stored
-         * in this browser.
-         */
-
-        localStorage.setItem(
-            'michelMathsTermsAccepted',
-            'yes'
-        );
-
-
-
-        /*
-         * Terms version.
-         *
-         * If you change the Terms
-         * significantly later, change
-         * this version and users will
-         * be asked to accept again.
-         */
-
-        localStorage.setItem(
-            'michelMathsTermsVersion',
-            '2026-09'
-        );
-
-
-
-        /*
-         * Save date and time
-         * of acceptance.
-         */
-
-        localStorage.setItem(
-            'michelMathsTermsAcceptedAt',
-            new Date().toISOString()
-        );
-
-
-
-        if(
-            pendingLogin
-        ){
-
-            pendingLogin =
-                false;
-
-
-            openScreen(
-                'dashboardScreen'
-            );
-
-
-            appSubtitle.textContent =
-                'Welcome back, Student!';
-
-        }else{
-
-            openScreen(
-                'loginScreen'
-            );
-
-        }
+      return;
 
     }
-);
 
 
-
-/* =====================================
-   LOGIN
-===================================== */
-
-loginForm.addEventListener(
-    'submit',
-
-    function(event){
-
-        event.preventDefault();
-
-
-
-        usernameInput.classList.remove(
-            'input-error'
-        );
-
-
-        passwordInput.classList.remove(
-            'input-error'
-        );
-
-
-        errorAlert.style.display =
-            'none';
-
-
-
-        const username =
-            usernameInput.value.trim();
-
-
-        const password =
-            passwordInput.value.trim();
-
-
-
-        /* EMPTY FIELDS */
-
-        if(
-            !username ||
-            !password
-        ){
-
-            if(
-                !username
-            ){
-
-                usernameInput.classList.add(
-                    'input-error'
-                );
-
-            }
-
-
-            if(
-                !password
-            ){
-
-                passwordInput.classList.add(
-                    'input-error'
-                );
-
-            }
-
-
-            errorAlert.textContent =
-                'Please fill out all fields.';
-
-
-            errorAlert.style.display =
-                'block';
-
-
-            return;
-
-        }
-
-
-
-        /* TEST LOGIN */
-
-        if(
-            username === 'Michel' &&
-            password === 'Michel 123'
-        ){
-
-
-            if(
-                rememberMe.checked
-            ){
-
-                localStorage.setItem(
-                    'michelMathsUsername',
-                    'Michel'
-                );
-
-            }else{
-
-                localStorage.removeItem(
-                    'michelMathsUsername'
-                );
-
-            }
-
-
-
-            const accepted =
-                localStorage.getItem(
-                    'michelMathsTermsAccepted'
-                );
-
-
-            const version =
-                localStorage.getItem(
-                    'michelMathsTermsVersion'
-                );
-
-
-
-            /*
-             * Show Terms after first
-             * successful login and
-             * before dashboard access.
-             */
-
-            if(
-                accepted !== 'yes' ||
-                version !== '2026-09'
-            ){
-
-                pendingLogin =
-                    true;
-
-
-                previousPublicScreen =
-                    'loginScreen';
-
-
-                termsAcceptCheckbox.checked =
-                    false;
-
-
-                termsContinueBtn.disabled =
-                    true;
-
-
-                openScreen(
-                    'termsScreen'
-                );
-
-
-                return;
-
-            }
-
-
-
-            openScreen(
-                'dashboardScreen'
-            );
-
-
-            appSubtitle.textContent =
-                'Welcome back, Student!';
-
-
-            return;
-
-        }
-
-
-
-        /* WRONG LOGIN */
-
-        usernameInput.classList.add(
-            'input-error'
-        );
-
-
-        passwordInput.classList.add(
-            'input-error'
-        );
-
-
-        errorAlert.textContent =
-            'Incorrect username or password. Please try again.';
-
-
-        errorAlert.style.display =
-            'block';
-
-    }
-);
-
-
-
-/* =====================================
-   REMEMBER USERNAME
-===================================== */
-
-const savedUsername =
-    localStorage.getItem(
-        'michelMathsUsername'
+    localStorage.setItem(
+      'michelMathsTermsAccepted',
+      'yes'
     );
 
 
+    localStorage.setItem(
+      'michelMathsTermsVersion',
+      '2026-09'
+    );
+
+
+    localStorage.setItem(
+      'michelMathsTermsAcceptedAt',
+      new Date().toISOString()
+    );
+
+
+    if(
+      pendingLogin
+    ){
+
+      pendingLogin =
+        false;
+
+
+      openScreen(
+        'dashboardScreen'
+      );
+
+
+      appSubtitle.textContent =
+        'Welcome back, Student!';
+
+    }else{
+
+      openScreen(
+        'loginScreen'
+      );
+
+    }
+
+  }
+);
+
+
+loginForm.addEventListener(
+  'submit',
+  function(event){
+
+    event.preventDefault();
+
+
+    usernameInput.classList.remove(
+      'input-error'
+    );
+
+
+    passwordInput.classList.remove(
+      'input-error'
+    );
+
+
+    errorAlert.style.display =
+      'none';
+
+
+    const username =
+      usernameInput.value.trim();
+
+
+    const password =
+      passwordInput.value.trim();
+
+
+    if(
+      !username ||
+      !password
+    ){
+
+      if(
+        !username
+      ){
+
+        usernameInput.classList.add(
+          'input-error'
+        );
+
+      }
+
+
+      if(
+        !password
+      ){
+
+        passwordInput.classList.add(
+          'input-error'
+        );
+
+      }
+
+
+      errorAlert.textContent =
+        'Please fill out all fields.';
+
+
+      errorAlert.style.display =
+        'block';
+
+
+      return;
+
+    }
+
+
+    if(
+      username === 'Michel' &&
+      password === 'Michel 123'
+    ){
+
+
+      if(
+        rememberMe.checked
+      ){
+
+        localStorage.setItem(
+          'michelMathsUsername',
+          'Michel'
+        );
+
+      }else{
+
+        localStorage.removeItem(
+          'michelMathsUsername'
+        );
+
+      }
+
+
+      const accepted =
+        localStorage.getItem(
+          'michelMathsTermsAccepted'
+        );
+
+
+      const version =
+        localStorage.getItem(
+          'michelMathsTermsVersion'
+        );
+
+
+      if(
+        accepted !== 'yes' ||
+        version !== '2026-09'
+      ){
+
+        pendingLogin =
+          true;
+
+
+        previousPublicScreen =
+          'loginScreen';
+
+
+        termsAcceptCheckbox.checked =
+          false;
+
+
+        termsContinueBtn.disabled =
+          true;
+
+
+        openScreen(
+          'termsScreen'
+        );
+
+
+        return;
+
+      }
+
+
+      openScreen(
+        'dashboardScreen'
+      );
+
+
+      appSubtitle.textContent =
+        'Welcome back, Student!';
+
+
+      return;
+
+    }
+
+
+    usernameInput.classList.add(
+      'input-error'
+    );
+
+
+    passwordInput.classList.add(
+      'input-error'
+    );
+
+
+    errorAlert.textContent =
+      'Incorrect username or password. Please try again.';
+
+
+    errorAlert.style.display =
+      'block';
+
+  }
+);
+
+
+const savedUsername =
+  localStorage.getItem(
+    'michelMathsUsername'
+  );
+
+
 if(
-    savedUsername
+  savedUsername
 ){
 
-    usernameInput.value =
-        savedUsername;
+  usernameInput.value =
+    savedUsername;
 
 
-    rememberMe.checked =
-        true;
+  rememberMe.checked =
+    true;
 
 }
 
 
-
-/* =====================================
-   LOG OUT
-===================================== */
-
 logoutBtn.addEventListener(
-    'click',
+  'click',
+  function(){
 
-    function(){
+    if(
+      !rememberMe.checked
+    ){
 
-        if(
-            !rememberMe.checked
-        ){
-
-            usernameInput.value =
-                '';
-
-        }
-
-
-        passwordInput.value =
-            '';
-
-
-        errorAlert.style.display =
-            'none';
-
-
-        usernameInput.classList.remove(
-            'input-error'
-        );
-
-
-        passwordInput.classList.remove(
-            'input-error'
-        );
-
-
-        openScreen(
-            'loginScreen'
-        );
-
-
-        appSubtitle.textContent =
-            'Academy Portal Login';
+      usernameInput.value =
+        '';
 
     }
+
+
+    passwordInput.value =
+      '';
+
+
+    errorAlert.style.display =
+      'none';
+
+
+    usernameInput.classList.remove(
+      'input-error'
+    );
+
+
+    passwordInput.classList.remove(
+      'input-error'
+    );
+
+
+    openScreen(
+      'loginScreen'
+    );
+
+
+    appSubtitle.textContent =
+      'Academy Portal Login';
+
+  }
 );
 
 </script>
