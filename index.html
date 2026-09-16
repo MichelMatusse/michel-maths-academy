@@ -30,7 +30,7 @@ body{min-height:100vh;padding:20px;display:flex;justify-content:center;align-ite
 .error-alert{display:none;margin-bottom:1.5rem;padding:.75rem;background:#fce4e4;border:1px solid #fcc2c2;border-radius:6px;color:var(--danger);font-size:.85rem;text-align:left}
 .input-group{position:relative;margin-bottom:1.5rem;text-align:left}
 label{display:block;margin-bottom:.5rem;color:#444;font-size:.9rem;font-weight:600}
-input[type=text],input[type=password]{width:100%;padding:.75rem 1rem;border:2px solid #ddd;border-radius:6px;outline:none;font-size:1rem;transition:border-color .25s ease}
+input[type=text],input[type=email],input[type=password]{width:100%;padding:.75rem 1rem;border:2px solid #ddd;border-radius:6px;outline:none;font-size:1rem;transition:border-color .25s ease}
 input:focus{border-color:var(--main-blue)}
 input.input-error{border-color:var(--danger);background:#fff9f9}
 .toggle-password{position:absolute;top:38px;right:12px;border:none;background:transparent;color:#777;cursor:pointer;font-size:.85rem}
@@ -2105,7 +2105,7 @@ await supabaseClient.auth.signOut();
 
 
     appSubtitle.textContent =
-      'Academy Portal Login';
+      'Portal Login';
 
   }
 );
