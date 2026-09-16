@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Michel Maths Academy</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root{
   --main-blue:#5AAAE6;
@@ -1868,10 +1869,13 @@ termsContinueBtn.addEventListener(
   }
 );
 
-
+const supabaseClient = supabase.createClient(
+  'https://mvaegufwvltpmgglvknk.supabase.co',
+  'sb_publishable_ANBkLBSmt50Fiy5Ryav3hA_r2XNNh44'
+);
 loginForm.addEventListener(
   'submit',
-  function(event){
+  async function(event){
 
     event.preventDefault();
 
@@ -1938,10 +1942,13 @@ loginForm.addEventListener(
     }
 
 
-    if(
-      username === 'Michel' &&
-      password === 'Michel 123'
-    ){
+const { error } = await supabaseClient.auth.signInWithPassword({
+  email: username,
+  password: password
+});
+
+if (!error) {
+  
 
 
       if(
@@ -1950,7 +1957,7 @@ loginForm.addEventListener(
 
         localStorage.setItem(
           'michelMathsUsername',
-          'Michel'
+          username
         );
 
       }else{
@@ -2030,7 +2037,7 @@ loginForm.addEventListener(
 
 
     errorAlert.textContent =
-      'Incorrect username or password. Please try again.';
+      'Incorrect email or password. Please try again.';
 
 
     errorAlert.style.display =
