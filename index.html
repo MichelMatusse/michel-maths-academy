@@ -1873,6 +1873,33 @@ const supabaseClient = supabase.createClient(
   'https://mvaegufwvltpmgglvknk.supabase.co',
   'sb_publishable_ANBkLBSmt50Fiy5Ryav3hA_r2XNNh44'
 );
+  (async function restoreSession() {
+  const {
+    data: { session }
+  } = await supabaseClient.auth.getSession();
+
+  if (!session) return;
+
+  const accepted = localStorage.getItem(
+    'michelMathsTermsAccepted'
+  );
+
+  const version = localStorage.getItem(
+    'michelMathsTermsVersion'
+  );
+
+  if (
+    accepted === 'yes' &&
+    version === '2026-09'
+  ) {
+    openScreen('dashboardScreen');
+    appSubtitle.textContent =
+      'Welcome back, Student!';
+  } else {
+    pendingLogin = true;
+    openScreen('termsScreen');
+  }
+})();
 loginForm.addEventListener(
   'submit',
   async function(event){
