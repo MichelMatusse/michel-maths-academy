@@ -2069,8 +2069,8 @@ if(
 
 logoutBtn.addEventListener(
   'click',
-  function(){
-
+  async function(){
+await supabaseClient.auth.signOut();
     if(
       !rememberMe.checked
     ){
