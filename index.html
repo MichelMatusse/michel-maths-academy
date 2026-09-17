@@ -111,6 +111,86 @@ input.input-error{border-color:var(--danger);background:#fff9f9}
  .legal-section{grid-template-columns:34px 1fr;column-gap:8px;padding-top:22px}
  .accept-symbol{width:72px}
 }
+  /* ===== Michel Maths Academy Homepage ===== */
+
+.home-hero{
+  width:100%;
+  max-width:520px;
+  margin:0 auto;
+  text-align:center;
+  padding:40px 20px;
+  box-sizing:border-box;
+}
+
+.home-brand{
+  color:#5AAAE6;
+  font-size:40px;
+  font-weight:800;
+  line-height:1.15;
+  margin-bottom:22px;
+}
+
+.home-title{
+  color:#1D1D1F;
+  font-size:30px;
+  font-weight:800;
+  line-height:1.2;
+  margin:0 0 18px;
+}
+
+.home-intro{
+  color:#666;
+  font-size:18px;
+  line-height:1.55;
+  margin:0 auto 35px;
+  max-width:430px;
+}
+
+#studentLoginBtn{
+  display:block !important;
+  width:100% !important;
+  min-height:100px !important;
+  padding:28px 24px !important;
+  margin:30px auto 0 !important;
+  border:none !important;
+  border-radius:18px !important;
+  background:#5AAAE6 !important;
+  color:white !important;
+  font-size:30px !important;
+  font-weight:800 !important;
+  line-height:1.2 !important;
+  cursor:pointer !important;
+  box-sizing:border-box !important;
+  box-shadow:0 10px 24px rgba(90,170,230,.30) !important;
+}
+
+#studentLoginBtn:active{
+  transform:scale(.98);
+}
+
+@media(max-width:500px){
+  .home-hero{
+    padding:32px 10px;
+  }
+
+  .home-brand{
+    font-size:36px;
+  }
+
+  .home-title{
+    font-size:27px;
+  }
+
+  .home-intro{
+    font-size:17px;
+  }
+
+  #studentLoginBtn{
+    min-height:105px !important;
+    padding:30px 20px !important;
+    font-size:30px !important;
+  }
+}
 </style>
 </head>
 
@@ -119,11 +199,30 @@ input.input-error{border-color:var(--danger);background:#fff9f9}
 <div class="app-container">
 <div id="homeScreen" class="hidden">
   
-  <p>Clear, structured mathematics support for Grade 8 students.</p>
+    <div class="home-hero">
 
-  <button type="button" id="studentLoginBtn">
-    Student Login
-  </button>
+    <div class="home-brand">
+      Michel Maths Academy
+    </div>
+
+    <h1 class="home-title">
+      Grade 8 Mathematics, made clear.
+    </h1>
+
+    <p class="home-intro">
+      Clear, structured mathematics support designed to help
+      Grade 8 students learn, practise and understand.
+    </p>
+
+    <button
+      type="button"
+      id="studentLoginBtn"
+    >
+      Student Login
+    </button>
+
+  </div>
+
 </div>
 <div class="academy-logo hidden" id="academyLogo">Michel Maths</div>
 <p class="subtitle hidden" id="appSubtitle">Academy Portal Login</p>
