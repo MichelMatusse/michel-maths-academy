@@ -1886,11 +1886,11 @@ const supabaseClient = supabase.createClient(
   } = await supabaseClient.auth.getSession();
 
   if (!session) {
-  academyLogo.classList.add('hidden');
-  appSubtitle.classList.add('hidden');
-
-  openScreen('homeScreen');
+  openScreen('loginScreen');
   return;
+}
+
+    
 
 
   const accepted = localStorage.getItem(
