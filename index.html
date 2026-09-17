@@ -1886,9 +1886,12 @@ const supabaseClient = supabase.createClient(
   } = await supabaseClient.auth.getSession();
 
   if (!session) {
+  academyLogo.classList.add('hidden');
+  appSubtitle.classList.add('hidden');
+
   openScreen('homeScreen');
   return;
-}
+
 
   const accepted = localStorage.getItem(
     'michelMathsTermsAccepted'
@@ -1913,6 +1916,8 @@ const supabaseClient = supabase.createClient(
   document.getElementById('studentLoginBtn').addEventListener(
   'click',
   function(){
+    academyLogo.classList.remove('hidden');
+    appSubtitle.classList.remove('hidden');
     openScreen('loginScreen');
   }
 );
