@@ -117,7 +117,7 @@ input.input-error{border-color:var(--danger);background:#fff9f9}
 <body>
 
 <div class="app-container">
-<div id="loginScreen" class="hidden">
+<div id="homeScreen" class="hidden">
   
   <p>Clear, structured mathematics support for Grade 8 students.</p>
 
@@ -1886,9 +1886,12 @@ const supabaseClient = supabase.createClient(
   } = await supabaseClient.auth.getSession();
 
   if (!session) {
-  openScreen('loginScreen');
+  academyLogo.classList.add('hidden');
+  appSubtitle.classList.add('hidden');
+  openScreen('homeScreen');
   return;
 }
+    
 
     
 
