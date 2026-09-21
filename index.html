@@ -54,7 +54,13 @@ input.input-error{border-color:var(--danger);background:#fff9f9}
 .logout-btn:hover{background:var(--main-blue);color:#fff}
 .topic-list{display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.5rem;text-align:left}
 .topic-card{padding:.9rem 1rem;background:#f8f9fa;border:1px solid #e9ecef;border-radius:8px;color:#212529;font-size:.95rem;font-weight:600;cursor:pointer;transition:.2s}
-.topic-card:hover{background:var(--very-light-blue);border-color:var(--main-blue);transform:translateX(3px)}
+@media (hover:hover) and (pointer:fine){
+  .topic-card:hover{
+    background:var(--very-light-blue);
+    border-color:var(--main-blue);
+    transform:translateX(3px);
+  }
+}
 .content-box{margin-bottom:1.5rem;padding:1rem;background:#f8f9fa;border:1px solid #e9ecef;border-radius:8px;text-align:left}
 .content-box h4{margin-bottom:.7rem;color:var(--main-blue)}
 .content-box p{color:#666;font-size:.9rem;line-height:1.5}
@@ -438,12 +444,25 @@ input.input-error{border-color:var(--danger);background:#fff9f9}
 
   <div class="topic-list">
 
-    <div
-      class="topic-card"
-      onclick="openTopic('Term 1','WHOLE NUMBERS','term1Screen')"
-    >
-      1. WHOLE NUMBERS
-    </div>
+<button
+  type="button"
+  class="topic-card"
+  style="
+    width:100%;
+    border:none;
+    text-align:left;
+    font:inherit;
+    cursor:pointer;
+    touch-action:manipulation;
+    -webkit-tap-highlight-color:transparent;
+    -webkit-appearance:none;
+    appearance:none;
+  "
+  onclick="openTopic('Term 1','WHOLE NUMBERS','term1Screen')"
+>
+  1. WHOLE NUMBERS
+</button>
+    
 
     <div
       class="topic-card"
