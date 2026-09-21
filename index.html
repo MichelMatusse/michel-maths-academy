@@ -643,7 +643,7 @@ input.input-error{border-color:var(--danger);background:#fff9f9}
     id="topicHeading"
   ></div>
 
-  <div class="content-box">
+  <div class="content-box" id="topicContent">
 
     <h4 id="topicTitle"></h4>
 
@@ -1807,7 +1807,76 @@ function openTopic(
     'topicTitle'
   ).textContent =
     topic;
+const topicContent =
+  document.getElementById('topicContent');
 
+if (term === 'Term 1' && topic === 'WHOLE NUMBERS') {
+
+  topicContent.innerHTML = `
+    <div style="display:grid;gap:14px;">
+
+      <div style="
+        padding:18px;
+        border:1px solid #d9ebf8;
+        border-radius:16px;
+        background:#f7fbff;
+      ">
+        <strong>1. Video</strong>
+        <p style="margin:6px 0 0;color:#666;">
+          Lesson video will be added here.
+        </p>
+      </div>
+
+      <div style="
+        padding:18px;
+        border:1px solid #d9ebf8;
+        border-radius:16px;
+        background:#f7fbff;
+      ">
+        <strong>2. Worksheet</strong>
+        <p style="margin:6px 0 0;color:#666;">
+          Worksheet will be added here.
+        </p>
+      </div>
+
+      <div style="
+        padding:18px;
+        border:1px solid #d9ebf8;
+        border-radius:16px;
+        background:#f7fbff;
+      ">
+        <strong>3. Memo</strong>
+        <p style="margin:6px 0 0;color:#666;">
+          Memo will be added here.
+        </p>
+      </div>
+
+      <div style="
+        padding:18px;
+        border:1px solid #d9ebf8;
+        border-radius:16px;
+        background:#f7fbff;
+      ">
+        <strong>4. Memo Explanation</strong>
+        <p style="margin:6px 0 0;color:#666;">
+          Memo explanation will be added here.
+        </p>
+      </div>
+
+    </div>
+  `;
+
+} else {
+
+  topicContent.innerHTML = `
+    <p>
+      Your lesson videos, worksheets,
+      memos and memo explanations will
+      be placed here.
+    </p>
+  `;
+
+}
 
   document.getElementById(
     'topicBackBtn'
