@@ -1583,9 +1583,41 @@ input.input-error{border-color:var(--danger);background:#fff9f9}
     </h3>
 
     <p>
-      Please contact Michel Maths Academy
-      for account assistance.
-    </p>
+  Enter your account email and we’ll send you
+  a secure password reset link.
+</p>
+
+<div class="input-group">
+  <label for="resetEmail">
+    Email
+  </label>
+
+  <input
+    type="email"
+    id="resetEmail"
+    placeholder="Enter your email"
+    autocomplete="email"
+  >
+</div>
+
+<p
+  id="resetMessage"
+  style="
+    display:none;
+    margin-bottom:15px;
+    font-size:14px;
+  "
+></p>
+
+<button
+  type="button"
+  class="primary-btn"
+  id="sendResetBtn"
+  style="margin-bottom:12px;"
+>
+  Send Reset Link
+</button>
+    
 
     <button
       class="modal-btn"
@@ -1598,7 +1630,67 @@ input.input-error{border-color:var(--danger);background:#fff9f9}
 
 </div>
 
+<div
+  class="modal-overlay"
+  id="updatePasswordOverlay"
+>
 
+  <div class="modal-box">
+
+    <h3>
+      Choose New Password
+    </h3>
+
+    <p>
+      Enter your new password below.
+    </p>
+
+    <div class="input-group">
+      <label for="newPassword">
+        New Password
+      </label>
+
+      <input
+        type="password"
+        id="newPassword"
+        placeholder="Enter new password"
+        autocomplete="new-password"
+      >
+    </div>
+
+    <div class="input-group">
+      <label for="confirmNewPassword">
+        Confirm New Password
+      </label>
+
+      <input
+        type="password"
+        id="confirmNewPassword"
+        placeholder="Enter new password again"
+        autocomplete="new-password"
+      >
+    </div>
+
+    <p
+      id="passwordUpdateMessage"
+      style="
+        display:none;
+        margin-bottom:15px;
+        font-size:14px;
+      "
+    ></p>
+
+    <button
+      type="button"
+      class="primary-btn"
+      id="updatePasswordBtn"
+    >
+      Save New Password
+    </button>
+
+  </div>
+
+</div>
 <script>
 
 const academyLogo =
@@ -1660,7 +1752,44 @@ const closeModal =
   document.getElementById(
     'closeModal'
   );
+const resetEmail =
+  document.getElementById(
+    'resetEmail'
+  );
 
+const resetMessage =
+  document.getElementById(
+    'resetMessage'
+  );
+
+const sendResetBtn =
+  document.getElementById(
+    'sendResetBtn'
+  );
+  const updatePasswordOverlay =
+  document.getElementById(
+    'updatePasswordOverlay'
+  );
+
+const newPassword =
+  document.getElementById(
+    'newPassword'
+  );
+
+const confirmNewPassword =
+  document.getElementById(
+    'confirmNewPassword'
+  );
+
+const passwordUpdateMessage =
+  document.getElementById(
+    'passwordUpdateMessage'
+  );
+
+const updatePasswordBtn =
+  document.getElementById(
+    'updatePasswordBtn'
+  );
 const termsLink =
   document.getElementById(
     'termsLink'
@@ -2132,6 +2261,176 @@ termsContinueBtn.addEventListener(
 const supabaseClient = supabase.createClient(
   'https://mvaegufwvltpmgglvknk.supabase.co',
   'sb_publishable_ANBkLBSmt50Fiy5Ryav3hA_r2XNNh44'
+);
+  supabaseClient.auth.onAuthStateChange(
+  function(event){
+
+    if(event === 'PASSWORD_RECOVERY'){
+
+      updatePasswordOverlay.style.display =
+        'flex';
+
+    }
+
+  }
+);
+  sendResetBtn.addEventListener(
+  'click',
+  async function(){
+
+    const email =
+      resetEmail.value.trim();
+
+    resetMessage.style.display =
+      'block';
+
+    if(!email){
+
+      resetMessage.style.color =
+        '#C70000';
+
+      resetMessage.textContent =
+        'Please enter your email address.';
+
+      return;
+    }
+
+    sendResetBtn.disabled = true;
+
+    sendResetBtn.textContent =
+      'Sending...';
+
+    const { error } =
+      await supabaseClient.auth
+        .resetPasswordForEmail(
+          email,
+          {
+            redirectTo:
+              'https://michelmatusse.github.io/michel-maths-academy/'
+          }
+        );
+
+    sendResetBtn.disabled = false;
+
+    sendResetBtn.textContent =
+      'Send Reset Link';
+
+    if(error){
+
+      resetMessage.style.color =
+        '#C70000';
+
+      resetMessage.textContent =
+        'We could not send the reset email. Please try again.';
+
+      return;
+    }
+
+    resetMessage.style.color =
+      '#2E7D32';
+
+    resetMessage.textContent =
+      'If an account exists for that email, a password reset link has been sent. Please check your inbox.';
+
+  }
+);
+  updatePasswordBtn.addEventListener(
+  'click',
+  async function(){
+
+    const password =
+      newPassword.value.trim();
+
+    const confirmPassword =
+      confirmNewPassword.value.trim();
+
+    passwordUpdateMessage.style.display =
+      'block';
+
+    if(!password || !confirmPassword){
+
+      passwordUpdateMessage.style.color =
+        '#C70000';
+
+      passwordUpdateMessage.textContent =
+        'Please enter and confirm your new password.';
+
+      return;
+    }
+
+    if(password !== confirmPassword){
+
+      passwordUpdateMessage.style.color =
+        '#C70000';
+
+      passwordUpdateMessage.textContent =
+        'The passwords do not match.';
+
+      return;
+    }
+
+    if(password.length < 6){
+
+      passwordUpdateMessage.style.color =
+        '#C70000';
+
+      passwordUpdateMessage.textContent =
+        'Your password must be at least 6 characters long.';
+
+      return;
+    }
+
+    updatePasswordBtn.disabled = true;
+
+    updatePasswordBtn.textContent =
+      'Saving...';
+
+    const { error } =
+      await supabaseClient.auth.updateUser({
+        password: password
+      });
+
+    updatePasswordBtn.disabled = false;
+
+    updatePasswordBtn.textContent =
+      'Save New Password';
+
+    if(error){
+
+      passwordUpdateMessage.style.color =
+        '#C70000';
+
+      passwordUpdateMessage.textContent =
+        'We could not update your password. Please try again.';
+
+      return;
+    }
+
+    passwordUpdateMessage.style.color =
+      '#2E7D32';
+
+    passwordUpdateMessage.textContent =
+      'Password updated successfully. You can now sign in with your new password.';
+
+    setTimeout(
+      async function(){
+
+        updatePasswordOverlay.style.display =
+          'none';
+
+        newPassword.value = '';
+
+        confirmNewPassword.value = '';
+
+        await supabaseClient.auth.signOut();
+
+        openScreen('loginScreen');
+
+      },
+      1800
+    );
+
+  }
 );
   (async function restoreSession() {
   const {
