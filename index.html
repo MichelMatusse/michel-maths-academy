@@ -1656,6 +1656,13 @@ input.input-error{border-color:var(--danger);background:#fff9f9}
         placeholder="Enter new password"
         autocomplete="new-password"
       >
+      <button
+  type="button"
+  class="toggle-password"
+  id="toggleNewPassword"
+>
+  Show
+</button>
     </div>
 
     <div class="input-group">
@@ -1669,6 +1676,13 @@ input.input-error{border-color:var(--danger);background:#fff9f9}
         placeholder="Enter new password again"
         autocomplete="new-password"
       >
+      <button
+  type="button"
+  class="toggle-password"
+  id="toggleConfirmNewPassword"
+>
+  Show
+</button>
     </div>
 
     <p
@@ -1789,6 +1803,15 @@ const passwordUpdateMessage =
 const updatePasswordBtn =
   document.getElementById(
     'updatePasswordBtn'
+  );
+  const toggleNewPassword =
+  document.getElementById(
+    'toggleNewPassword'
+  );
+
+const toggleConfirmNewPassword =
+  document.getElementById(
+    'toggleConfirmNewPassword'
   );
 const termsLink =
   document.getElementById(
@@ -2057,7 +2080,47 @@ togglePassword.addEventListener(
 
   }
 );
+toggleNewPassword.addEventListener(
+  'click',
+  function(){
 
+    const hidden =
+      newPassword.type ===
+      'password';
+
+    newPassword.type =
+      hidden
+        ? 'text'
+        : 'password';
+
+    toggleNewPassword.textContent =
+      hidden
+        ? 'Hide'
+        : 'Show';
+
+  }
+);
+
+toggleConfirmNewPassword.addEventListener(
+  'click',
+  function(){
+
+    const hidden =
+      confirmNewPassword.type ===
+      'password';
+
+    confirmNewPassword.type =
+      hidden
+        ? 'text'
+        : 'password';
+
+    toggleConfirmNewPassword.textContent =
+      hidden
+        ? 'Hide'
+        : 'Show';
+
+  }
+);
 
 forgotLink.addEventListener(
   'click',
