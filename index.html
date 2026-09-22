@@ -2401,7 +2401,8 @@ const supabaseClient = supabase.createClient(
         '#C70000';
 
       passwordUpdateMessage.textContent =
-        'We could not update your password. Please try again.';
+  error.message;
+        
 
       return;
     }
