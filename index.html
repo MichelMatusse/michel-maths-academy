@@ -385,6 +385,18 @@ input.input-error{border-color:var(--danger);background:#fff9f9}
   </p>
 
 </div>
+  <div
+  id="dashboardGreeting"
+  style="
+    font-size:20px;
+    font-weight:700;
+    color:#1D1D1F;
+    margin:0 0 22px;
+    text-align:left;
+  "
+>
+  Welcome back, Student 😊
+</div>
   <div class="grade-heading">
     Grade 8
   </div>
@@ -1716,7 +1728,10 @@ const appSubtitle =
   document.getElementById(
     'appSubtitle'
   );
-
+const dashboardGreeting =
+  document.getElementById(
+    'dashboardGreeting'
+  );
 const loginForm =
   document.getElementById(
     'loginForm'
@@ -2307,8 +2322,8 @@ termsContinueBtn.addEventListener(
       );
 
 
-      appSubtitle.textContent =
-        'Welcome back, Student!';
+      updateDashboardGreeting();
+        
 
     }else{
 
@@ -2325,6 +2340,42 @@ const supabaseClient = supabase.createClient(
   'https://mvaegufwvltpmgglvknk.supabase.co',
   'sb_publishable_ANBkLBSmt50Fiy5Ryav3hA_r2XNNh44'
 );
+  async function updateDashboardGreeting(){
+
+  const {
+    data: { user }
+  } =
+    await supabaseClient.auth.getUser();
+
+  let firstName =
+    'Student';
+
+  if(user){
+
+    const metadata =
+      user.user_metadata || {};
+
+    const savedName =
+      metadata.first_name ||
+      metadata.full_name ||
+      metadata.name ||
+      '';
+
+    if(savedName.trim()){
+
+      firstName =
+        savedName
+          .trim()
+          .split(/\s+/)[0];
+
+    }
+
+  }
+
+  dashboardGreeting.textContent =
+    `Welcome back, ${firstName} 😊`;
+
+}
   supabaseClient.auth.onAuthStateChange(
   function(event){
 
@@ -2528,8 +2579,8 @@ const supabaseClient = supabase.createClient(
     version === '2026-09'
   ) {
     openScreen('dashboardScreen');
-    appSubtitle.textContent =
-      'Welcome back, Student!';
+    updateDashboardGreeting();
+      
   } else {
     pendingLogin = true;
     openScreen('termsScreen');
@@ -2687,8 +2738,8 @@ if (!error) {
       );
 
 
-      appSubtitle.textContent =
-        'Welcome back, Student!';
+      updateDashboardGreeting();
+        
 
 
       return;
