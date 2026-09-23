@@ -201,6 +201,471 @@ input.input-error{border-color:var(--danger);background:#fff9f9}
 #homeScreen:not(.hidden) ~ #appSubtitle{
   display:none !important;
 }
+  /* =====================================================
+   EXTRA HOMEPAGE CONTENT
+===================================================== */
+
+.home-extra-content{
+  width:100%;
+  margin-top:5px;
+  text-align:left;
+}
+
+.home-extra-section{
+  padding:36px 0;
+  border-top:1px solid #eee;
+}
+
+.home-extra-label,
+.benefits-label,
+.join-small-title{
+  margin-bottom:7px;
+  color:var(--main-blue);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.7px;
+}
+
+.home-extra-section h2{
+  margin-bottom:10px;
+  color:var(--ink);
+  font-size:23px;
+  line-height:1.25;
+}
+
+.home-extra-description{
+  margin-bottom:22px;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.6;
+}
+
+/* WHAT STUDENTS GET */
+
+.home-feature-list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.home-feature-card{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  padding:15px;
+  background:var(--very-light-blue);
+  border-radius:12px;
+}
+
+.home-feature-icon{
+  width:35px;
+  height:35px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--main-blue);
+  color:#fff;
+  border-radius:9px;
+  font-size:14px;
+  font-weight:800;
+}
+
+.home-feature-card h3{
+  margin-bottom:4px;
+  color:var(--ink);
+  font-size:14px;
+}
+
+.home-feature-card p{
+  color:var(--muted);
+  font-size:12.5px;
+  line-height:1.55;
+}
+
+/* HOW IT WORKS */
+
+.home-steps{
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+}
+
+.home-step{
+  display:flex;
+  align-items:flex-start;
+  gap:13px;
+}
+
+.home-step-number{
+  width:33px;
+  height:33px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:var(--main-blue);
+  color:#fff;
+  font-size:13px;
+  font-weight:800;
+}
+
+.home-step h3{
+  margin-bottom:4px;
+  color:var(--ink);
+  font-size:14px;
+}
+
+.home-step p{
+  color:var(--muted);
+  font-size:12.5px;
+  line-height:1.55;
+}
+
+.home-inline-link{
+  color:var(--main-blue);
+  font-weight:700;
+  text-decoration:none;
+}
+
+/* MEET MICHEL */
+
+.tutor-card{
+  overflow:hidden;
+  background:#fff;
+  border:1px solid #e8eaed;
+  border-radius:16px;
+}
+
+.tutor-photo{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+.tutor-info{
+  padding:20px;
+}
+
+.tutor-info h3{
+  margin-bottom:12px;
+  color:var(--main-blue);
+  font-size:19px;
+  line-height:1.3;
+}
+
+.tutor-info p{
+  margin-bottom:12px;
+  color:var(--text);
+  font-size:13.5px;
+  line-height:1.65;
+}
+
+.tutor-info p:last-child{
+  margin-bottom:0;
+}
+
+/* PRICING */
+
+.pricing-list{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.price-card{
+  padding:21px;
+  background:#fff;
+  border:1px solid #e5e5e5;
+  border-radius:15px;
+}
+
+.price-card.featured{
+  border:2px solid var(--main-blue);
+  background:var(--very-light-blue);
+}
+
+.price-badge{
+  margin-bottom:8px;
+  color:var(--main-blue);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.5px;
+}
+
+.price{
+  color:var(--ink);
+  font-size:29px;
+  font-weight:800;
+}
+
+.price span{
+  color:var(--muted);
+  font-size:12px;
+  font-weight:600;
+}
+
+.price-description{
+  margin-top:8px;
+  color:var(--muted);
+  font-size:12.5px;
+  line-height:1.6;
+}
+
+.price-benefits{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+  margin-top:16px;
+  color:var(--text);
+  font-size:12.5px;
+  line-height:1.45;
+}
+
+.price-button{
+  display:block;
+  width:100%;
+  margin-top:19px;
+  padding:13px 12px;
+  border-radius:9px;
+  background:var(--main-blue);
+  color:#fff;
+  text-align:center;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+}
+
+.price-button.secondary{
+  background:#fff;
+  color:var(--main-blue);
+  border:1.5px solid var(--main-blue);
+}
+
+.pricing-note{
+  margin-top:16px;
+  color:var(--muted2);
+  font-size:11.5px;
+  line-height:1.55;
+}
+
+/* ADDITIONAL BENEFITS */
+
+.benefits-blue{
+  margin:30px 0;
+  padding:25px 20px;
+  border-radius:16px;
+  background:var(--main-blue);
+  color:#fff;
+  text-align:left;
+}
+
+.benefits-label{
+  color:rgba(255,255,255,.82);
+}
+
+.benefits-blue h2{
+  margin-bottom:9px;
+  color:#fff;
+  font-size:23px;
+  line-height:1.25;
+}
+
+.benefits-intro{
+  margin-bottom:20px;
+  color:rgba(255,255,255,.92);
+  font-size:13px;
+  line-height:1.6;
+}
+
+.blue-benefit{
+  display:flex;
+  gap:11px;
+  margin-top:16px;
+}
+
+.blue-benefit-icon{
+  width:30px;
+  height:30px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:#fff;
+  color:var(--main-blue);
+  font-size:13px;
+  font-weight:800;
+}
+
+.blue-benefit h3{
+  margin-bottom:3px;
+  color:#fff;
+  font-size:13.5px;
+}
+
+.blue-benefit p{
+  color:rgba(255,255,255,.88);
+  font-size:12px;
+  line-height:1.5;
+}
+
+/* FAQ */
+
+.home-faq-list{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+
+.home-faq-item{
+  overflow:hidden;
+  background:#fff;
+  border:1px solid #e5e5e5;
+  border-radius:11px;
+}
+
+.home-faq-question{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:16px;
+  border:none;
+  background:#fff;
+  color:var(--ink);
+  text-align:left;
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.home-faq-plus{
+  flex-shrink:0;
+  color:var(--main-blue);
+  font-size:22px;
+  font-weight:400;
+  transition:transform .2s ease;
+}
+
+.home-faq-answer{
+  display:none;
+  padding:0 16px 16px;
+}
+
+.home-faq-answer p{
+  color:var(--muted);
+  font-size:12.5px;
+  line-height:1.65;
+}
+
+.home-faq-item.open .home-faq-answer{
+  display:block;
+}
+
+.home-faq-item.open .home-faq-plus{
+  transform:rotate(45deg);
+}
+
+/* JOIN NOW */
+
+.join-now-box{
+  margin-top:34px;
+  padding:27px 20px;
+  border-radius:17px;
+  background:var(--very-light-blue);
+  text-align:center;
+}
+
+.join-now-box h2{
+  margin-bottom:9px;
+  color:var(--ink);
+  font-size:24px;
+  line-height:1.25;
+}
+
+.join-now-box>p{
+  margin-bottom:20px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.6;
+}
+
+.join-whatsapp-btn{
+  display:block;
+  width:100%;
+  padding:18px 14px;
+  border-radius:12px;
+  background:var(--main-blue);
+  color:#fff;
+  text-decoration:none;
+  font-size:17px;
+  font-weight:800;
+  box-shadow:0 8px 18px rgba(90,170,230,.25);
+}
+
+.join-whatsapp-btn:active{
+  transform:scale(.98);
+}
+
+.join-phone{
+  display:inline-block;
+  margin-top:11px;
+  color:var(--main-blue);
+  font-size:13px;
+  font-weight:700;
+  text-decoration:none;
+}
+
+.email-alternative{
+  margin-top:20px;
+  padding-top:18px;
+  border-top:1px solid #dfe8ef;
+}
+
+.email-alternative p{
+  margin-bottom:7px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.email-alternative a{
+  color:var(--main-blue);
+  font-size:13px;
+  font-weight:700;
+  text-decoration:none;
+  word-break:break-word;
+}
+
+/* HOMEPAGE FOOTER */
+
+.home-marketing-footer{
+  padding:30px 5px 5px;
+  color:var(--muted2);
+  text-align:center;
+  font-size:11px;
+  line-height:1.7;
+}
+
+.home-marketing-footer strong{
+  color:var(--main-blue);
+  font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:500px){
+  .home-extra-section{
+    padding:32px 0;
+  }
+
+  .home-extra-section h2,
+  .benefits-blue h2{
+    font-size:22px;
+  }
+}
 </style>
 </head>
 
@@ -232,7 +697,521 @@ input.input-error{border-color:var(--danger);background:#fff9f9}
     </button>
 
   </div>
+<div class="home-extra-content">
 
+  <!-- WHAT STUDENTS GET -->
+  <section class="home-extra-section">
+    <div class="home-extra-label">WHAT STUDENTS GET</div>
+    <h2>Everything you need to learn and practise.</h2>
+
+    <p class="home-extra-description">
+      Grade 8 Mathematics support with videos, practice material
+      and personal help when you get stuck.
+    </p>
+
+    <div class="home-feature-list">
+
+      <div class="home-feature-card">
+        <div class="home-feature-icon">1</div>
+        <div>
+          <h3>Clear video explanations</h3>
+          <p>
+            Watch simple step-by-step video explanations designed
+            to make difficult Maths easier to understand.
+          </p>
+        </div>
+      </div>
+
+      <div class="home-feature-card">
+        <div class="home-feature-icon">2</div>
+        <div>
+          <h3>Topic videos</h3>
+          <p>
+            Watch videos based on the Grade 8 Mathematics topics
+            you are currently learning at school.
+          </p>
+        </div>
+      </div>
+
+      <div class="home-feature-card">
+        <div class="home-feature-icon">3</div>
+        <div>
+          <h3>Practice worksheets</h3>
+          <p>
+            Practise each topic with questions designed to strengthen
+            your understanding and prepare you for assessments.
+          </p>
+        </div>
+      </div>
+
+      <div class="home-feature-card">
+        <div class="home-feature-icon">4</div>
+        <div>
+          <h3>Memos &amp; worked solutions</h3>
+          <p>
+            Check your answers and understand how each question
+            should be solved.
+          </p>
+        </div>
+      </div>
+
+      <div class="home-feature-card">
+        <div class="home-feature-icon">5</div>
+        <div>
+          <h3>WhatsApp help 24/7</h3>
+          <p>
+            Send Michel your Maths questions on WhatsApp whenever
+            you need help understanding the work.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- HOW IT WORKS -->
+  <section class="home-extra-section">
+    <div class="home-extra-label">SIMPLE AND EASY</div>
+    <h2>How it works</h2>
+
+    <p class="home-extra-description">
+      Getting started with Michel Maths Academy is simple.
+    </p>
+
+    <div class="home-steps">
+
+      <div class="home-step">
+        <div class="home-step-number">1</div>
+        <div>
+          <h3>Contact Michel on WhatsApp</h3>
+          <p>
+            Send Michel a message on
+            <a
+              class="home-inline-link"
+              href="https://wa.me/27678087278"
+              target="_blank"
+              rel="noopener"
+            >067 808 7278</a>
+            and ask about joining.
+          </p>
+        </div>
+      </div>
+
+      <div class="home-step">
+        <div class="home-step-number">2</div>
+        <div>
+          <h3>Choose your support</h3>
+          <p>
+            Choose between Michel Maths Academy access or private
+            one-to-one tutoring, depending on the student's needs.
+          </p>
+        </div>
+      </div>
+
+      <div class="home-step">
+        <div class="home-step-number">3</div>
+        <div>
+          <h3>Get your student account</h3>
+          <p>
+            Once everything is arranged, you will receive access
+            to your Michel Maths Academy student account.
+          </p>
+        </div>
+      </div>
+
+      <div class="home-step">
+        <div class="home-step-number">4</div>
+        <div>
+          <h3>Start learning</h3>
+          <p>
+            Watch your videos, complete your worksheets, check the
+            memos and ask for help whenever you need it.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- MEET YOUR TUTOR -->
+  <section class="home-extra-section">
+    <div class="home-extra-label">MEET YOUR TUTOR</div>
+    <h2>Hi, I'm Michel.</h2>
+
+    <p class="home-extra-description">
+      The person behind Michel Maths Academy.
+    </p>
+
+    <div class="tutor-card">
+
+      <img
+        src="IMG_5870.jpeg"
+        alt="Michel, tutor at Michel Maths Academy"
+        class="tutor-photo"
+      >
+
+      <div class="tutor-info">
+        <h3>Making Maths easier to understand.</h3>
+
+        <p>
+          My goal is to help Grade 8 students understand Mathematics
+          clearly and become more confident with the work they are
+          doing at school.
+        </p>
+
+        <p>
+          I believe students learn best when difficult concepts are
+          broken down into simple steps that they can understand
+          and practise.
+        </p>
+
+        <p>
+          That's why Michel Maths Academy combines clear video
+          explanations, practice worksheets, worked solutions and
+          personal WhatsApp support.
+        </p>
+
+        <p>
+          Whether you are part of the Academy or receiving private
+          tutoring, you can ask questions when you are stuck and get
+          support with your Maths work.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- PRICING -->
+  <section class="home-extra-section">
+    <div class="home-extra-label">PRICING</div>
+    <h2>Choose the support that suits you.</h2>
+
+    <p class="home-extra-description">
+      Two simple options depending on the student's needs.
+    </p>
+
+    <div class="pricing-list">
+
+      <div class="price-card featured">
+        <div class="price-badge">MICHEL MATHS ACADEMY</div>
+
+        <div class="price">
+          R430 <span>/ month</span>
+        </div>
+
+        <p class="price-description">
+          Online Grade 8 Mathematics support that students can use
+          throughout the month.
+        </p>
+
+        <div class="price-benefits">
+          <div>✓ Clear video explanations</div>
+          <div>✓ Grade 8 topic videos</div>
+          <div>✓ Practice worksheets</div>
+          <div>✓ Memos and worked solutions</div>
+          <div>✓ Daily WhatsApp help</div>
+          <div>✓ Learn at your own pace</div>
+        </div>
+
+        <a
+          class="price-button"
+          href="https://wa.me/27678087278?text=Hi%20Michel%2C%20I%20am%20interested%20in%20joining%20Michel%20Maths%20Academy."
+          target="_blank"
+          rel="noopener"
+        >
+          Ask About Academy Access
+        </a>
+      </div>
+
+      <div class="price-card">
+        <div class="price-badge">PRIVATE 1-TO-1 TUTORING</div>
+
+        <div class="price">
+          R630 <span>/ month</span>
+        </div>
+
+        <p class="price-description">
+          Personal one-to-one tutoring focused on the individual
+          student's needs.
+        </p>
+
+        <div class="price-benefits">
+          <div>✓ 2–3 private sessions per month</div>
+          <div>✓ Number of sessions depends on the student's needs</div>
+          <div>✓ Individual Maths support</div>
+          <div>✓ Help with difficult school topics</div>
+          <div>✓ Daily WhatsApp help</div>
+        </div>
+
+        <a
+          class="price-button secondary"
+          href="https://wa.me/27678087278?text=Hi%20Michel%2C%20I%20am%20interested%20in%20private%201-to-1%20Maths%20tutoring."
+          target="_blank"
+          rel="noopener"
+        >
+          Ask About Private Tutoring
+        </a>
+      </div>
+
+    </div>
+
+    <p class="pricing-note">
+      Pricing arrangements may differ in certain circumstances.
+      Contact Michel if you join during a term or need to discuss
+      payment arrangements.
+    </p>
+  </section>
+
+
+  <!-- ADDITIONAL BENEFITS -->
+  <section class="benefits-blue">
+    <div class="benefits-label">ADDITIONAL BENEFITS</div>
+    <h2>You're not learning alone.</h2>
+
+    <p class="benefits-intro">
+      WhatsApp support is available to both Michel Maths Academy
+      students and private tutoring students.
+    </p>
+
+    <div class="blue-benefit">
+      <div class="blue-benefit-icon">✓</div>
+      <div>
+        <h3>Daily WhatsApp help</h3>
+        <p>
+          Ask Michel questions about your Mathematics work whenever
+          you need extra help.
+        </p>
+      </div>
+    </div>
+
+    <div class="blue-benefit">
+      <div class="blue-benefit-icon">✓</div>
+      <div>
+        <h3>Send questions 24/7</h3>
+        <p>
+          You can send your Maths questions on WhatsApp at any time.
+          Michel will reply and assist as soon as reasonably possible.
+        </p>
+      </div>
+    </div>
+
+    <div class="blue-benefit">
+      <div class="blue-benefit-icon">✓</div>
+      <div>
+        <h3>Help when you're stuck</h3>
+        <p>
+          If you don't understand a question or topic, you don't have
+          to stay confused — ask for help.
+        </p>
+      </div>
+    </div>
+
+    <div class="blue-benefit">
+      <div class="blue-benefit-icon">✓</div>
+      <div>
+        <h3>Support between lessons</h3>
+        <p>
+          Private tutoring students can also ask questions outside
+          their scheduled sessions.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FAQ -->
+  <section class="home-extra-section">
+    <div class="home-extra-label">QUESTIONS</div>
+    <h2>Frequently Asked Questions</h2>
+
+    <p class="home-extra-description">
+      Important information for students and parents.
+    </p>
+
+    <div class="home-faq-list">
+
+      <div class="home-faq-item">
+        <button type="button" class="home-faq-question">
+          <span>Who is Michel Maths Academy for?</span>
+          <span class="home-faq-plus">+</span>
+        </button>
+        <div class="home-faq-answer">
+          <p>
+            Michel Maths Academy currently provides Mathematics
+            support for Grade 8 students.
+          </p>
+        </div>
+      </div>
+
+      <div class="home-faq-item">
+        <button type="button" class="home-faq-question">
+          <span>What do students get?</span>
+          <span class="home-faq-plus">+</span>
+        </button>
+        <div class="home-faq-answer">
+          <p>
+            Academy students get access to clear video explanations,
+            Grade 8 topic videos, practice worksheets, memos, worked
+            solutions and WhatsApp support.
+          </p>
+        </div>
+      </div>
+
+      <div class="home-faq-item">
+        <button type="button" class="home-faq-question">
+          <span>How do I join?</span>
+          <span class="home-faq-plus">+</span>
+        </button>
+        <div class="home-faq-answer">
+          <p>
+            Contact Michel directly on WhatsApp at 067 808 7278.
+            Michel will explain the options and help you get started.
+          </p>
+        </div>
+      </div>
+
+      <div class="home-faq-item">
+        <button type="button" class="home-faq-question">
+          <span>Can I use it on my phone?</span>
+          <span class="home-faq-plus">+</span>
+        </button>
+        <div class="home-faq-answer">
+          <p>
+            Yes. Michel Maths Academy can be accessed using a compatible
+            phone, tablet or computer with an internet connection.
+          </p>
+        </div>
+      </div>
+
+      <div class="home-faq-item">
+        <button type="button" class="home-faq-question">
+          <span>Can I learn at my own pace?</span>
+          <span class="home-faq-plus">+</span>
+        </button>
+        <div class="home-faq-answer">
+          <p>
+            Yes. Academy students can return to available videos and
+            learning material whenever they need more practice or revision.
+          </p>
+        </div>
+      </div>
+
+      <div class="home-faq-item">
+        <button type="button" class="home-faq-question">
+          <span>What if I join late in the term?</span>
+          <span class="home-faq-plus">+</span>
+        </button>
+        <div class="home-faq-answer">
+          <p>
+            Depending on when you join, you may be able to pay half
+            price for that particular period. Please contact Michel
+            directly for more information about the pricing that
+            applies to you.
+          </p>
+        </div>
+      </div>
+
+      <div class="home-faq-item">
+        <button type="button" class="home-faq-question">
+          <span>Can I cancel anytime?</span>
+          <span class="home-faq-plus">+</span>
+        </button>
+        <div class="home-faq-answer">
+          <p>
+            Yes. You can cancel, but you will still be charged for
+            the particular period you are already in. For more
+            information about cancellation and payments, please
+            contact Michel.
+          </p>
+        </div>
+      </div>
+
+      <div class="home-faq-item">
+        <button type="button" class="home-faq-question">
+          <span>What if I don't have enough money?</span>
+          <span class="home-faq-plus">+</span>
+        </button>
+        <div class="home-faq-answer">
+          <p>
+            Contact Michel directly to discuss your situation and
+            possible payment negotiations or arrangements.
+          </p>
+        </div>
+      </div>
+
+      <div class="home-faq-item">
+        <button type="button" class="home-faq-question">
+          <span>Do Academy students get WhatsApp help?</span>
+          <span class="home-faq-plus">+</span>
+        </button>
+        <div class="home-faq-answer">
+          <p>
+            Yes. WhatsApp help is available to students who are part
+            of Michel Maths Academy as well as students receiving
+            private tutoring.
+          </p>
+        </div>
+      </div>
+
+      <div class="home-faq-item">
+        <button type="button" class="home-faq-question">
+          <span>I forgot my password. What do I do?</span>
+          <span class="home-faq-plus">+</span>
+        </button>
+        <div class="home-faq-answer">
+          <p>
+            Select Forgot Password on the Student Login screen and
+            follow the instructions to reset your password.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- JOIN NOW -->
+  <section class="join-now-box">
+    <div class="join-small-title">READY TO GET STARTED?</div>
+    <h2>Join Michel Maths Academy</h2>
+
+    <p>
+      Contact Michel to join the Academy, arrange private tutoring
+      or ask any questions about pricing.
+    </p>
+
+    <a
+      class="join-whatsapp-btn"
+      href="https://wa.me/27678087278?text=Hi%20Michel%2C%20I%20would%20like%20to%20join%20Michel%20Maths%20Academy."
+      target="_blank"
+      rel="noopener"
+    >
+      Join Now on WhatsApp
+    </a>
+
+    <a class="join-phone" href="tel:+27678087278">
+      067 808 7278
+    </a>
+
+    <div class="email-alternative">
+      <p>Or contact Michel by email</p>
+      <a href="mailto:michel.matusse@icloud.com">
+        michel.matusse@icloud.com
+      </a>
+    </div>
+  </section>
+
+
+  <footer class="home-marketing-footer">
+    <strong>Michel Maths Academy</strong><br>
+    More than maths. A brighter future.<br><br>
+    © 2026 Michel Maths Academy
+  </footer>
+
+</div>
 </div>
   <div id="loginScreen">
 <div class="academy-logo hidden" id="academyLogo">Michel Maths Academy</div>
@@ -2830,7 +3809,25 @@ await supabaseClient.auth.signOut();
 
   }
 );
+/* FAQ open / close */
 
+document
+  .querySelectorAll('.home-faq-question')
+  .forEach(function(question){
+
+    question.addEventListener(
+      'click',
+      function(){
+
+        const item =
+          question.closest('.home-faq-item');
+
+        item.classList.toggle('open');
+
+      }
+    );
+
+  });
 </script>
 
 </body>
