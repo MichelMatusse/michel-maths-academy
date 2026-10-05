@@ -3694,10 +3694,10 @@ const supabaseClient = supabase.createClient(
 );
   (async function restoreSession() {
   const {
-    data: { session }
-  } = await supabaseClient.auth.getSession();
+  data: { user }
+} = await supabaseClient.auth.getUser();
 
-  if (!session) {
+if (!user) {
   academyLogo.classList.add('hidden');
   appSubtitle.classList.add('hidden');
   openScreen('homeScreen');
@@ -3711,7 +3711,7 @@ const supabaseClient = supabase.createClient(
   const { data: profile } = await supabaseClient
   .from('profiles')
   .select('terms_version, terms_accepted_at')
-  .eq('id', session.user.id)
+  .eq('id', user.id)
   .single();
 
 if (
