@@ -3620,13 +3620,13 @@ const supabaseClient = supabase.createClient(
       return;
     }
 
-    if(password.length < 6){
+    if(password.length < 8){
 
       passwordUpdateMessage.style.color =
         '#C70000';
 
       passwordUpdateMessage.textContent =
-        'Your password must be at least 6 characters long.';
+        'Your password must be at least 8 characters long.';
 
       return;
     }
