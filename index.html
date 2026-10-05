@@ -3461,10 +3461,11 @@ const supabaseClient = supabase.createClient(
   'https://mvaegufwvltpmgglvknk.supabase.co',
   'sb_publishable_ANBkLBSmt50Fiy5Ryav3hA_r2XNNh44',
   {
-    auth: {
-      persistSession: false
-    }
+  auth: {
+    persistSession: true,
+    storage: window.sessionStorage
   }
+}
 );
   async function updateDashboardGreeting(){
 
