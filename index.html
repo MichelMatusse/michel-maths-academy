@@ -1514,7 +1514,7 @@ input.input-error{border-color:var(--danger);background:#fff9f9}
     text-align:left;
   "
 >
-  Welcome back, Student 😊
+  Welcome back, <span id="studentFirstName">Student</span> 😊
 </div>
   <div class="grade-heading">
     Grade 8
@@ -3788,7 +3788,21 @@ const { error } = await supabaseClient.auth.signInWithPassword({
 });
 
 if (!error) {
-  
+  const { data: userData } = await supabaseClient.auth.getUser();
+
+if (userData.user) {
+  const { data: profile } = await supabaseClient
+    .from('profiles')
+    .select('first_name')
+    .eq('id', userData.user.id)
+    .single();
+
+  const nameElement = document.getElementById('studentFirstName');
+
+  if (nameElement && profile?.first_name) {
+    nameElement.textContent = profile.first_name;
+  }
+}
 
 
       if(
