@@ -3463,30 +3463,22 @@ const supabaseClient = supabase.createClient(
 
   const {
     data: { user }
-  } =
-    await supabaseClient.auth.getUser();
+  } = await supabaseClient.auth.getUser();
 
-  let firstName =
-    'Student';
+  let firstName = 'Student';
 
-  if(user){
+  if (user) {
 
-    const metadata =
-      user.user_metadata || {};
+    const { data: profile } = await supabaseClient
+      .from('profiles')
+      .select('first_name')
+      .eq('id', user.id)
+      .single();
 
-    const savedName =
-      metadata.first_name ||
-      metadata.full_name ||
-      metadata.name ||
-      '';
-
-    if(savedName.trim()){
-
-      firstName =
-        savedName
-          .trim()
-          .split(/\s+/)[0];
-
+    if (profile && profile.first_name) {
+      firstName = profile.first_name
+        .trim()
+        .split(/\s+/)[0];
     }
 
   }
@@ -3788,21 +3780,6 @@ const { error } = await supabaseClient.auth.signInWithPassword({
 });
 
 if (!error) {
-  const { data: userData } = await supabaseClient.auth.getUser();
-
-if (userData.user) {
-  const { data: profile } = await supabaseClient
-    .from('profiles')
-    .select('first_name')
-    .eq('id', userData.user.id)
-    .single();
-
-  const nameElement = document.getElementById('studentFirstName');
-
-  if (nameElement && profile?.first_name) {
-    nameElement.textContent = profile.first_name;
-  }
-}
 
 
       if(
