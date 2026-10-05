@@ -3008,8 +3008,26 @@ function isLegalScreen(id){
 }
 
 
-function openScreen(screenId){
+async function openScreen(screenId){
+  const publicScreens = [
+    'homeScreen',
+    'loginScreen',
+    'termsScreen',
+    'privacyScreen',
+    'contactScreen'
+  ];
 
+  if (!publicScreens.includes(screenId)) {
+
+    const {
+      data: { session }
+    } = await supabaseClient.auth.getSession();
+
+    if (!session) {
+      screenId = 'loginScreen';
+    }
+
+  }
   document.querySelectorAll(
     '.app-container > div[id$="Screen"]'
   ).forEach(
