@@ -3419,7 +3419,7 @@ termsAcceptCheckbox.addEventListener(
 
 termsContinueBtn.addEventListener(
   'click',
-  function(){
+  async function(){
 
     if(
       !termsAcceptCheckbox.checked
@@ -3430,22 +3430,27 @@ termsContinueBtn.addEventListener(
     }
 
 
-    localStorage.setItem(
-      'michelMathsTermsAccepted',
-      'yes'
-    );
+    const {
+  data: { user }
+} = await supabaseClient.auth.getUser();
 
+if (!user) {
+  openScreen('loginScreen');
+  return;
+}
 
-    localStorage.setItem(
-      'michelMathsTermsVersion',
-      '2026-09'
-    );
+const { error } = await supabaseClient
+  .from('profiles')
+  .update({
+    terms_version: '2026-09',
+    terms_accepted_at: new Date().toISOString()
+  })
+  .eq('id', user.id);
 
-
-    localStorage.setItem(
-      'michelMathsTermsAcceptedAt',
-      new Date().toISOString()
-    );
+if (error) {
+  alert('We could not save your acceptance. Please try again.');
+  return;
+}
 
 
     if(
@@ -3703,18 +3708,17 @@ const supabaseClient = supabase.createClient(
     
 
 
-  const accepted = localStorage.getItem(
-    'michelMathsTermsAccepted'
-  );
+  const { data: profile } = await supabaseClient
+  .from('profiles')
+  .select('terms_version, terms_accepted_at')
+  .eq('id', session.user.id)
+  .single();
 
-  const version = localStorage.getItem(
-    'michelMathsTermsVersion'
-  );
-
-  if (
-    accepted === 'yes' &&
-    version === '2026-09'
-  ) {
+if (
+  profile &&
+  profile.terms_version === '2026-09' &&
+  profile.terms_accepted_at
+) {
     openScreen('dashboardScreen');
     updateDashboardGreeting();
       
@@ -3826,22 +3830,21 @@ if (!error) {
       }
 
 
-      const accepted =
-        localStorage.getItem(
-          'michelMathsTermsAccepted'
-        );
+      const {
+  data: { user }
+} = await supabaseClient.auth.getUser();
 
+const { data: profile } = await supabaseClient
+  .from('profiles')
+  .select('terms_version, terms_accepted_at')
+  .eq('id', user.id)
+  .single();
 
-      const version =
-        localStorage.getItem(
-          'michelMathsTermsVersion'
-        );
-
-
-      if(
-        accepted !== 'yes' ||
-        version !== '2026-09'
-      ){
+if(
+  !profile ||
+  profile.terms_version !== '2026-09' ||
+  !profile.terms_accepted_at
+){
 
         pendingLogin =
           true;
