@@ -3020,12 +3020,12 @@ async function openScreen(screenId){
   if (!publicScreens.includes(screenId)) {
 
     const {
-      data: { session }
-    } = await supabaseClient.auth.getSession();
+  data: { user }
+} = await supabaseClient.auth.getUser();
 
-    if (!session) {
-      screenId = 'loginScreen';
-    }
+if (!user) {
+  screenId = 'loginScreen';
+}
 
   }
   document.querySelectorAll(
