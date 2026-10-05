@@ -3459,7 +3459,12 @@ termsContinueBtn.addEventListener(
 
 const supabaseClient = supabase.createClient(
   'https://mvaegufwvltpmgglvknk.supabase.co',
-  'sb_publishable_ANBkLBSmt50Fiy5Ryav3hA_r2XNNh44'
+  'sb_publishable_ANBkLBSmt50Fiy5Ryav3hA_r2XNNh44',
+  {
+    auth: {
+      persistSession: false
+    }
+  }
 );
   async function updateDashboardGreeting(){
 
