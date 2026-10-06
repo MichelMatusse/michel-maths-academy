@@ -3595,10 +3595,10 @@ const supabaseClient = supabase.createClient(
   async function(){
 
     const password =
-      newPassword.value.trim();
+  newPassword.value;
 
     const confirmPassword =
-      confirmNewPassword.value.trim();
+  confirmNewPassword.value;
 
     passwordUpdateMessage.style.display =
       'block';
@@ -3761,7 +3761,7 @@ loginForm.addEventListener(
 
 
     const password =
-      passwordInput.value.trim();
+  passwordInput.value;
 
 
     if(
