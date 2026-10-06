@@ -3833,7 +3833,15 @@ if (!error) {
       const {
   data: { user }
 } = await supabaseClient.auth.getUser();
+if (!user) {
+  errorAlert.textContent =
+    'We could not verify your session. Please try again.';
 
+  errorAlert.style.display =
+    'block';
+
+  return;
+}
 const { data: profile } = await supabaseClient
   .from('profiles')
   .select('terms_version, terms_accepted_at')
