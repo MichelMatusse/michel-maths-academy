@@ -3713,9 +3713,23 @@ if (!user) {
   .select('terms_version, terms_accepted_at')
   .eq('id', user.id)
   .single();
+if (!profile) {
+  await supabaseClient.auth.signOut();
 
+  academyLogo.classList.remove('hidden');
+  appSubtitle.classList.remove('hidden');
+
+  errorAlert.textContent =
+    'We could not load your student profile. Please contact Michel.';
+
+  errorAlert.style.display =
+    'block';
+
+  openScreen('loginScreen');
+  return;
+}
 if (
-  profile &&
+  
   profile.terms_version === '2026-09' &&
   profile.terms_accepted_at
 ) {
@@ -3847,9 +3861,19 @@ const { data: profile } = await supabaseClient
   .select('terms_version, terms_accepted_at')
   .eq('id', user.id)
   .single();
+if (!profile) {
+  await supabaseClient.auth.signOut();
 
+  errorAlert.textContent =
+    'We could not load your student profile. Please contact Michel.';
+
+  errorAlert.style.display =
+    'block';
+
+  return;
+}
 if(
-  !profile ||
+  
   profile.terms_version !== '2026-09' ||
   !profile.terms_accepted_at
 ){
