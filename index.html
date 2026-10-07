@@ -3523,12 +3523,11 @@ if (error || !updatedProfile) {
         false;
 
 
-      openScreen(
-        'dashboardScreen'
-      );
+      await updateDashboardGreeting();
 
-
-      updateDashboardGreeting();
+openScreen(
+  'dashboardScreen'
+);
         
 
     }else{
@@ -3795,8 +3794,8 @@ if (
   profile.terms_version === '2026-09' &&
   profile.terms_accepted_at
 ) {
-    openScreen('dashboardScreen');
-    updateDashboardGreeting();
+    await updateDashboardGreeting();
+openScreen('dashboardScreen');
       
   } else {
     pendingLogin = true;
@@ -3966,12 +3965,11 @@ if(
       }
 
 
-      openScreen(
-        'dashboardScreen'
-      );
+      await updateDashboardGreeting();
 
-
-      updateDashboardGreeting();
+openScreen(
+  'dashboardScreen'
+);
         
 
 
