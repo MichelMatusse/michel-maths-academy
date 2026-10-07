@@ -3439,15 +3439,17 @@ if (!user) {
   return;
 }
 
-const { error } = await supabaseClient
+const { data: updatedProfile, error } = await supabaseClient
   .from('profiles')
   .update({
     terms_version: '2026-09',
     terms_accepted_at: new Date().toISOString()
   })
-  .eq('id', user.id);
+  .eq('id', user.id)
+  .select('id')
+  .maybeSingle();
 
-if (error) {
+if (error || !updatedProfile) {
   alert('We could not save your acceptance. Please try again.');
   return;
 }
