@@ -3741,9 +3741,21 @@ const supabaseClient = supabase.createClient(
 } = await supabaseClient.auth.getUser();
 
 if (!user) {
-  academyLogo.classList.add('hidden');
-  appSubtitle.classList.add('hidden');
-  openScreen('homeScreen');
+  const savedPublicScreen =
+    sessionStorage.getItem(
+      'michelMathsPublicScreen'
+    );
+
+  if (savedPublicScreen === 'loginScreen') {
+    academyLogo.classList.remove('hidden');
+    appSubtitle.classList.remove('hidden');
+    openScreen('loginScreen');
+  } else {
+    academyLogo.classList.add('hidden');
+    appSubtitle.classList.add('hidden');
+    openScreen('homeScreen');
+  }
+
   return;
 }
     
@@ -3789,6 +3801,10 @@ openScreen('dashboardScreen');
   function(){
     academyLogo.classList.remove('hidden');
     appSubtitle.classList.remove('hidden');
+    sessionStorage.setItem(
+  'michelMathsPublicScreen',
+  'loginScreen'
+);
     openScreen('loginScreen');
   }
 );
