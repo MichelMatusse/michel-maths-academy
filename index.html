@@ -672,6 +672,61 @@ input.input-error{border-color:var(--danger);background:#fff9f9}
 <body>
 
 <div class="app-container">
+  <div id="loadingScreen" style="
+  min-height:220px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+">
+  <svg
+    width="72"
+    height="72"
+    viewBox="0 0 120 120"
+    aria-label="Loading"
+  >
+    <g>
+      <animateTransform
+        attributeName="transform"
+        type="rotate"
+        from="0 60 60"
+        to="360 60 60"
+        dur="0.9s"
+        repeatCount="indefinite"
+      />
+
+      <ellipse cx="60" cy="25" rx="15" ry="27"
+        fill="#5AAAE6" stroke="#5AAAE6"/>
+
+      <ellipse cx="60" cy="25" rx="15" ry="27"
+        fill="#5AAAE6" stroke="#5AAAE6"
+        transform="rotate(45 60 60)"/>
+
+      <ellipse cx="60" cy="25" rx="15" ry="27"
+        fill="#5AAAE6" stroke="#5AAAE6"
+        transform="rotate(90 60 60)"/>
+
+      <ellipse cx="60" cy="25" rx="15" ry="27"
+        fill="#5AAAE6" stroke="#5AAAE6"
+        transform="rotate(135 60 60)"/>
+
+      <ellipse cx="60" cy="25" rx="15" ry="27"
+        fill="#5AAAE6" stroke="#5AAAE6"
+        transform="rotate(180 60 60)"/>
+
+      <ellipse cx="60" cy="25" rx="15" ry="27"
+        fill="#5AAAE6" stroke="#5AAAE6"
+        transform="rotate(225 60 60)"/>
+
+      <ellipse cx="60" cy="25" rx="15" ry="27"
+        fill="#5AAAE6" stroke="#5AAAE6"
+        transform="rotate(270 60 60)"/>
+
+      <ellipse cx="60" cy="25" rx="15" ry="27"
+        fill="#5AAAE6" stroke="#5AAAE6"
+        transform="rotate(315 60 60)"/>
+    </g>
+  </svg>
+</div>
 <div id="homeScreen" class="hidden">
   
     <div class="home-hero">
