@@ -103,8 +103,13 @@ input.input-error{border-color:var(--danger);background:#fff9f9}
 .contact-item+.contact-item{border-top:1px solid #e1e1e4}
 .contact-label{color:var(--muted2);font-size:12px;margin-bottom:4px}
 .contact-value{color:var(--ink);font-size:15px;font-weight:600;word-break:break-word}
+  .contact-value a,
+.contact-value [x-apple-data-detectors]{
+  color:inherit !important;
+  text-decoration:none !important;
+}
 .contact-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:20px}
-.contact-action{display:inline-block;min-width:145px;text-align:center;padding:10px 18px;border-radius:999px;background:var(--action-blue);color:#fff;text-decoration:none;font-size:13px;font-weight:600;transition:background .15s ease,transform .1s ease}
+.contact-action{display:inline-block;min-width:145px;text-align:center;padding:10px 18px;border-radius:999px;background:#25D366;color:#fff;text-decoration:none;font-size:13px;font-weight:600;transition:background .15s ease,transform .1s ease}
 .contact-action:hover{background:var(--action-blue-dark)}
 .contact-action.secondary{background:#fff;color:var(--action-blue);border:1px solid var(--action-blue)}
 .contact-action.secondary:hover{background:var(--very-light-blue)}
