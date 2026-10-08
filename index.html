@@ -3814,7 +3814,36 @@ openScreen('dashboardScreen');
   'michelMathsPublicScreen',
   'loginScreen'
 );
+    history.pushState(
+  { screen: 'loginScreen' },
+  '',
+  window.location.href
+);
     openScreen('loginScreen');
+  }
+);
+  window.addEventListener(
+  'popstate',
+  function(event){
+
+    if(
+      event.state &&
+      event.state.screen === 'loginScreen'
+    ){
+      sessionStorage.setItem(
+        'michelMathsPublicScreen',
+        'loginScreen'
+      );
+
+      openScreen('loginScreen');
+
+    }else{
+      sessionStorage.removeItem(
+        'michelMathsPublicScreen'
+      );
+
+      openScreen('homeScreen');
+    }
   }
 );
 loginForm.addEventListener(
